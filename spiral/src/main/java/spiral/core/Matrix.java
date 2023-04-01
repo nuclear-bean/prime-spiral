@@ -1,6 +1,7 @@
 package spiral.core;
 
 import lombok.Getter;
+import spiral.core.utils.Printer;
 
 public class Matrix {
 
@@ -15,7 +16,7 @@ public class Matrix {
         this.content = new long[size][size];
     }
 
-    public short[][] render(){
+    public short[][] translate() {
         throw new UnsupportedOperationException();  //todo
     }
 
@@ -24,7 +25,6 @@ public class Matrix {
         return content[(size/2) + x][(size/2) + y];
     }
 
-    //todo unit test this
     public void fillWith(long [][] matrix) {
         for (int i = 0; i < this.content.length; i++) {
             System.arraycopy(matrix[i], 0, this.content[i], 0, this.content[i].length);
@@ -32,11 +32,6 @@ public class Matrix {
     }
 
     public void print() {
-        for (long[] points : content) {
-            for (long point : points) {
-                System.out.print(String.valueOf(point) + '\t');
-            }
-            System.out.println();
-        }
+        Printer.printSimple(this.content);
     }
 }

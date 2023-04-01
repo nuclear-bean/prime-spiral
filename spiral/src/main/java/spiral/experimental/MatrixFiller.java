@@ -1,10 +1,12 @@
 package spiral.experimental;
 
 import lombok.experimental.UtilityClass;
+import spiral.core.utils.annotations.Experimental;
 import spiral.core.utils.annotations.ExternalCode;
 
 @SuppressWarnings("DuplicatedCode")
 @UtilityClass
+@Experimental
 public class MatrixFiller {
 
     //todo rewrite matrix filler so it's understandable, works on rings etc.
@@ -56,16 +58,7 @@ public class MatrixFiller {
         return n * n == num;
     }
 
-
-    private void print(long[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + "\t");
-            }
-            System.out.println();
-        }
-    }
-
+    @SuppressWarnings("EnhancedSwitchMigration")
     @ExternalCode
     private static void ulamSpiral(long[][] matrix) {
         int n = matrix.length; // get the size of the matrix
