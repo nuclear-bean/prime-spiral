@@ -1,16 +1,21 @@
 package spiral;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
 public class Point {
 
-    public Point(){}
+    @Getter
+    @Setter
+    private Long value = 0L;
 
-    public Point(int x, int y, Integer value) {
-        this.x = x;
-        this.y = y;
+    public Point(Long value) {
         this.value = value;
     }
 
-    public int x,y;
-    Integer value;
-
+    public static Point CENTER() {
+        return new Point(1L);
+    }
 }
