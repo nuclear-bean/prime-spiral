@@ -1,6 +1,7 @@
 package spiral.experimental;
 
 import lombok.experimental.UtilityClass;
+import spiral.core.utils.annotations.Experimental;
 import spiral.core.utils.annotations.ExternalCode;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 @UtilityClass
-
+@Experimental
 public class ImageGenerator {
 
     @ExternalCode
