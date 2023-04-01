@@ -16,6 +16,17 @@ public class Validator {
         }
     }
 
+    public void validateMatrixDimensions(long [][] matrix) throws IllegalArgumentException {
+        if (isSquareMatrix(matrix)) {
+            throw new IllegalArgumentException("Spiral has to be a square matrix");
+        }
+        validateMatrixSize(matrix.length);
+    }
+
+    private boolean isSquareMatrix(long[][] matrix) {
+        return matrix.length != matrix[0].length;
+    }
+
     private static boolean isEven(int size) {
         return size % 2 == 0;
     }
