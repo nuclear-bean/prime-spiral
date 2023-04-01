@@ -11,6 +11,4 @@ class MatrixFillerTest {
         //todo implement
     }
 
-    //todo apply results to Matrix object
-
 }
