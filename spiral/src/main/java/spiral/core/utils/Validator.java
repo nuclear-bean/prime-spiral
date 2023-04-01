@@ -1,9 +1,9 @@
-package spiral;
+package spiral.core.utils;
 
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class InputValidator {
+public class Validator {
 
     private final Integer MIN_SIZE = 3;
 

@@ -1,9 +1,11 @@
-package spiral;
+package spiral.core.generator;
 
 import lombok.experimental.UtilityClass;
+import spiral.core.Matrix;
+import spiral.experimental.MatrixFiller;
 
 @UtilityClass
-public class MatrixGenerator {
+public class BasicGenerator {
 
     public Matrix createUlamSpiral(int side) {
         validateSide(side);

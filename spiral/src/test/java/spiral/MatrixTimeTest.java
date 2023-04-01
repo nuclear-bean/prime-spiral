@@ -2,6 +2,8 @@ package spiral;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import spiral.core.Matrix;
+import spiral.experimental.MatrixFiller;
 
 import java.time.Duration;
 import java.time.Instant;

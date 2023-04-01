@@ -1,7 +1,8 @@
 package spiral;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import spiral.core.Matrix;
+import spiral.experimental.MatrixFiller;
 
 class MatrixTest {
 

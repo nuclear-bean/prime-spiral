@@ -1,4 +1,4 @@
-package spiral;
+package spiral.core;
 
 import lombok.Getter;
 
@@ -13,6 +13,10 @@ public class Matrix {
         if (size % 2 == 0) throw new IllegalArgumentException("Only odd-side spirals are allowed");
         this.size = size;
         this.content = new long[size][size];
+    }
+
+    public short[][] render(){
+        throw new UnsupportedOperationException();  //todo
     }
 
     //todo unit test this

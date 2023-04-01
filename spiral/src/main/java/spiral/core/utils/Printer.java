@@ -1,6 +1,7 @@
-package spiral;
+package spiral.core.utils;
 
 import lombok.experimental.UtilityClass;
+import spiral.core.utils.annotations.ExternalCode;
 
 @UtilityClass
 @ExternalCode
@@ -11,24 +12,24 @@ public class Printer {
         int maxElementWidth = Integer.toString(matrix.length * matrix[0].length).length() + 1;
 
         // Print the top frame
-        iterate(matrix, maxElementWidth);
+        iterateOverMatrix(matrix, maxElementWidth);
 
         // Print the matrix row by row with side frames
-        for (int i = 0; i < matrix.length; i++) {
+        for (long[] longs : matrix) {
             System.out.print("|");
-            for (int j = 0; j < matrix[i].length; j++) {
+            for (long aLong : longs) {
                 // Format each matrix element to the desired width and print it
-                System.out.printf("%-" + maxElementWidth + "d", matrix[i][j]);
+                System.out.printf("%-" + maxElementWidth + "d", aLong);
                 System.out.print("|");
             }
             System.out.println(); // Move to the next row
         }
 
         // Print the bottom frame
-        iterate(matrix, maxElementWidth);
+        iterateOverMatrix(matrix, maxElementWidth);
     }
 
-    private static void iterate(long[][] matrix, int maxElementWidth) {
+    private static void iterateOverMatrix(long[][] matrix, int maxElementWidth) {
         for (int i = 0; i < matrix.length + 2; i++) {
             System.out.print("+");
             for (int j = 0; j < maxElementWidth; j++) {
