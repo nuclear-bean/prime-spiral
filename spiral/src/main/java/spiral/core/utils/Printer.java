@@ -7,7 +7,7 @@ import spiral.core.utils.annotations.ExternalCode;
 @ExternalCode
 public class Printer {
 
-    public static void prettyPrintMatrixWithFrames(long[][] matrix) {
+    public void prettyPrintMatrixWithFrames(long[][] matrix) {
         // Determine the width of each matrix element for formatting purposes
         int maxElementWidth = Integer.toString(matrix.length * matrix[0].length).length() + 1;
 
@@ -29,7 +29,7 @@ public class Printer {
         iterateOverMatrix(matrix, maxElementWidth);
     }
 
-    private static void iterateOverMatrix(long[][] matrix, int maxElementWidth) {
+    private void iterateOverMatrix(long[][] matrix, int maxElementWidth) {
         for (int i = 0; i < matrix.length + 2; i++) {
             System.out.print("+");
             for (int j = 0; j < maxElementWidth; j++) {
@@ -39,4 +39,12 @@ public class Printer {
         System.out.println("+");
     }
 
+    public void printSimple(long[][] content) {
+        for (long[] points : content) {
+            for (long point : points) {
+                System.out.print(String.valueOf(point) + '\t');
+            }
+            System.out.println();
+        }
+    }
 }
