@@ -3,9 +3,12 @@ package spiral.core.utils;
 import lombok.experimental.UtilityClass;
 import spiral.core.utils.annotations.ExternalCode;
 
+/**
+ * Prints long[][] matrix to console
+ */
 @UtilityClass
 @ExternalCode
-public class Printer {
+public class ConsolePrinter {
 
     public void prettyPrintMatrixWithFrames(long[][] matrix) {
         // Determine the width of each matrix element for formatting purposes
@@ -29,6 +32,19 @@ public class Printer {
         iterateOverMatrix(matrix, maxElementWidth);
     }
 
+    public void printSimple(long[][] matrix) {
+        if (matrix.length > 500) {
+            System.out.println("Matrix is too big to print");
+            return;
+        }
+        for (long[] points : matrix) {
+            for (long point : points) {
+                System.out.print(String.valueOf(point) + '\t');
+            }
+            System.out.println();
+        }
+    }
+
     private void iterateOverMatrix(long[][] matrix, int maxElementWidth) {
         for (int i = 0; i < matrix.length + 2; i++) {
             System.out.print("+");
@@ -37,14 +53,5 @@ public class Printer {
             }
         }
         System.out.println("+");
-    }
-
-    public void printSimple(long[][] content) {
-        for (long[] points : content) {
-            for (long point : points) {
-                System.out.print(String.valueOf(point) + '\t');
-            }
-            System.out.println();
-        }
     }
 }

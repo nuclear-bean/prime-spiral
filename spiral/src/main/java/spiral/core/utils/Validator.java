@@ -16,7 +16,7 @@ public class Validator {
         }
     }
 
-    public void validateMatrixDimensions(long [][] matrix) throws IllegalArgumentException {
+    public void validateMatrix(long [][] matrix) throws IllegalArgumentException {
         if (isSquareMatrix(matrix)) {
             throw new IllegalArgumentException("Spiral has to be a square matrix");
         }

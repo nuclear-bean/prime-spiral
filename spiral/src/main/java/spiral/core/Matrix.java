@@ -1,7 +1,7 @@
 package spiral.core;
 
 import lombok.Getter;
-import spiral.core.utils.Printer;
+import spiral.core.utils.ConsolePrinter;
 
 public class Matrix {
 
@@ -23,6 +23,6 @@ public class Matrix {
     }
 
     public void print() {
-        Printer.printSimple(this.content);
+        ConsolePrinter.printSimple(this.content);
     }
 }

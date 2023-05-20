@@ -37,13 +37,13 @@ public class ValidatorTest {
     @DisplayName("Validate non-square matrix dimensions")
     public void testValidateNonSquareMatrixDimensions() {
         long[][] input = {{1, 2, 3}, {4, 5, 6}};
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.validateMatrixDimensions(input));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.validateMatrix(input));
     }
 
     @Test
     @DisplayName("Validate square matrix dimensions")
     public void testValidateSquareMatrixDimensions() {
         long[][] input = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        Assertions.assertDoesNotThrow(() -> Validator.validateMatrixDimensions(input));
+        Assertions.assertDoesNotThrow(() -> Validator.validateMatrix(input));
     }
 }
