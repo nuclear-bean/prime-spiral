@@ -1,4 +1,4 @@
-package spiral.core;
+package spiral.core.matrix;
 
 import lombok.Getter;
 import spiral.core.utils.ConsolePrinter;

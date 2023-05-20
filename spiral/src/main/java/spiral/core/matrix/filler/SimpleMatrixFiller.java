@@ -1,4 +1,4 @@
-package spiral.experimental;
+package spiral.core.matrix.filler;
 
 import lombok.experimental.UtilityClass;
 import spiral.core.utils.annotations.Experimental;
@@ -7,7 +7,7 @@ import spiral.core.utils.annotations.ExternalCode;
 @SuppressWarnings("DuplicatedCode")
 @UtilityClass
 @Experimental
-public class MatrixFiller {
+public class SimpleMatrixFiller {
 
     //todo rewrite matrix filler so it's understandable, works on rings etc.
 

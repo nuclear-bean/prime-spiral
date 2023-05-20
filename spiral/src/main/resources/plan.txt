@@ -1,0 +1,7 @@
+initial goals:
+- ability to create spirals of side (size) up to 1 000 000 in less than 30 s.
+- black and white representation (simple).
+- density representation
+
+advanced goals:
+- ability to rotate the spiral

@@ -1,6 +1,6 @@
 package spiral.experimental;
 
-import spiral.core.Matrix;
+import spiral.core.matrix.Matrix;
 import spiral.core.generator.BasicGenerator;
 import spiral.core.image.BlackAndWhiteImageGenerator;
 import spiral.core.utils.annotations.Experimental;
@@ -10,7 +10,7 @@ import java.time.Instant;
 @Experimental
 public class Main {
 
-    private static final int SIZE = 1501;
+    private static final int SIZE = 1001;
 
     public static void main(String[] args) {
         Instant start = Instant.now();

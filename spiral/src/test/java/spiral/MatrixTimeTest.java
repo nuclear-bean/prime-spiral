@@ -2,8 +2,8 @@ package spiral;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import spiral.core.Matrix;
-import spiral.experimental.MatrixFiller;
+import spiral.core.matrix.Matrix;
+import spiral.core.matrix.filler.SimpleMatrixFiller;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -17,7 +17,7 @@ class MatrixTimeTest {
         int size = 101;
         matrix = new Matrix(size);
         long[][] content = new long[size][size];
-        MatrixFiller.ulamSpiralCounterClockwise(content);
+        SimpleMatrixFiller.ulamSpiralCounterClockwise(content);
         matrix.fillWith(content);
     }
 
@@ -27,7 +27,7 @@ class MatrixTimeTest {
 
         int size = 1001;
         long[][] content = new long[size][size];
-        MatrixFiller.ulamSpiralCounterClockwise(content);
+        SimpleMatrixFiller.ulamSpiralCounterClockwise(content);
 
         Instant end = Instant.now();
         Duration duration = Duration.between(instant, end);

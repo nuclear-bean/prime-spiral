@@ -1,6 +1,6 @@
 package spiral.experimental;
 
-import spiral.core.Matrix;
+import spiral.core.matrix.Matrix;
 import spiral.core.utils.annotations.Experimental;
 
 @Experimental

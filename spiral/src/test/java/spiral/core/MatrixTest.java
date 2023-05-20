@@ -2,6 +2,7 @@ package spiral.core;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import spiral.core.matrix.Matrix;
 
 public class MatrixTest {
 

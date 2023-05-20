@@ -1,9 +1,9 @@
 package spiral.core.generator;
 
 import lombok.experimental.UtilityClass;
-import spiral.core.Matrix;
+import spiral.core.matrix.Matrix;
 import spiral.core.utils.Validator;
-import spiral.experimental.MatrixFiller;
+import spiral.core.matrix.filler.SimpleMatrixFiller;
 
 @UtilityClass
 public class BasicGenerator {
@@ -12,7 +12,7 @@ public class BasicGenerator {
         Validator.validateMatrixSize(side);
         Matrix matrix = new Matrix(side);
         long[][] content = new long[side][side];
-        MatrixFiller.ulamSpiralCounterClockwise(content);
+        SimpleMatrixFiller.ulamSpiralCounterClockwise(content);
         matrix.fillWith(content);
         return matrix;
     }
