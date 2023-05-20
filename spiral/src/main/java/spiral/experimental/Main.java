@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         Instant start = Instant.now();
         Matrix matrix = BasicGenerator.createUlamSpiral(SIZE);
-        new BlackAndWhiteImageGenerator().generateImageFromMatrix(matrix.getContent(),"ulam_spiral.png");
+        new BlackAndWhiteImageGenerator().generateImage(matrix.getContent(),"ulam_spiral.png");
         Instant end = Instant.now();
         System.out.println(SIZE + " = matrix side. generation completed. Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
     }

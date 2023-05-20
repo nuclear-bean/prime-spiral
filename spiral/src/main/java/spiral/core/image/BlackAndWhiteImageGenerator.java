@@ -1,6 +1,5 @@
 package spiral.core.image;
 
-import lombok.extern.log4j.Log4j2;
 import spiral.core.utils.PrimeUtils;
 import spiral.core.utils.Validator;
 
@@ -17,7 +16,7 @@ public class BlackAndWhiteImageGenerator implements ImageGenerator {
         generateImageFromMatrix(matrix, outputPath);
     }
 
-    public void generateImageFromMatrix(long[][] matrix, String outputPath) {
+    private void generateImageFromMatrix(long[][] matrix, String outputPath) {
         validateMatrix(matrix);
         BufferedImage image = createBufferedImage(matrix);
         writeToFile(outputPath, image);

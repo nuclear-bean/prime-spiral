@@ -60,7 +60,7 @@ public class MatrixFiller {
 
     @SuppressWarnings("EnhancedSwitchMigration")
     @ExternalCode
-    private static void ulamSpiral(long[][] matrix) {
+    private static void ulamSpiralClockwise(long[][] matrix) {
         int n = matrix.length; // get the size of the matrix
         int row = n / 2; // start at the middle row
         int col = n / 2; // start at the middle column

@@ -9,13 +9,15 @@ import spiral.examples.internals.ElapsedTimer;
 @Log
 public class BasicSpiralExample {
 
+    private static final int SIZE = 15001;
+    private static final String PATH = "ulam_spiral.png";
+
     public static void main(String[] args) {
         log.info("starting...");
-        int SIZE = 15001;
         ElapsedTimer.start();
         log.info("generating matrix...");
         Matrix matrix = BasicGenerator.createUlamSpiral(SIZE);
         log.info("generating image...");
-        new BlackAndWhiteImageGenerator().generateImageFromMatrix(matrix.getContent(),"ulam_spiral.png");
+        new BlackAndWhiteImageGenerator().generateImage(matrix.getContent(), PATH);
     }
 }
