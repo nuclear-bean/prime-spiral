@@ -11,6 +11,8 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 public class BasicBlackAndWhiteExample extends AbstractExample {
 
     public static void main(String[] args) {
+        SIZE = 1001;
+        PATH = "ulam_spiral_1001.png";
         start(args);
 
         log.info("generating matrix...");
