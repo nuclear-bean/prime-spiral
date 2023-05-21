@@ -10,17 +10,11 @@ import spirals.ulam.translators.density.DensityTranslator;
  * Creates density representation of Ulam spiral and saves it as image.
  */
 @Log
-public class DensityImageExample extends AbstractExample {
+public class E04_DensityRepresentation extends AbstractExample {
 
     public static void main(String[] args) {
         SIZE = 1003;
         PATH = "ulam_spiral_density_" + SIZE + ".png";
-
-        DensityImageExporter.PRIME_CHANNEL = 0;
-
-        DensityImageExporter.RED_BASE_VALUE = 30;
-        DensityImageExporter.GREEN_BASE_VALUE = 0;
-        DensityImageExporter.BLUE_BASE_VALUE = 0;
 
         start(args);
 

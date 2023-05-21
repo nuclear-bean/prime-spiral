@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
-class BasicBlackAndWhiteExampleTest {
+class E01BasicBlackAndWhiteTest {
 
     // 500  = 150 ms
     // 1000 = 500 ms
@@ -20,7 +20,7 @@ class BasicBlackAndWhiteExampleTest {
     public void benchmark() {
         long start = System.currentTimeMillis();
 
-        BasicBlackAndWhiteExample.main(new String[] {SIZE.toString(), PATH});
+        E01_BasicBlackAndWhite.main(new String[] {SIZE.toString(), PATH});
 
         long end = System.currentTimeMillis();
         System.out.println("Time elapsed: " + (end - start) + " ms");

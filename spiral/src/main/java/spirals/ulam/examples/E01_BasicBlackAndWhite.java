@@ -8,7 +8,7 @@ import spirals.ulam.generators.SimpleUlamGenerator;
  * Creates basic Ulam spiral and saves it as spirals.ulam.export.image. Primes are mapped to black pixels, non-primes to white.
  */
 @Log
-public class BasicBlackAndWhiteExample extends AbstractExample {
+public class E01_BasicBlackAndWhite extends AbstractExample {
 
     public static void main(String[] args) {
         SIZE = 5001;

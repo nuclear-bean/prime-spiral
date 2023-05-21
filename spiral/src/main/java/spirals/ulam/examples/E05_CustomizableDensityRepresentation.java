@@ -11,15 +11,17 @@ import spirals.ulam.translators.density.DensityTranslationSpec;
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized. See {@link DensityTranslationSpec} for more details.
  */
 @Log
-public class CustomizableDensityTranslatorExample extends AbstractExample {
+public class E05_CustomizableDensityRepresentation extends AbstractExample {
 
     public static void main(String[] args) {
-        SIZE = 11;
-        PATH = "ulam_spiral_density_no_diagonals_" + SIZE + ".png";
+        SIZE = 1001;
+        PATH = "ulam_spiral_density_all_" + SIZE + ".png";
 
-        DensityImageExporter.PRIME_CHANNEL = 0;
+        DensityImageExporter.PRIME_CHANNEL = 2;
 
-        DensityImageExporter.RED_BASE_VALUE = 30;
+        DensityImageExporter.RED_BASE_VALUE = 10;
+        DensityImageExporter.GREEN_BASE_VALUE = 0;
+        DensityImageExporter.BLUE_BASE_VALUE = 50;
 
         start(args);
 
@@ -27,7 +29,7 @@ public class CustomizableDensityTranslatorExample extends AbstractExample {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
         boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
 
-        DensityTranslationSpec spec = excludeDiagonalDensity(primeMapping);
+        DensityTranslationSpec spec = all(primeMapping);
 
         short[][] densityMapping = CustomizableDensityTranslator.translate(spec);
         log.info("generating spirals.ulam.export.image...");
