@@ -1,4 +1,4 @@
-package image;
+package export.image;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Will generate a black and white image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
+ * Will generate a black and white export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BlackAndWhiteImageGenerator implements ImageGenerator {
