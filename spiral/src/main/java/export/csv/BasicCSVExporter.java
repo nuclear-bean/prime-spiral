@@ -2,27 +2,27 @@ package export.csv;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import math.PrimeUtils;
+import spirals.ulam.translators.BinaryTranslator;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BasicCSVGenerator implements CSVGenerator {
+public class BasicCSVExporter implements CSVExporter {
 
-    private static BasicCSVGenerator instance;
+    private static BasicCSVExporter instance;
 
-    public static BasicCSVGenerator getInstance() {
+    public static BasicCSVExporter getInstance() {
         if (instance == null) {
-            instance = new BasicCSVGenerator();
+            instance = new BasicCSVExporter();
         }
         return instance;
     }
 
     @Override
     public void generateCSV(long[][] matrix, String path) throws IOException {
-        long[][] data = translateToOnesAndZeros(matrix);
+        long[][] data = BinaryTranslator.translate(matrix);
         String content = generateFileContent(data);
         writeToFile(content, path);
     }
@@ -44,15 +44,5 @@ public class BasicCSVGenerator implements CSVGenerator {
             sb.append("\n");
         }
         return sb.toString();
-    }
-
-    private long[][] translateToOnesAndZeros(long[][] matrix) {
-        long[][] result = new long[matrix.length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                result[i][j] = PrimeUtils.isPrime(matrix[i][j]) ? 1 : 0;
-            }
-        }
-        return result;
     }
 }

@@ -1,7 +1,7 @@
 package spirals.ulam.examples;
 
 import lombok.extern.java.Log;
-import export.image.BlackAndWhiteImageGenerator;
+import export.image.BlackAndWhiteImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 
 /**
@@ -17,6 +17,6 @@ public class BasicBlackAndWhiteExample extends AbstractExample {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
 
         log.info("generating export.image...");
-        BlackAndWhiteImageGenerator.getInstance().generateImage(matrix, PATH);
+        BlackAndWhiteImageExporter.getInstance().generateImage(matrix, PATH);
     }
 }

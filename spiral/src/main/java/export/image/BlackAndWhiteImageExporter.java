@@ -15,13 +15,13 @@ import java.io.IOException;
  * Will generate a black and white export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BlackAndWhiteImageGenerator implements ImageGenerator {
+public class BlackAndWhiteImageExporter implements ImageExporter {
 
-    private static BlackAndWhiteImageGenerator instance;
+    private static BlackAndWhiteImageExporter instance;
 
-    public static BlackAndWhiteImageGenerator getInstance() {
+    public static BlackAndWhiteImageExporter getInstance() {
         if (instance == null) {
-            instance = new BlackAndWhiteImageGenerator();
+            instance = new BlackAndWhiteImageExporter();
         }
         return instance;
     }

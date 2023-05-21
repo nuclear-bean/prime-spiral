@@ -1,6 +1,6 @@
 package spirals.ulam.examples;
 
-import export.csv.BasicCSVGenerator;
+import export.csv.BasicCSVExporter;
 import lombok.extern.java.Log;
 import spirals.ulam.generators.SimpleUlamGenerator;
 
@@ -18,7 +18,7 @@ public class SpiralAsCSV extends AbstractExample {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
 
         log.info("generating csv...");
-        BasicCSVGenerator.getInstance().generateCSV(matrix, PATH);
+        BasicCSVExporter.getInstance().generateCSV(matrix, PATH);
     }
 
 }

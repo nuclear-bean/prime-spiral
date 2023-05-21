@@ -1,5 +1,5 @@
 package export.image;
 
-public interface ImageGenerator {
+public interface ImageExporter {
     void generateImage(long[][] matrix, String outputPath);
 }
