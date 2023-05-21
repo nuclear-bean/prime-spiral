@@ -9,11 +9,11 @@ import static spirals.ulam.utils.Validator.*;
 @UtilityClass
 public class DensityImageExporter extends AbstractImageExporter {
 
-    public int RED = 0;
-    public int GREEN = 0;
-    public int BLUE = 0;
+    public int RED_BASE_VALUE = 0;
+    public int GREEN_BASE_VALUE = 0;
+    public int BLUE_BASE_VALUE = 0;
 
-    public int CHANNEL = 0; // 0 = RED, 1 = GREEN, 2 = BLUE
+    public int PRIME_CHANNEL = 0; // 0 = RED, 1 = GREEN, 2 = BLUE
 
     public void generateImage(short[][] matrix, String outputPath) {
         validateMatrix(matrix);
@@ -37,14 +37,14 @@ public class DensityImageExporter extends AbstractImageExporter {
     }
 
     private static int calculatePixelValue(int pixelValue) {
-        int red = RED;
-        int green = GREEN;
-        int blue = BLUE;
-        if (CHANNEL == 0) {
+        int red = RED_BASE_VALUE;
+        int green = GREEN_BASE_VALUE;
+        int blue = BLUE_BASE_VALUE;
+        if (PRIME_CHANNEL == 0) {
             red += pixelValue;
-        } else if (CHANNEL == 1) {
+        } else if (PRIME_CHANNEL == 1) {
             green += pixelValue;
-        } else if (CHANNEL == 2) {
+        } else if (PRIME_CHANNEL == 2) {
             blue += pixelValue;
         } else {
             throw new IllegalArgumentException("CHANNEL must be 0, 1, or 2");

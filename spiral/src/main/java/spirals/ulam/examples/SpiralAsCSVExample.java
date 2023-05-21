@@ -10,7 +10,7 @@ import java.io.IOException;
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.
  */
 @Log
-public class SpiralAsCSV extends AbstractExample {
+public class SpiralAsCSVExample extends AbstractExample {
 
     public static void main(String[] args) throws IOException {
         SIZE = 10_001;

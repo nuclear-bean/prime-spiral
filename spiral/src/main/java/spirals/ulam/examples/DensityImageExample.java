@@ -16,10 +16,11 @@ public class DensityImageExample extends AbstractExample {
         SIZE = 1003;
         PATH = "ulam_spiral_density_" + SIZE + ".png";
 
-        DensityImageExporter.CHANNEL = 0;
-        DensityImageExporter.RED = 30;
-        DensityImageExporter.GREEN = 0;
-        DensityImageExporter.BLUE = 0;
+        DensityImageExporter.PRIME_CHANNEL = 0;
+
+        DensityImageExporter.RED_BASE_VALUE = 30;
+        DensityImageExporter.GREEN_BASE_VALUE = 0;
+        DensityImageExporter.BLUE_BASE_VALUE = 0;
 
         start(args);
 

@@ -3,6 +3,7 @@ package spirals.ulam.export.csv;
 import lombok.experimental.UtilityClass;
 import spirals.ulam.translators.BinaryTranslator;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class BasicCSVExporter {
 
     private void writeToFile(String content, String path) throws IOException {
         File file = new File(path);
-        FileWriter writer = new FileWriter(file,false);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
         writer.write(content);
         writer.flush();
         writer.close();

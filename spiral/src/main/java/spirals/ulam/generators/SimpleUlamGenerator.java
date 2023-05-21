@@ -8,9 +8,8 @@ import spirals.ulam.utils.Validator;
 @SuppressWarnings("DuplicatedCode")
 @UtilityClass
 @Experimental
+@ExternalCode
 public class SimpleUlamGenerator {
-
-    //todo rewrite matrix filler so it's understandable, works on rings etc.
 
     public long[][] generateMatrix(int size) {
         Validator.validateMatrixSize(size);
@@ -19,7 +18,6 @@ public class SimpleUlamGenerator {
         return matrix;
     }
 
-    @ExternalCode
     private void ulamSpiralCounterClockwise(long[][] matrix) {
         int n = matrix.length; // get the size of the matrix
         int row = n / 2; // start at the middle row
