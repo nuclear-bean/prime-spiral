@@ -2,6 +2,7 @@ package spirals.ulam.translators;
 
 import org.junit.jupiter.api.Test;
 import spirals.ulam.generators.SimpleUlamGenerator;
+import spirals.ulam.translators.density.DensityTranslator;
 import utils.ConsolePrinter;
 
 import static org.junit.jupiter.api.Assertions.*;

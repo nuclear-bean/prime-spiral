@@ -4,7 +4,7 @@ import spirals.ulam.export.image.DensityImageExporter;
 import lombok.extern.java.Log;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
-import spirals.ulam.translators.DensityTranslator;
+import spirals.ulam.translators.density.DensityTranslator;
 
 /**
  * Creates density representation of Ulam spiral and saves it as image.

@@ -1,4 +1,4 @@
-package spirals.ulam.translators;
+package spirals.ulam.translators.density;
 
 import lombok.experimental.UtilityClass;
 
