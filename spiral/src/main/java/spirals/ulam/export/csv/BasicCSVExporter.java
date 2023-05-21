@@ -1,4 +1,4 @@
-package export.csv;
+package spirals.ulam.export.csv;
 
 import lombok.experimental.UtilityClass;
 import spirals.ulam.translators.BinaryTranslator;

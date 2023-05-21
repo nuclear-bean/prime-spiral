@@ -1,6 +1,6 @@
 package spirals.ulam.examples;
 
-import export.image.DensityImageExporter;
+import spirals.ulam.export.image.DensityImageExporter;
 import lombok.extern.java.Log;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
@@ -28,7 +28,7 @@ public class DensityImageExample extends AbstractExample {
         boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
         short[][] densityMapping = DensityTranslator.translate(primeMapping);
 
-        log.info("generating export.image...");
+        log.info("generating spirals.ulam.export.image...");
         DensityImageExporter.generateImage(densityMapping, PATH);
         log.info("generation completed");
     }

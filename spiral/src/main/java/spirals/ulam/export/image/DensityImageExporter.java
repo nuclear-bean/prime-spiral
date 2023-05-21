@@ -1,4 +1,4 @@
-package export.image;
+package spirals.ulam.export.image;
 
 import lombok.experimental.UtilityClass;
 

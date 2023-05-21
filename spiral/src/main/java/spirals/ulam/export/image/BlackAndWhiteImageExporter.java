@@ -1,4 +1,4 @@
-package export.image;
+package spirals.ulam.export.image;
 
 import lombok.experimental.UtilityClass;
 import math.PrimeUtils;
@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import static spirals.ulam.utils.Validator.validateMatrix;
 
 /**
- * Will generate a black and white export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
+ * Will generate a black and white spirals.ulam.export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
  */
 @UtilityClass
 public class BlackAndWhiteImageExporter extends AbstractImageExporter {

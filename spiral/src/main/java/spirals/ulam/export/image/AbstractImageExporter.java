@@ -1,4 +1,4 @@
-package export.image;
+package spirals.ulam.export.image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
