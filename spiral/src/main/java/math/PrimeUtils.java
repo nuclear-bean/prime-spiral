@@ -32,4 +32,8 @@ public class PrimeUtils {
         }
         return primes;
     }
+
+    public boolean isTwinPrime(long number) {
+        return isPrime(number) && (isPrime(number - 2) || isPrime(number + 2));
+    }
 }

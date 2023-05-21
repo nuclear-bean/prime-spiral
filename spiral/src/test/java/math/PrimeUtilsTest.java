@@ -60,4 +60,24 @@ class PrimeUtilsTest {
             Assertions.assertTrue(PrimeUtils.isPrime(firstNPrime));
         }
     }
+
+    @Test
+    void testIsTwinPrime() {
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(3));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(5));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(7));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(11));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(13));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(17));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(19));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(29));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(31));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(41));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(43));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(59));
+        Assertions.assertTrue(PrimeUtils.isTwinPrime(61));
+        Assertions.assertFalse(PrimeUtils.isTwinPrime(2));
+        Assertions.assertFalse(PrimeUtils.isTwinPrime(4));
+        Assertions.assertFalse(PrimeUtils.isTwinPrime(6));
+    }
 }
