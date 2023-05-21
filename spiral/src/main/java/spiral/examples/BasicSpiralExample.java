@@ -6,6 +6,9 @@ import spiral.core.generator.BasicGenerator;
 import spiral.core.image.BlackAndWhiteImageGenerator;
 import spiral.examples.internals.ElapsedTimer;
 
+/**
+ * Creates basic Ulam spiral and saves it as image. Primes are mapped to black pixels, non-primes to white.
+ */
 @Log
 public class BasicSpiralExample {
 
@@ -17,7 +20,7 @@ public class BasicSpiralExample {
         log.info("starting...");
         ElapsedTimer.start();
         log.info("generating matrix...");
-        Matrix matrix = BasicGenerator.createUlamSpiral(SIZE);
+        Matrix matrix = BasicGenerator.generateUlamSpiral(SIZE);
         log.info("generating image...");
         new BlackAndWhiteImageGenerator().generateImage(matrix.getContent(), PATH);
     }
@@ -30,8 +33,8 @@ public class BasicSpiralExample {
             SIZE = Integer.parseInt(args[0]);
             PATH = args[1];
         } catch (NumberFormatException e) {
-            log.warning("invalid arguments. using default values.");
             log.warning("usage: java -jar spiral.jar <matrix_size> <output_path>");
+            System.exit(1);
         }
     }
 }

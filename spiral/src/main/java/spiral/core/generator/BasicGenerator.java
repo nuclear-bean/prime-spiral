@@ -8,7 +8,7 @@ import spiral.core.matrix.filler.SimpleMatrixFiller;
 @UtilityClass
 public class BasicGenerator {
 
-    public Matrix createUlamSpiral(int side) {
+    public Matrix generateUlamSpiral(int side) {
         Validator.validateMatrixSize(side);
         Matrix matrix = new Matrix(side);
         long[][] content = new long[side][side];

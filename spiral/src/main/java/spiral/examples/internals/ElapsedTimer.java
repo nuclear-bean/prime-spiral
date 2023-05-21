@@ -18,7 +18,7 @@ public final class ElapsedTimer {
     private static void createShutdownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             end = Instant.now();
-            System.out.println("Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
+            System.out.println("(shutdown) Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
         }));
     }
 }

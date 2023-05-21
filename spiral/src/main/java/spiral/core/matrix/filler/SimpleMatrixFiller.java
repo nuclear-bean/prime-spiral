@@ -57,33 +57,4 @@ public class SimpleMatrixFiller {
         // Check if the input number is equal to the square of the odd number
         return n * n == num;
     }
-
-    @SuppressWarnings("EnhancedSwitchMigration")
-    @ExternalCode
-    private static void ulamSpiralClockwise(long[][] matrix) {
-        int n = matrix.length; // get the size of the matrix
-        int row = n / 2; // start at the middle row
-        int col = n / 2; // start at the middle column
-        matrix[row][col] = 1; // put the number 1 in the middle of the matrix
-        int count = 2; // start counting from 2
-        int length = 1; // start with a segment of length 1
-        int direction = 0; // start going to the right
-
-
-        while (length < n) { // keep spiraling until the matrix is filled
-            for (int i = 0; i < length; i++) { // iterate over the current segment
-                switch (direction) { // move in the current direction
-                    case 0: col++; break; // to the right
-                    case 1: row++; break; // down
-                    case 2: col--; break; // to the left
-                    case 3: row--; break; // up
-                }
-                matrix[row][col] = count++; // fill in the next number in the sequence
-            }
-            direction = (direction + 1) % 4; // turn clockwise
-            if (direction == 0 || direction == 2) { // increase the segment length every other turn
-                length++;
-            }
-        }
-    }
 }

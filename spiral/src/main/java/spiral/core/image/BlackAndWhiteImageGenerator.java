@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Will generate a black and white image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
+ */
 public class BlackAndWhiteImageGenerator implements ImageGenerator {
 
     @Override
