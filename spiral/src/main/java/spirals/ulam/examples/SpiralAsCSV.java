@@ -18,7 +18,7 @@ public class SpiralAsCSV extends AbstractExample {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
 
         log.info("generating csv...");
-        BasicCSVExporter.getInstance().generateCSV(matrix, PATH);
+        BasicCSVExporter.generateCSV(matrix, PATH);
     }
 
 }

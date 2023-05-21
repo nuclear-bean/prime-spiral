@@ -1,26 +1,15 @@
 package export.csv;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import spirals.ulam.translators.BinaryTranslator;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BasicCSVExporter implements CSVExporter {
+@UtilityClass
+public class BasicCSVExporter {
 
-    private static BasicCSVExporter instance;
-
-    public static BasicCSVExporter getInstance() {
-        if (instance == null) {
-            instance = new BasicCSVExporter();
-        }
-        return instance;
-    }
-
-    @Override
     public void generateCSV(long[][] matrix, String path) throws IOException {
         long[][] data = BinaryTranslator.translate(matrix);
         String content = generateFileContent(data);
