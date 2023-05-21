@@ -8,8 +8,8 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DensityTranslator {
 
-    public long[][] translate(boolean[][] matrix) {
-        long[][] densityMatrix = new long[matrix.length][matrix.length];
+    public short[][] translate(boolean[][] matrix) {
+        short[][] densityMatrix = new short[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < densityMatrix[i].length; j++) {
                 densityMatrix[i][j] = calculateDensity(matrix, i, j);
@@ -18,8 +18,8 @@ public class DensityTranslator {
         return densityMatrix;
     }
 
-    private static long calculateDensity(boolean[][] matrix, int i, int j) {
-        long density = 0;
+    private static short calculateDensity(boolean[][] matrix, int i, int j) {
+        short density = 0;
 
         density += getDensity(matrix, i - 1, j - 1); // top left
         density += getDensity(matrix, i - 1, j); // top
@@ -34,7 +34,7 @@ public class DensityTranslator {
         return density;
     }
 
-    private static long getDensity(boolean[][] matrix, int i, int j) {
+    private static int getDensity(boolean[][] matrix, int i, int j) {
         try {
             return matrix[i][j] ? 1 : 0;
         } catch (ArrayIndexOutOfBoundsException e) {

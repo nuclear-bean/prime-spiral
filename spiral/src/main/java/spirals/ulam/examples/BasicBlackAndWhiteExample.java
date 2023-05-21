@@ -19,7 +19,7 @@ public class BasicBlackAndWhiteExample extends AbstractExample {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
 
         log.info("generating export.image...");
-        BlackAndWhiteImageExporter.getInstance().generateImage(matrix, PATH);
+        BlackAndWhiteImageExporter.generateImage(matrix, PATH);
         log.info("generation completed");
     }
 }

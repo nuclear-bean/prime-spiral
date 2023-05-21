@@ -1,49 +1,22 @@
 package export.image;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import math.PrimeUtils;
-import spirals.ulam.utils.Validator;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
+import static spirals.ulam.utils.Validator.validateMatrix;
 
 /**
  * Will generate a black and white export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BlackAndWhiteImageExporter implements ImageExporter {
+@UtilityClass
+public class BlackAndWhiteImageExporter extends AbstractImageExporter {
 
-    private static BlackAndWhiteImageExporter instance;
-
-    public static BlackAndWhiteImageExporter getInstance() {
-        if (instance == null) {
-            instance = new BlackAndWhiteImageExporter();
-        }
-        return instance;
-    }
-
-    @Override
     public void generateImage(long[][] matrix, String outputPath) {
-        generateImageFromMatrix(matrix, outputPath);
-    }
-
-    private void generateImageFromMatrix(long[][] matrix, String outputPath) {
         validateMatrix(matrix);
-        BufferedImage image = createBufferedImage(matrix);
-        writeToFile(outputPath, image);
-    }
-
-    private void writeToFile(String outputPath, BufferedImage image) {
-        try {
-            File outputFile = new File(outputPath);
-            ImageIO.write(image, "png", outputFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writeToFile(outputPath, createBufferedImage(matrix));
     }
 
     private BufferedImage createBufferedImage(long[][] matrix) {
@@ -58,11 +31,4 @@ public class BlackAndWhiteImageExporter implements ImageExporter {
         }
         return image;
     }
-
-    private void validateMatrix(long[][] matrix) {
-        Validator.validateMatrix(matrix);
-    }
-
 }
-
-
