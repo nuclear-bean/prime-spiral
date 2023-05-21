@@ -31,6 +31,7 @@ public class BasicCSVExporter {
             for (long cell : row) {
                 sb.append(cell).append(",");
             }
+            sb.deleteCharAt(sb.length() - 1);
             sb.append("\n");
         }
         return sb.toString();

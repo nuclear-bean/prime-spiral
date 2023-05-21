@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SpiralAsCSVExample extends AbstractExample {
 
     public static void main(String[] args) throws IOException {
-        SIZE = 10_001;
+        SIZE = 11;
         PATH = "ulam_spiral_" + SIZE + ".csv";
         start(args);
 
