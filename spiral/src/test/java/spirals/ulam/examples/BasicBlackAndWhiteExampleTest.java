@@ -1,10 +1,10 @@
-package examples;
+package spirals.ulam.examples;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
-class BasicSpiralExampleTest {
+class BasicBlackAndWhiteExampleTest {
 
     // 500  = 150 ms
     // 1000 = 500 ms
@@ -20,7 +20,7 @@ class BasicSpiralExampleTest {
     public void benchmark() {
         long start = System.currentTimeMillis();
 
-        BasicSpiralExample.main(new String[] {SIZE.toString(), PATH});
+        BasicBlackAndWhiteExample.main(new String[] {SIZE.toString(), PATH});
 
         long end = System.currentTimeMillis();
         System.out.println("Time elapsed: " + (end - start) + " ms");

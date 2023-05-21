@@ -1,4 +1,4 @@
-package examples;
+package spirals.ulam.examples;
 
 import lombok.extern.java.Log;
 import image.BlackAndWhiteImageGenerator;
@@ -9,7 +9,7 @@ import utils.ElapsedTimer;
  * Creates basic Ulam spiral and saves it as image. Primes are mapped to black pixels, non-primes to white.
  */
 @Log
-public class BasicSpiralExample {
+public class BasicBlackAndWhiteExample {
 
     private static int SIZE = 15001;
     private static String PATH = "ulam_spiral.png";
