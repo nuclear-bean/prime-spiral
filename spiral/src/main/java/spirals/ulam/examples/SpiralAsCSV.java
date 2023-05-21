@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SpiralAsCSV extends AbstractExample {
 
     public static void main(String[] args) throws IOException {
-        PATH = "ulam_spiral.csv";
+        PATH = "ulam_spiral_1001.csv";
         SIZE = 1001;
         start(args);
 

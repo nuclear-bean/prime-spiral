@@ -1,9 +1,11 @@
 package utils;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.java.Log;
 
 import java.time.Instant;
 
+@Log
 @UtilityClass
 public final class ElapsedTimer {
 
@@ -18,7 +20,7 @@ public final class ElapsedTimer {
     private static void createShutdownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             end = Instant.now();
-            System.out.println("(shutdown) Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
+            log.info("(shutdown) Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
         }));
     }
 }
