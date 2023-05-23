@@ -8,6 +8,14 @@ import java.util.List;
  */
 public class MatrixElementsWithinRadiusUtils {
 
+    /**
+     * Returns a list of elements within a given radius from a specified point.
+     * @param matrix matrix to retrieve elements from
+     * @param i row index of the specified point
+     * @param j column index of the specified point
+     * @param radius radius from the specified point
+     * @return list of elements within a given radius from a specified point
+     */
     public static List<Integer> getElementsWithinRadius(int[][] matrix, int i, int j, int radius) {
         List<Integer> result = new ArrayList<>();
 
@@ -26,6 +34,14 @@ public class MatrixElementsWithinRadiusUtils {
         return result;
     }
 
+    /**
+     * Returns number of true cells within a given radius from a specified point.
+     * @param matrix boolean matrix to retrieve elements from
+     * @param i row index of the specified point
+     * @param j column index of the specified point
+     * @param radius radius from the specified point
+     * @return number of true cells within a given radius from a specified point
+     */
     public static int getCountOfTrueCells(boolean[][] matrix, int i, int j, int radius) {
         int count = 0;
 
