@@ -23,6 +23,9 @@ public class BinaryTranslator {
         return binaryMatrix;
     }
 
+    /**
+     * @return binary matrix. Primes are mapped to true, non-primes to false.
+     */
     public boolean[][] translateToBoolean(long[][] matrix) {
         boolean[][] binaryMatrix = new boolean[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
