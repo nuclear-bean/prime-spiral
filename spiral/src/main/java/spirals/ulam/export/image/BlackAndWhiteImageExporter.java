@@ -6,7 +6,7 @@ import math.PrimeUtils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static spirals.ulam.utils.Validator.validateMatrix;
+import static spirals.ulam.utils.Validator.*;
 
 /**
  * Will generate a black and white spirals.ulam.export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.

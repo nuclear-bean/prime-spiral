@@ -14,6 +14,6 @@ class DensitySpecificationTest {
         // then
         assertNull(density.getMatrix());
         assertEquals(1, density.getRadius());
-        assertEquals(1, density.getPrimeBias());
+        assertEquals(0, density.getPrimeBias());
     }
 }
