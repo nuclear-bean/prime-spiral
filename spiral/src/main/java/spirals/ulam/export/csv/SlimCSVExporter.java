@@ -11,9 +11,8 @@ import java.io.IOException;
 @UtilityClass
 public class SlimCSVExporter {
 
-    public void generateCSV(long[][] matrix, String path) throws IOException {
-        boolean[][] data = BinaryTranslator.translateToBoolean(matrix);
-        String content = generateFileContent(data);
+    public void generateCSV(boolean[][] matrix, String path) throws IOException {
+        String content = generateFileContent(matrix);
         writeToFile(content, path);
     }
 
