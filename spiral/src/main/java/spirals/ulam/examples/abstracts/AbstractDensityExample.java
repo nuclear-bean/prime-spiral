@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.abstracts;
 
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.export.image.DensityImageExporter;

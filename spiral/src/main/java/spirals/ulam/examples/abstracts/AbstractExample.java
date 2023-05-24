@@ -1,13 +1,17 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.abstracts;
 
 import lombok.extern.java.Log;
+import spirals.ulam.export.image.DensityImageExporter;
 import utils.ElapsedTimer;
 
 @Log
 public class AbstractExample {
 
     protected static int SIZE = 15001;
-    protected static String PATH = "ulam_spiral.png";
+    protected static String PATH;
+    protected static String FILENAME;
+
+    private static final String OUTPUT_DIR = "./output/";
 
     protected static void prepare(String [] args) {
         parseArgs(args);
@@ -26,5 +30,15 @@ public class AbstractExample {
             log.warning("usage: java -jar spiral.jar <matrix_size> <output_path>");
             System.exit(1);
         }
+    }
+
+    protected static String getPath() {
+        return OUTPUT_DIR + SIZE + '_' + FILENAME + ".png";
+    }
+
+    protected static void generateImage(short [][] matrix) {
+        log.info("generating spirals.ulam.export.image...");
+        DensityImageExporter.generateImage(matrix, getPath());
+        log.info("generation completed");
     }
 }
