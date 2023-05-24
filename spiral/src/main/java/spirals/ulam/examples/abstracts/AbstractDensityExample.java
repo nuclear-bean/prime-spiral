@@ -33,6 +33,7 @@ public abstract class AbstractDensityExample extends Thread {
     }
 
     private static void createOutputDir(final String path) {
+        //noinspection ResultOfMethodCallIgnored
         new File(new File(path).getParent()).mkdir();
     }
 
