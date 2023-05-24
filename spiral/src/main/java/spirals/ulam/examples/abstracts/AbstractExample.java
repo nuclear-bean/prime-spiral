@@ -35,10 +35,4 @@ public class AbstractExample {
     protected static String getPath() {
         return OUTPUT_DIR + SIZE + '_' + FILENAME + ".png";
     }
-
-    protected static void generateImage(short [][] matrix) {
-        log.info("generating spirals.ulam.export.image...");
-        DensityImageExporter.generateImage(matrix, getPath());
-        log.info("generation completed");
-    }
 }

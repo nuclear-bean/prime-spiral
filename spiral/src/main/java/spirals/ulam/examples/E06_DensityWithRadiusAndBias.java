@@ -2,7 +2,6 @@ package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.examples.abstracts.AbstractDensityExample;
-import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
