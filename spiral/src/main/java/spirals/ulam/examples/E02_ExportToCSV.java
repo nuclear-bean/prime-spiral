@@ -4,6 +4,7 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.csv.BasicCSVExporter;
 import lombok.extern.java.Log;
 import spirals.ulam.generators.SimpleUlamGenerator;
+import spirals.ulam.translators.BinaryTranslator;
 
 import java.io.IOException;
 
@@ -21,8 +22,10 @@ public class E02_ExportToCSV extends AbstractExample {
         log.info("generating matrix...");
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
 
+        boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
+
         log.info("generating csv...");
-        BasicCSVExporter.generateCSV(matrix, PATH);
+        BasicCSVExporter.generateCSV(primeMapping, PATH);
     }
 
 }

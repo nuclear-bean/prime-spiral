@@ -11,9 +11,8 @@ import java.io.IOException;
 @UtilityClass
 public class BasicCSVExporter {
 
-    public void generateCSV(long[][] matrix, String path) throws IOException {
-        long[][] data = BinaryTranslator.translate(matrix);
-        String content = generateFileContent(data);
+    public void generateCSV(boolean[][] matrix, String path) throws IOException {
+        String content = generateFileContent(matrix);
         writeToFile(content, path);
     }
 
@@ -25,11 +24,11 @@ public class BasicCSVExporter {
         writer.close();
     }
 
-    private String generateFileContent(long[][] data) {
+    private String generateFileContent(boolean[][] data) {
         StringBuilder sb = new StringBuilder();
-        for (long[] row : data) {
-            for (long cell : row) {
-                sb.append(cell).append(",");
+        for (boolean[] row : data) {
+            for (boolean cell : row) {
+                sb.append(cell ? 1 : 0).append(",");
             }
             sb.deleteCharAt(sb.length() - 1);
             sb.append("\n");
