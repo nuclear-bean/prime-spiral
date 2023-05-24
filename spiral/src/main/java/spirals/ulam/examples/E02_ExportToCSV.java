@@ -15,7 +15,7 @@ public class E02_ExportToCSV extends AbstractExample {
     public static void main(String[] args) throws IOException {
         SIZE = 1001;
         PATH = "ulam_spiral_" + SIZE + ".csv";
-        start(args);
+        prepare(args);
 
         log.info("generating matrix...");
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);

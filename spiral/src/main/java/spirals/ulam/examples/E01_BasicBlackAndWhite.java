@@ -13,7 +13,7 @@ public class E01_BasicBlackAndWhite extends AbstractExample {
     public static void main(String[] args) {
         SIZE = 5001;
         PATH = "ulam_spiral_" + SIZE + ".png";
-        start(args);
+        prepare(args);
 
         log.info("generating matrix...");
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);

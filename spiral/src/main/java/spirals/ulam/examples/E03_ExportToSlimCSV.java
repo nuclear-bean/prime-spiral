@@ -1,7 +1,6 @@
 package spirals.ulam.examples;
 
 import lombok.extern.java.Log;
-import spirals.ulam.export.csv.BasicCSVExporter;
 import spirals.ulam.export.csv.SlimCSVExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 
@@ -16,7 +15,7 @@ public class E03_ExportToSlimCSV extends AbstractExample {
     public static void main(String[] args) throws IOException {
         SIZE = 1001;
         PATH = "ulam_spiral_" + SIZE + "_slim.csv";
-        start(args);
+        prepare(args);
 
         log.info("generating matrix...");
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);

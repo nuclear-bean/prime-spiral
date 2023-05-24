@@ -10,9 +10,10 @@ public class MatrixElementsWithinRadiusUtils {
 
     /**
      * Returns a list of elements within a given radius from a specified point.
+     *
      * @param matrix matrix to retrieve elements from
-     * @param i row index of the specified point
-     * @param j column index of the specified point
+     * @param i      row index of the specified point
+     * @param j      column index of the specified point
      * @param radius radius from the specified point
      * @return list of elements within a given radius from a specified point
      */
@@ -36,9 +37,10 @@ public class MatrixElementsWithinRadiusUtils {
 
     /**
      * Returns number of true cells within a given radius from a specified point.
+     *
      * @param matrix boolean matrix to retrieve elements from
-     * @param i row index of the specified point
-     * @param j column index of the specified point
+     * @param i      row index of the specified point
+     * @param j      column index of the specified point
      * @param radius radius from the specified point
      * @return number of true cells within a given radius from a specified point
      */
@@ -49,6 +51,9 @@ public class MatrixElementsWithinRadiusUtils {
         int cols = matrix[0].length;
 
         for (int row = 0; row < rows; row++) {
+            if (row < i - radius || row > i + radius) {
+                continue;
+            }
             for (int col = 0; col < cols; col++) {
                 int distance = calculateDistance(i, j, row, col);
                 if (distance <= radius && matrix[row][col]) {
@@ -65,5 +70,7 @@ public class MatrixElementsWithinRadiusUtils {
         int colDistance = Math.abs(col - j);
         return Math.max(rowDistance, colDistance);
     }
+
+    //todo add methods for retrieving diagonals and vertical / horizontal lines
 
 }

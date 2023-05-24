@@ -1,6 +1,7 @@
 package spirals.ulam.translators.density;
 
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Getter;
 
 /**
@@ -12,10 +13,10 @@ public class DensitySpecification {
 
     boolean [][] matrix;
 
-    @Builder.Default
+    @Default
     int radius = 1;
 
-    @Builder.Default
+    @Default
     int primeBias = 0;
 
 }

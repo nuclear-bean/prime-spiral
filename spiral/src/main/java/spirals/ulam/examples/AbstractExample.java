@@ -9,7 +9,7 @@ public class AbstractExample {
     protected static int SIZE = 15001;
     protected static String PATH = "ulam_spiral.png";
 
-    protected static void start(String [] args) {
+    protected static void prepare(String [] args) {
         parseArgs(args);
         log.info("starting...");
         ElapsedTimer.start();

@@ -23,7 +23,7 @@ public class E05_CustomizableDensityRepresentation extends AbstractExample {
         DensityImageExporter.GREEN_BASE_VALUE = 0;
         DensityImageExporter.BLUE_BASE_VALUE = 50;
 
-        start(args);
+        prepare(args);
 
         log.info("generating matrix...");
         long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
