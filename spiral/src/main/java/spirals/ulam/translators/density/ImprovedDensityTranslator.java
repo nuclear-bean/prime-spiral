@@ -23,11 +23,9 @@ public class ImprovedDensityTranslator {
     }
 
     private static short applyPrimeBias(DensitySpecification densitySpecification, int i, int j) {
-        if (densitySpecification.getMatrix()[i][j]) {
-            return (short) densitySpecification.getPrimeBias();
-        } else {
-            return 0;
-        }
+        return densitySpecification.getMatrix()[i][j]
+                ? (short) densitySpecification.getPrimeBias()
+                : 0;
     }
 
 
