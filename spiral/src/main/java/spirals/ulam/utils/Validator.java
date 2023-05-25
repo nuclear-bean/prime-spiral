@@ -9,6 +9,7 @@ public class Validator {
 
     /**
      * Validates if given spiral size (side length) is valid. Throws IllegalArgumentException if not.
+     *
      * @throws IllegalArgumentException if size is too small or even
      */
     public void validateMatrixSize(int size) throws IllegalArgumentException {
@@ -20,13 +21,13 @@ public class Validator {
         }
     }
 
-    public void validateMatrix(short [][] matrix) throws IllegalArgumentException {
+    public void validateMatrix(short[][] matrix) throws IllegalArgumentException {
         long[][] longMatrix = mapToLongs(matrix);
         validateMatrix(longMatrix);
     }
 
     private long[][] mapToLongs(short[][] matrix) {
-        long [][] longMatrix = new long[matrix.length][matrix.length];
+        long[][] longMatrix = new long[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < longMatrix[i].length; j++) {
                 longMatrix[i][j] = matrix[i][j];
@@ -35,7 +36,7 @@ public class Validator {
         return longMatrix;
     }
 
-    public void validateMatrix(long [][] matrix) throws IllegalArgumentException {
+    public void validateMatrix(long[][] matrix) throws IllegalArgumentException {
         if (isSquareMatrix(matrix)) {
             throw new IllegalArgumentException("Spiral has to be a square matrix");
         }

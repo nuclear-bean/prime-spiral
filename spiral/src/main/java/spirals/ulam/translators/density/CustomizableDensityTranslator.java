@@ -21,7 +21,7 @@ public class CustomizableDensityTranslator {
     private static short calculateDensity(DensityTranslationSpec spec, int i, int j) {
         short density = 0;
 
-        boolean [][] matrix = spec.getMatrix();
+        boolean[][] matrix = spec.getMatrix();
 
         if (spec.isTopLeft()) {
             density += getDensity(matrix, i - 1, j - 1); // top left

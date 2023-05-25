@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public class DensitySpecification {
 
-    boolean [][] matrix;
+    boolean[][] matrix;
 
     @Default
     int radius = 1;

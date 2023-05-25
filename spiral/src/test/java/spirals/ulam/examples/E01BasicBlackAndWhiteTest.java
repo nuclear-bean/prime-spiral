@@ -20,7 +20,7 @@ class E01BasicBlackAndWhiteTest {
     public void benchmark() {
         long start = System.currentTimeMillis();
 
-        E01_BasicBlackAndWhite.main(new String[] {SIZE.toString(), PATH});
+        E01_BasicBlackAndWhite.main(new String[]{SIZE.toString(), PATH});
 
         long end = System.currentTimeMillis();
         System.out.println("Time elapsed: " + (end - start) + " ms");

@@ -1,7 +1,7 @@
 package spirals.ulam.translators.density;
 
 import lombok.extern.log4j.Log4j2;
-import utils.MatrixElementsWithinRadiusUtils;
+import utils.matrix.MatrixContentOperations;
 
 import java.time.Instant;
 
@@ -30,7 +30,7 @@ public class DensityTranslator {
     }
 
     private static short calculateDensity(DensitySpecification specification, int i, int j) {
-        short density = (short) MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(
+        short density = (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(
                 specification.getMatrix(), i, j, specification.getRadius());
         density += applyPrimeBias(specification, i, j);
         return density;

@@ -38,7 +38,7 @@ public class SimpleUlamGenerator {
                     case 3 -> row--;        // go up
                 }
                 matrix[row][col] = count++; // fill in the next number in the sequence
-                ringCompleted = isOddSquare(count-1);
+                ringCompleted = isOddSquare(count - 1);
             }
             direction = (direction + 3) % 4; // turn clockwise
             if (direction == 0 || direction == 2) { // increase the segment length every other turn
