@@ -6,7 +6,7 @@ import utils.MatrixElementsWithinRadiusUtils;
 import java.time.Instant;
 
 @Log4j2
-public class ImprovedDensityTranslator {
+public class DensityTranslator {
 
     private static Instant lastProgressReport = Instant.MIN;
 

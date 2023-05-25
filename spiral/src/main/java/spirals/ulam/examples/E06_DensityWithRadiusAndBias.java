@@ -7,7 +7,7 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.density.DensitySpecification;
 import spirals.ulam.translators.density.DensityTranslationSpec;
-import spirals.ulam.translators.density.ImprovedDensityTranslator;
+import spirals.ulam.translators.density.DensityTranslator;
 
 /**
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized. See {@link DensityTranslationSpec} for more details.
@@ -48,7 +48,7 @@ public class E06_DensityWithRadiusAndBias extends AbstractDensityExample {
                 .radius(RADIUS)
                 .primeBias(PRIME_BIAS)
                 .build();
-        return ImprovedDensityTranslator.translate(spec);
+        return DensityTranslator.translate(spec);
     }
 
     protected long[][] generateMatrix() {

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ImprovedDensityTranslatorTest {
+class DensityTranslatorTest {
 
     @Test
     void testTranslation_1() {
@@ -19,7 +19,7 @@ class ImprovedDensityTranslatorTest {
                 {0, 0, 0}
         };
         DensitySpecification specification = DensitySpecification.builder().matrix(input).build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -35,7 +35,7 @@ class ImprovedDensityTranslatorTest {
                 {1, 1, 1},
                 {1, 1, 1}};
         DensitySpecification specification = DensitySpecification.builder().matrix(input).build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -51,7 +51,7 @@ class ImprovedDensityTranslatorTest {
                 {0, 1, 1},
                 {0, 1, 1}};
         DensitySpecification specification = DensitySpecification.builder().matrix(input).build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -67,7 +67,7 @@ class ImprovedDensityTranslatorTest {
                 {0, 1, 1},
                 {0, 1, 2}};
         DensitySpecification specification = DensitySpecification.builder().matrix(input).primeBias(1).build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -87,7 +87,7 @@ class ImprovedDensityTranslatorTest {
                 .primeBias(1)
                 .radius(2)
                 .build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -107,7 +107,7 @@ class ImprovedDensityTranslatorTest {
                 .primeBias(3)
                 .radius(10)
                 .build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
@@ -126,7 +126,7 @@ class ImprovedDensityTranslatorTest {
                 .matrix(input)
                 .primeBias(3)
                 .build();
-        short [][] actual = ImprovedDensityTranslator.translate(specification);
+        short [][] actual = DensityTranslator.translate(specification);
         assertArrayEquals(expected, actual);
     }
 
