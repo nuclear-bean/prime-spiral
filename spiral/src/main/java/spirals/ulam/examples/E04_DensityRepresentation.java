@@ -5,7 +5,8 @@ import spirals.ulam.examples.abstracts.AbstractDensityExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
-import spirals.ulam.translators.density.DensityTranslator;
+import spirals.ulam.translators.density.DensitySpecification;
+import spirals.ulam.translators.density.ImprovedDensityTranslator;
 
 /**
  * Creates density representation of Ulam spiral and saves it as an image.
@@ -35,7 +36,8 @@ public class E04_DensityRepresentation extends AbstractDensityExample {
         log.info("translating matrix to boolean...");
         boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
         log.info("calculating density...");
-        return DensityTranslator.translate(primeMapping);
+        DensitySpecification specification = DensitySpecification.builder().matrix(primeMapping).build();
+        return ImprovedDensityTranslator.translate(specification);
     }
 
     @Override
