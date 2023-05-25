@@ -65,12 +65,102 @@ public class MatrixElementsWithinRadiusUtils {
         return count;
     }
 
+    public static int getCountOfTrueCellsOnDiagonalsWithinRadius(boolean[][] matrix, int i, int j, int radius) {
+        if (radius == 0) {
+            return 0;
+        }
+
+        int count = 0;
+
+        // top left
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i - i1][j - i1]) {
+                    count++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // top right
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i - i1][j + i1]) {
+                    count++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // bottom left
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i + i1][j - i1]) {
+                    count++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // bottom right
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i + i1][j + i1]) {
+                    count++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        return count;
+    }
+
+    public static int getCountOfTrueCellsHorizontalVerticalWithinRadius(boolean [][] matrix, int i, int j, int radius) {
+        if (radius == 0) {
+            return 0;
+        }
+
+        int total = 0;
+
+        // top
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i - i1][j]) {
+                    total++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // bottom
+        for (int i1 = 1; i1 <= radius; i1++) {
+            try {
+                if (matrix[i + i1][j]) {
+                    total++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // left
+        for (int j1 = 1; j1 <= radius; j1++) {
+            try {
+                if (matrix[i][j - j1]) {
+                    total++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        // right
+        for (int j1 = 1; j1 <= radius; j1++) {
+            try {
+                if (matrix[i][j + j1]) {
+                    total++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {}
+        }
+
+        return total;
+    }
+
     private static int calculateDistance(int i, int j, int row, int col) {
         int rowDistance = Math.abs(row - i);
         int colDistance = Math.abs(col - j);
         return Math.max(rowDistance, colDistance);
     }
-
-    //todo add methods for retrieving diagonals and vertical / horizontal lines
 
 }
