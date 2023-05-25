@@ -88,7 +88,7 @@ class MatrixElementsWithinRadiusUtilsTest {
                 {true, true, true},
                 {true, true ,true}
         };
-        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCells(matrix, 1, 1, 1);
+        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(matrix, 1, 1, 1);
         int expected = 9;
         assertEquals(expected, actual);
     }
@@ -100,7 +100,7 @@ class MatrixElementsWithinRadiusUtilsTest {
                 {true, true, true},
                 {true, true ,true}
         };
-        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCells(matrix, 1, 1, 0);
+        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(matrix, 1, 1, 0);
         int expected = 1;
         assertEquals(expected, actual);
     }
@@ -112,7 +112,7 @@ class MatrixElementsWithinRadiusUtilsTest {
                 {true, true, true},
                 {true, true ,true}
         };
-        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCells(matrix, 0, 0, 1);
+        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(matrix, 0, 0, 1);
         int expected = 4;
         assertEquals(expected, actual);
     }
@@ -126,7 +126,7 @@ class MatrixElementsWithinRadiusUtilsTest {
                 {true, true, true, true, true},
                 {true, true, true, true, true}
         };
-        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCells(matrix, 0, 0, 5);
+        int actual = MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(matrix, 0, 0, 5);
         int expected = 25;
         assertEquals(expected, actual);
     }

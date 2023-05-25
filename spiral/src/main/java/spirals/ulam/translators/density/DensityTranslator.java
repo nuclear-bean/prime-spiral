@@ -30,7 +30,7 @@ public class DensityTranslator {
     }
 
     private static short calculateDensity(DensitySpecification specification, int i, int j) {
-        short density = (short) MatrixElementsWithinRadiusUtils.getCountOfTrueCells(
+        short density = (short) MatrixElementsWithinRadiusUtils.getCountOfTrueCellsWithinRadius(
                 specification.getMatrix(), i, j, specification.getRadius());
         density += applyPrimeBias(specification, i, j);
         return density;

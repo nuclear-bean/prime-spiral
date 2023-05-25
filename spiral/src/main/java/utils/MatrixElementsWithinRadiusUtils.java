@@ -44,7 +44,7 @@ public class MatrixElementsWithinRadiusUtils {
      * @param radius radius from the specified point
      * @return number of true cells within a given radius from a specified point
      */
-    public static int getCountOfTrueCells(boolean[][] matrix, int i, int j, int radius) {
+    public static int getCountOfTrueCellsWithinRadius(boolean[][] matrix, int i, int j, int radius) {
         int count = 0;
 
         int rows = matrix.length;
