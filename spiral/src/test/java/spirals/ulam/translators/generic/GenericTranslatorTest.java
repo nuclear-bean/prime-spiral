@@ -14,7 +14,7 @@ class GenericTranslatorTest {
                 {true, false, true}
         };
 
-        MatrixElementMappingFunction function = (i, j, boolMatrix) -> boolMatrix[i][j] ? (short)1 : (short)0;
+        MatrixMappingFunction function = (i, j, boolMatrix) -> boolMatrix[i][j] ? (short)1 : (short)0;
 
         GenericTranslator translator = new GenericTranslator();
         Short[][] result = translator.translate(matrix, function);

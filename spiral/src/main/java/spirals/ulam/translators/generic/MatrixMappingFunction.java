@@ -1,7 +1,7 @@
 package spirals.ulam.translators.generic;
 
 @FunctionalInterface
-public interface MatrixElementMappingFunction {
+public interface MatrixMappingFunction {
 
     /**
      * Maps a number to a short. The number is the value of the matrix at the given coordinates.

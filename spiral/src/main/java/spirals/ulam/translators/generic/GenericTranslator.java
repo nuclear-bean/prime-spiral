@@ -1,8 +1,8 @@
 package spirals.ulam.translators.generic;
 
-public class GenericTranslator {
+public final class GenericTranslator {
 
-    public Short[][] translate(Boolean[][] matrix, MatrixElementMappingFunction function) {
+    public static Short[][] translate(Boolean[][] matrix, MatrixMappingFunction function) {
         int size = matrix.length;
         Short[][] result = new Short[size][size];
         for (int i = 0; i < size; i++) {
