@@ -6,6 +6,7 @@ import spirals.ulam.export.image.DensityImageExporter;
 import java.io.File;
 
 @Log4j2
+@Deprecated(forRemoval = true)
 public abstract class AbstractDensityExample extends Thread {
 
     protected int SIZE = 101;
