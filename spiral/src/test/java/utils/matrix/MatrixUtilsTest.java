@@ -84,7 +84,7 @@ public class MatrixUtilsTest {
                 {4, 5, 6},
                 {7, 8, 9}};
 
-        Short[][] result = MatrixUtils.mapToShort(input);
+        Short[][] result = MatrixUtils.wrap(input);
 
         Assertions.assertArrayEquals(expected, result);
         for (Short[] shorts : expected) {
