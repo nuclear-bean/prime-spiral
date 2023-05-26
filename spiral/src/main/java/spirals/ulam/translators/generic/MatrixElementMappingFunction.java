@@ -1,6 +1,6 @@
 package spirals.ulam.translators.generic;
 
-public interface NumberMappingFunction {
+public interface MatrixElementMappingFunction {
     /**
      * Maps a number to a short. The number is the value of the matrix at the given coordinates.
      * @param i row index
@@ -8,5 +8,5 @@ public interface NumberMappingFunction {
      * @param matrix the matrix for reference
      * @return the mapped value
      */
-    short map(int i, int j, long[][] matrix);
+    Short map(int i, int j, Boolean[][] matrix);
 }
