@@ -1,12 +1,9 @@
 package utils.matrix.operations;
 
-import lombok.experimental.UtilityClass;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@UtilityClass
-class RetrievalWithinRadiusOperation {
+final class RetrievalWithinRadiusOperation {
 
     /**
      * Returns a list of elements within a given radius from a specified point.

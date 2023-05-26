@@ -1,15 +1,13 @@
 package spirals.ulam.translators;
 
-import lombok.experimental.UtilityClass;
 import math.PrimeUtils;
 
 /**
  * Translates given matrix to binary matrix. Primes are mapped to 1, non-primes to 0.
  */
-@UtilityClass
-public class BinaryTranslator {
+public final class BinaryTranslator {
 
-    public long[][] translate(long[][] matrix) {
+    public static long[][] translate(long[][] matrix) {
         long[][] binaryMatrix = new long[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < binaryMatrix[i].length; j++) {
@@ -26,7 +24,7 @@ public class BinaryTranslator {
     /**
      * @return binary matrix. Primes are mapped to true, non-primes to false.
      */
-    public boolean[][] translateToBoolean(long[][] matrix) {
+    public static boolean[][] translateToBoolean(long[][] matrix) {
         boolean[][] binaryMatrix = new boolean[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < binaryMatrix[i].length; j++) {

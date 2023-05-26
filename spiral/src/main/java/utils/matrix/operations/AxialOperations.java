@@ -1,11 +1,8 @@
 package utils.matrix.operations;
 
-import lombok.experimental.UtilityClass;
-
 import static utils.matrix.MatrixUtils.safeIsTrue;
 
-@UtilityClass 
-class AxialOperations {
+final class AxialOperations {
 
     static int get_axial_count_of_true_cells_within_radius(boolean[][] matrix, int i, int j, int radius) {
         if (radius == 0) {
