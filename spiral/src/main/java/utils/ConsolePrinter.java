@@ -10,7 +10,9 @@ import utils.annotations.ExternalCode;
 @ExternalCode
 public class ConsolePrinter {
 
-    public void prettyPrintMatrixWithFrames(long[][] matrix) {
+    public <T extends Number> void prettyPrintMatrixWithFrames(T[][] matrix) {
+        checkSize(matrix.length);
+
         // Determine the width of each matrix element for formatting purposes
         int maxElementWidth = Integer.toString(matrix.length * matrix[0].length).length() + 1;
 
@@ -18,9 +20,9 @@ public class ConsolePrinter {
         iterateOverMatrix(matrix, maxElementWidth);
 
         // Print the matrix row by row with side frames
-        for (long[] longs : matrix) {
+        for (T[] nums : matrix) {
             System.out.print("|");
-            for (long aLong : longs) {
+            for (T aLong : nums) {
                 // Format each matrix element to the desired width and print it
                 System.out.printf("%-" + maxElementWidth + "d", aLong);
                 System.out.print("|");
@@ -32,20 +34,23 @@ public class ConsolePrinter {
         iterateOverMatrix(matrix, maxElementWidth);
     }
 
-    public void printSimple(long[][] matrix) {
-        if (matrix.length > 500) {
-            System.out.println("Matrix is too big to print");
-            return;
-        }
-        for (long[] points : matrix) {
-            for (long point : points) {
+    public <T extends Number> void printSimple(T[][] matrix) {
+        checkSize(matrix.length);
+        for (T[] row : matrix) {
+            for (T point : row) {
                 System.out.print(String.valueOf(point) + '\t');
             }
             System.out.println();
         }
     }
 
-    private void iterateOverMatrix(long[][] matrix, int maxElementWidth) {
+    private void checkSize(int size) {
+        if (size > 500) {
+            throw new IllegalArgumentException("Matrix is too big to print");
+        }
+    }
+
+    private <T extends Number> void iterateOverMatrix(T[][] matrix, int maxElementWidth) {
         for (int i = 0; i < matrix.length + 2; i++) {
             System.out.print("+");
             for (int j = 0; j < maxElementWidth; j++) {
