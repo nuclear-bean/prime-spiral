@@ -6,6 +6,7 @@ import lombok.experimental.UtilityClass;
  * Accepts binary matrix and translates it to density matrix. Density is calculated as sum of all 8 neighbours and self. Each prime neighbour is counted as 1, each non-prime as 0.
  */
 @UtilityClass
+@Deprecated(forRemoval = true)
 public class CustomizableDensityTranslator {
 
     public short[][] translate(DensityTranslationSpec spec) {
