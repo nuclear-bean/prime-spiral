@@ -14,9 +14,9 @@ import static utils.matrix.MatrixUtils.wrap;
 @Log4j2
 public abstract class SimplifiedAbstractExample {
 
-    protected void run() {
+    protected void run(int size) {
         prepare();
-        long[][] matrix = generateMatrix();
+        long[][] matrix = generateMatrix(size);
         boolean[][] primeMapping = getPrimeMapping(matrix);
         MatrixMappingFunction mappingFunction = defineMatrixMappingFunction();
         Short[][] matrixMapping = getMapping(primeMapping, mappingFunction);
@@ -28,9 +28,9 @@ public abstract class SimplifiedAbstractExample {
         ElapsedTimer.start();
     }
 
-    protected long[][] generateMatrix() {
+    protected long[][] generateMatrix(int size) {
         log.info("Generating matrix...");
-        return SimpleUlamGenerator.generateMatrix(501);
+        return SimpleUlamGenerator.generateMatrix(size);
     }
 
     protected boolean[][] getPrimeMapping(long[][] matrix) {

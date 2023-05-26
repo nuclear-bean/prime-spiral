@@ -11,7 +11,7 @@ import spirals.ulam.translators.generic.MatrixMappingFunction;
 public class E01_BasicBlackAndWhite extends SimplifiedAbstractExample {
 
     public static void main(String[] args) {
-        new E01_BasicBlackAndWhite().run();
+        new E01_BasicBlackAndWhite().run(501);
     }
 
     @Override

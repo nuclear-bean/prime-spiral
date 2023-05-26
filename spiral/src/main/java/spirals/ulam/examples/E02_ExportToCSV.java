@@ -15,7 +15,7 @@ import static utils.matrix.MatrixUtils.unwrap;
 public class E02_ExportToCSV extends SimplifiedAbstractExample {
 
     public static void main(String[] args) {
-        new E02_ExportToCSV().run();
+        new E02_ExportToCSV().run(501);
     }
 
     @Override
