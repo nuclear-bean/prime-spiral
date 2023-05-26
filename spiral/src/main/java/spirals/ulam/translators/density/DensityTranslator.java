@@ -1,7 +1,7 @@
 package spirals.ulam.translators.density;
 
 import lombok.extern.log4j.Log4j2;
-import utils.matrix.MatrixContentOperations;
+import utils.matrix.operations.MatrixContentOperations;
 
 import java.time.Instant;
 

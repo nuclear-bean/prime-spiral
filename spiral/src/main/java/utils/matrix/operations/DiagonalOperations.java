@@ -1,4 +1,4 @@
-package utils.matrix;
+package utils.matrix.operations;
 
 import static utils.matrix.MatrixUtils.safeIsTrue;
 

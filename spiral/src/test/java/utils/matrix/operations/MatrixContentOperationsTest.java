@@ -1,4 +1,4 @@
-package utils.matrix;
+package utils.matrix.operations;
 
 import org.junit.jupiter.api.Test;
 
