@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
+@Deprecated(forRemoval = true)
 public class DensityTranslationSpec {
     private boolean[][] matrix;
 
