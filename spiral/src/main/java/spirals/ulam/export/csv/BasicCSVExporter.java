@@ -11,9 +11,13 @@ import java.io.IOException;
 @UtilityClass
 public class BasicCSVExporter {
 
-    public void generateCSV(boolean[][] matrix, String path) throws IOException {
-        String content = generateFileContent(matrix);
-        writeToFile(content, path);
+    public void generateCSV(boolean[][] matrix, String path) {
+        try {
+            String content = generateFileContent(matrix);
+            writeToFile(content, path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void writeToFile(String content, String path) throws IOException {
