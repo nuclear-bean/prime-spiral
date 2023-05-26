@@ -6,11 +6,10 @@ import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.density.DensitySpecification;
-import spirals.ulam.translators.density.DensityTranslationSpec;
 import spirals.ulam.translators.density.DensityTranslator;
 
 /**
- * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized. See {@link DensityTranslationSpec} for more details.
+ * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
 @Log4j2
 public class E06_DensityWithRadiusAndBias extends AbstractDensityExample {
