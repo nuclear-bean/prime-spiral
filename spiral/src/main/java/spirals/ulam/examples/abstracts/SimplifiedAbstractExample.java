@@ -14,17 +14,17 @@ import static utils.matrix.MatrixUtils.wrap;
 @Log4j2
 public abstract class SimplifiedAbstractExample {
 
-    protected void run(int size) {
-        prepare();
+    protected void run(int size, String outputPath) {
+        prepare(outputPath);
         long[][] matrix = generateMatrix(size);
         boolean[][] primeMapping = getPrimeMapping(matrix);
         MatrixMappingFunction mappingFunction = defineMatrixMappingFunction();
         Short[][] matrixMapping = getMapping(primeMapping, mappingFunction);
-        generateImage(matrixMapping);
+        generateImage(matrixMapping, outputPath);
     }
 
-    protected void prepare() {
-        log.info("Preparing...");
+    protected void prepare(String outputPath) {
+        log.info("Preparing... output will be saved to {}", outputPath);
         ElapsedTimer.start();
     }
 
@@ -43,9 +43,9 @@ public abstract class SimplifiedAbstractExample {
         return GenericTranslator.translate(wrap(primeMapping), mappingFunction);
     }
 
-    protected void generateImage(Short[][] matrixMapping) {
+    protected void generateImage(Short[][] matrixMapping, String outputPath) {
         log.info("Generating image...");
-        BinaryImageGenerator.generateImage(unwrap(matrixMapping), "generic.png");      //todo filename generation
+        BinaryImageGenerator.generateImage(unwrap(matrixMapping), outputPath);
     }
 
     protected abstract MatrixMappingFunction defineMatrixMappingFunction();

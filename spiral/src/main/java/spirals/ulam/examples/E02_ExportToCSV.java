@@ -5,6 +5,7 @@ import spirals.ulam.examples.abstracts.SimplifiedAbstractExample;
 import spirals.ulam.export.csv.BasicCSVExporter;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
+import utils.OutputPathProvider;
 
 import static utils.matrix.MatrixUtils.unwrap;
 
@@ -15,7 +16,9 @@ import static utils.matrix.MatrixUtils.unwrap;
 public class E02_ExportToCSV extends SimplifiedAbstractExample {
 
     public static void main(String[] args) {
-        new E02_ExportToCSV().run(501);
+        int size = 5_001;
+        String outputPath = OutputPathProvider.getOutputPath("csv", size, ".csv", E02_ExportToCSV.class);
+        new E02_ExportToCSV().run(size, outputPath);
     }
 
     @Override
@@ -30,9 +33,9 @@ public class E02_ExportToCSV extends SimplifiedAbstractExample {
     }
 
     @Override
-    protected void generateImage(Short[][] matrixMapping) {
+    protected void generateImage(Short[][] matrixMapping, String outputPath) {
         log.info("Generating csv...");
         boolean[][] primeMap = BinaryTranslator.translateToBoolean(unwrap(matrixMapping));
-        BasicCSVExporter.generateCSV(primeMap, "NEW.csv");
+        BasicCSVExporter.generateCSV(primeMap, "10_001_NEW.csv");
     }
 }
