@@ -1,29 +1,28 @@
 package spirals.ulam.examples;
 
-import lombok.extern.java.Log;
-import spirals.ulam.examples.abstracts.AbstractDensityExample;
+import lombok.extern.log4j.Log4j2;
+import spirals.ulam.examples.abstracts.SimplifiedAbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
-import spirals.ulam.generators.SimpleUlamGenerator;
-import spirals.ulam.translators.BinaryTranslator;
-import spirals.ulam.translators.density.DensitySpecification;
-import spirals.ulam.translators.density.DensityTranslator;
+import spirals.ulam.translators.generic.MatrixMappingFunction;
+import utils.OutputPathProvider;
+import utils.matrix.MatrixUtils;
+import utils.matrix.operations.MatrixContentOperations;
 
 /**
  * Creates density representation of Ulam spiral and saves it as an image.
  */
-@Log
-public class E04_DensityRepresentation extends AbstractDensityExample {
+@Log4j2
+public class E04_DensityRepresentation extends SimplifiedAbstractExample {
 
-    @SuppressWarnings("CallToThreadRun")
     public static void main(String[] args) {
-        new E04_DensityRepresentation().run();
+        int size = 1001;
+        String outputPath = OutputPathProvider.getOutputPath("simple_density", size, ".png", E04_DensityRepresentation.class);
+        new E04_DensityRepresentation().run(size, outputPath);
     }
 
     @Override
-    protected void prepare() {
-        SIZE = 1001;
-        FILENAME = "density_simple_green";
-
+    protected void prepare(String outputPath) {
+        super.prepare(outputPath);
         DensityImageExporter.PRIME_CHANNEL = 1;
 
         DensityImageExporter.RED_BASE_VALUE = 10;
@@ -32,17 +31,14 @@ public class E04_DensityRepresentation extends AbstractDensityExample {
     }
 
     @Override
-    protected short[][] mapMatrix(final long[][] matrix) {
-        log.info("translating matrix to boolean...");
-        boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
-        log.info("calculating density...");
-        DensitySpecification specification = DensitySpecification.builder().matrix(primeMapping).build();
-        return DensityTranslator.translate(specification);
+    protected MatrixMappingFunction defineMatrixMappingFunction() {
+        return (i, j, primeMap) ->
+                (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(MatrixUtils.unwrap(primeMap), i, j, 1);
     }
-
+    
     @Override
-    protected long[][] generateMatrix() {
-        log.info("generating matrix...");
-        return SimpleUlamGenerator.generateMatrix(SIZE);
+    protected void generateImage(Short[][] matrixMapping, String outputPath) {
+        log.info("Generating image...");
+        DensityImageExporter.generateImage(MatrixUtils.unwrap(matrixMapping), outputPath);
     }
 }
