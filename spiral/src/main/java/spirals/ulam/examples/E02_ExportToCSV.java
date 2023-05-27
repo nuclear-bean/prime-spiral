@@ -36,6 +36,6 @@ public class E02_ExportToCSV extends SimplifiedAbstractExample {
     protected void generateImage(Short[][] matrixMapping, String outputPath) {
         log.info("Generating csv...");
         boolean[][] primeMap = BinaryTranslator.translateToBoolean(unwrap(matrixMapping));
-        BasicCSVExporter.generateCSV(primeMap, "10_001_NEW.csv");
+        BasicCSVExporter.generateCSV(primeMap, outputPath);
     }
 }
