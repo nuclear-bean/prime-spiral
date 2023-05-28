@@ -1,7 +1,7 @@
 package spirals.ulam.examples.abstracts;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.export.image.BinaryImageGenerator;
+import spirals.ulam.export.image.BinaryImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.GenericTranslator;
@@ -45,7 +45,7 @@ public abstract class AbstractExample {
 
     protected void generateImage(Short[][] matrixMapping, String outputPath) {
         log.info("Generating image...");
-        BinaryImageGenerator.generateImage(unwrap(matrixMapping), outputPath);
+        BinaryImageExporter.generateImage(unwrap(matrixMapping), outputPath);
     }
 
     protected abstract MatrixMappingFunction defineMatrixMappingFunction();

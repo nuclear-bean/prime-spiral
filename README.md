@@ -12,7 +12,7 @@ explore spiral/src/main/java/spirals/ulam/examples for examples of how to genera
 
 ### Examples
 
-- **E01_BasicBlackAndWhite** - simply generates a spiral and exports it to a png file. Primes are black, non-primes are
+- **E01_BasicBlackAndWhite** - simply generates a spiral and exports it to a png file. Primes are mapped to black pixels, non-primes are
   white.
 - **E02_ExportToCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0.
 - **E03_ExportToSlimCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0. The csv

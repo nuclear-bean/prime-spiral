@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  * Will generate a black and white spirals.ulam.export.image from a matrix - black pixels for prime numbers, white pixels for non-prime numbers.
  */
 @UtilityClass
-public class BinaryImageGenerator extends AbstractImageExporter {
+public class BinaryImageExporter extends AbstractImageExporter {
 
     public void generateImage(short[][] matrix, String outputPath) {
         //todo generic validate matrix size
