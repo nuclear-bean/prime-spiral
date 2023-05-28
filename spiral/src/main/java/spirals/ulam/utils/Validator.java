@@ -1,18 +1,17 @@
 package spirals.ulam.utils;
 
-import lombok.experimental.UtilityClass;
+import utils.matrix.MatrixMapper;
 
-@UtilityClass
 public class Validator {
 
-    private final Integer MIN_SIZE = 3;
+    private static final Integer MIN_SIZE = 3;
 
     /**
      * Validates if given spiral size (side length) is valid. Throws IllegalArgumentException if not.
      *
      * @throws IllegalArgumentException if size is too small or even
      */
-    public void validateMatrixSize(int size) throws IllegalArgumentException {
+    public static void validateMatrixSize(int size) throws IllegalArgumentException {
         if (isTooSmall(size)) {
             throw new IllegalArgumentException(String.format("Spiral size should be at least %s", MIN_SIZE));
         }
@@ -21,29 +20,19 @@ public class Validator {
         }
     }
 
-    public void validateMatrix(short[][] matrix) throws IllegalArgumentException {
-        long[][] longMatrix = mapToLongs(matrix);
+    public static void validateMatrix(short[][] matrix) throws IllegalArgumentException {
+        long[][] longMatrix = MatrixMapper.shorts2longs(matrix);
         validateMatrix(longMatrix);
     }
 
-    private long[][] mapToLongs(short[][] matrix) {
-        long[][] longMatrix = new long[matrix.length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < longMatrix[i].length; j++) {
-                longMatrix[i][j] = matrix[i][j];
-            }
-        }
-        return longMatrix;
-    }
-
-    public void validateMatrix(long[][] matrix) throws IllegalArgumentException {
+    public static void validateMatrix(long[][] matrix) throws IllegalArgumentException {
         if (isSquareMatrix(matrix)) {
             throw new IllegalArgumentException("Spiral has to be a square matrix");
         }
         validateMatrixSize(matrix.length);
     }
 
-    private boolean isSquareMatrix(long[][] matrix) {
+    private static boolean isSquareMatrix(long[][] matrix) {
         return matrix.length != matrix[0].length;
     }
 
