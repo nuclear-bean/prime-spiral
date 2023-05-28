@@ -21,7 +21,7 @@ public class BinaryTranslator {
             }
         }
         return binaryMatrix;
-    }
+    } // todo can this be removed in favor of generic translator?
 
     /**
      * @return binary matrix. Primes are mapped to true, non-primes to false.
@@ -31,20 +31,6 @@ public class BinaryTranslator {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < binaryMatrix[i].length; j++) {
                 binaryMatrix[i][j] = PrimeUtils.isPrime(matrix[i][j]);
-            }
-        }
-        return binaryMatrix;
-    }
-
-
-    /**
-     * @return binary matrix. 1s are mapped to true, 0s to false.
-     */
-    public static boolean[][] translateToBoolean(short[][] matrix) {
-        boolean[][] binaryMatrix = new boolean[matrix.length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < binaryMatrix[i].length; j++) {
-                binaryMatrix[i][j] = matrix[i][j] == 1;
             }
         }
         return binaryMatrix;

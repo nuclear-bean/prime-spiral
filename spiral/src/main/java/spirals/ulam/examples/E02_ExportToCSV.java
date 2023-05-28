@@ -6,6 +6,7 @@ import spirals.ulam.export.csv.BasicCSVExporter;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.OutputPathProvider;
+import utils.matrix.MatrixMapper;
 
 /**
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.
@@ -27,7 +28,7 @@ public class E02_ExportToCSV extends AbstractExample {
     @Override
     protected void generateImage(short[][] matrixMapping, String outputPath) {
         log.info("Generating csv...");
-        boolean[][] primeMap = BinaryTranslator.translateToBoolean(matrixMapping);
+        boolean[][] primeMap = MatrixMapper.mapToBoolean(matrixMapping);
         BasicCSVExporter.generateCSV(primeMap, outputPath);
     }
 }

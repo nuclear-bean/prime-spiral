@@ -6,6 +6,7 @@ import spirals.ulam.export.csv.SlimCSVExporter;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.OutputPathProvider;
+import utils.matrix.MatrixMapper;
 
 import java.io.IOException;
 
@@ -36,7 +37,7 @@ public class E03_ExportToSlimCSV extends AbstractExample {
     protected void generateImage(short[][] matrixMapping, String outputPath) {
         try {
             log.info("Generating csv...");
-            boolean[][] primeMap = BinaryTranslator.translateToBoolean(matrixMapping);
+            boolean[][] primeMap = MatrixMapper.mapToBoolean(matrixMapping);
             SlimCSVExporter.generateCSV(primeMap, outputPath);
         } catch (IOException e) {
             e.printStackTrace();
