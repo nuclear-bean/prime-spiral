@@ -21,7 +21,7 @@ public class E02_ExportToCSV extends AbstractExample {
 
     @Override
     protected MatrixMappingFunction defineMatrixMappingFunction() {
-        return (i,j,primeMap) -> primeMap[i][j] ? (short) 1 : (short) 0;
+        return (i, j, primeMap) -> primeMap[i][j] ? (short) 1 : (short) 0;
     }
 
     @Override
