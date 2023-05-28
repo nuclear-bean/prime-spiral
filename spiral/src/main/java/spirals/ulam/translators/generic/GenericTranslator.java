@@ -9,7 +9,7 @@ public final class GenericTranslator {
 
     private static Instant lastLog = Instant.MIN;
 
-    public static Short[][] translate(Boolean[][] matrix, MatrixMappingFunction function) {
+    public static Short[][] translate(boolean[][] matrix, MatrixMappingFunction function) {
         int size = matrix.length;
         Short[][] result = new Short[size][size];
         for (int i = 0; i < size; i++) {

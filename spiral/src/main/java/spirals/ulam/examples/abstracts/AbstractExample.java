@@ -40,7 +40,7 @@ public abstract class AbstractExample {
 
     protected Short[][] getMapping(boolean[][] primeMapping, MatrixMappingFunction mappingFunction) {
         log.info("Generating mapping...");
-        return GenericTranslator.translate(wrap(primeMapping), mappingFunction);
+        return GenericTranslator.translate(primeMapping, mappingFunction);
     }
 
     protected void generateImage(Short[][] matrixMapping, String outputPath) {

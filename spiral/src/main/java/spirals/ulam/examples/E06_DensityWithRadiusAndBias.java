@@ -14,43 +14,42 @@ import utils.matrix.operations.MatrixContentOperations;
 @Log4j2
 public class E06_DensityWithRadiusAndBias extends AbstractExample {
 
+    private static int SIZE;
     private static int RADIUS;
     private static int PRIME_BIAS;
 
     public static void main(String[] args) {
-        int SIZE = 501;
-        RADIUS = 3;
-        PRIME_BIAS = 15;
-        String path = OutputPathProvider.getOutputPath(
-                String.format("new_density_radius_%s_bias_%s", RADIUS, PRIME_BIAS), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
+        setValues();
+        String path = OutputPathProvider.getOutputPath(prepareFilename(), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
         new E06_DensityWithRadiusAndBias().run(SIZE, path);
     }
 
-    @Override
-    protected void prepare(String outputPath) {
-        super.prepare(outputPath);
-
-        DensityImageExporter.PRIME_CHANNEL = 1;
-
+    /**
+     * Customize values here.
+     */
+    private static void setValues() {
+        SIZE = 1001;
+        RADIUS = 1;
+        PRIME_BIAS = 0;
+        DensityImageExporter.PRIME_CHANNEL = 1;     //  0 - red, 1 - green, 2 - blue
         DensityImageExporter.RED_BASE_VALUE = 10;
         DensityImageExporter.GREEN_BASE_VALUE = 0;
         DensityImageExporter.BLUE_BASE_VALUE = 50;
     }
 
+    private static String prepareFilename() {
+        return String.format("density_radius_%s_bias_%s", RADIUS, PRIME_BIAS);
+    }
+
     @Override
     protected MatrixMappingFunction defineMatrixMappingFunction() {
         return (i, j, matrix) -> {
-            short value = (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(MatrixUtils.unwrap(matrix), i, j, RADIUS);
-            value = applyPrimeBias(i, j, matrix, value);
+            short value = (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(matrix, i, j, RADIUS);
+            if (matrix[i][j]) {
+                value += PRIME_BIAS;
+            }
             return value;
         };
-    }
-
-    private short applyPrimeBias(int i, int j, Boolean[][] matrix, short value) {
-        if (matrix[i][j]) {
-            value += PRIME_BIAS;
-        }
-        return value;
     }
 
     @Override

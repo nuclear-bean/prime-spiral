@@ -17,9 +17,9 @@ explore spiral/src/main/java/spirals/ulam/examples for examples of how to genera
 - **E02_ExportToCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0.
 - **E03_ExportToSlimCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0. The csv
   file does not contain commas to save size.
-- **E04_DensityRepresentation** - creates basic density representation image. Density is calculated by counting the
+- ~~**E04_DensityRepresentation** - creates basic density representation image. Density is calculated by counting the
   number of neighbour primes (and self) for each number. The density is then mapped to a color. The higher the density,
-  the brighter the color.
+  the brighter the color.~~ **_DEPRECATED_**
 - **~~E05_CustomizableDensityRepresentation~~** - ~~same as E04, but allows for customizing the density calculation and color
   mapping.~~ **_DEPRECATED_**
 - **E06_DensityWithRadiusAndBias** - create density representation with custom radius and bias. Radius is the number of
