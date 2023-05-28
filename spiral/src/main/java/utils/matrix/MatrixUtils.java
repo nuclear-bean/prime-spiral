@@ -64,4 +64,14 @@ public class MatrixUtils {
         }
         return unwrapped;
     }
+
+    public static boolean[][] unwrap(Boolean[][] primeMap) {
+        boolean[][] unwrapped = new boolean[primeMap.length][primeMap.length];
+        for (int i = 0; i < primeMap.length; i++) {
+            for (int j = 0; j < primeMap.length; j++) {
+                unwrapped[i][j] = primeMap[i][j];
+            }
+        }
+        return unwrapped;
+    }
 }
