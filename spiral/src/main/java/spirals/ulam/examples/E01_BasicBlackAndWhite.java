@@ -3,7 +3,7 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
-import utils.OutputPathProvider;
+import utils.export.OutputPathProvider;
 
 /**
  * Creates basic Ulam spiral and saves it as spirals.ulam.export.image. Primes are mapped to black pixels, non-primes to white.

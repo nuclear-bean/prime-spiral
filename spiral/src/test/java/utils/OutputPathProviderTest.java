@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import spirals.ulam.examples.E01_BasicBlackAndWhite;
 import spirals.ulam.examples.E02_ExportToCSV;
+import utils.export.OutputPathProvider;
 
 class OutputPathProviderTest {
 

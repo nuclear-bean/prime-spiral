@@ -3,7 +3,7 @@ package utils.matrix.operations;
 import java.util.ArrayList;
 import java.util.List;
 
-final class RetrievalWithinRadiusOperation {
+class RetrievalWithinRadiusOperation {
 
     /**
      * Returns a list of elements within a given radius from a specified point.

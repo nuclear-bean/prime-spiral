@@ -3,9 +3,8 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.csv.BasicCSVExporter;
-import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
-import utils.OutputPathProvider;
+import utils.export.OutputPathProvider;
 import utils.matrix.MatrixMapper;
 
 /**
