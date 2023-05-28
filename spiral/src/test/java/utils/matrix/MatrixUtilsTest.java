@@ -72,25 +72,4 @@ public class MatrixUtilsTest {
 
         Assertions.assertThrows(NullPointerException.class, () -> MatrixUtils.safeIsTrue(matrix, 0, 0));
     }
-
-    @Test
-    public void test_mapToShort_1() {
-        short[][] input = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}};
-        Short[][] expected = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}};
-
-        Short[][] result = MatrixUtils.wrap(input);
-
-        Assertions.assertArrayEquals(expected, result);
-        for (Short[] shorts : expected) {
-            for (Short aShort : shorts) {
-                Assertions.assertNotNull(aShort);
-            }
-        }
-    }
 }

@@ -8,9 +8,6 @@ import spirals.ulam.translators.generic.GenericTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.ElapsedTimer;
 
-import static utils.matrix.MatrixUtils.unwrap;
-import static utils.matrix.MatrixUtils.wrap;
-
 @Log4j2
 public abstract class AbstractExample {
 
@@ -19,7 +16,7 @@ public abstract class AbstractExample {
         long[][] matrix = generateMatrix(size);
         boolean[][] primeMapping = getPrimeMapping(matrix);
         MatrixMappingFunction mappingFunction = defineMatrixMappingFunction();
-        Short[][] matrixMapping = getMapping(primeMapping, mappingFunction);
+        short[][] matrixMapping = getMapping(primeMapping, mappingFunction);
         generateImage(matrixMapping, outputPath);
     }
 
@@ -38,14 +35,14 @@ public abstract class AbstractExample {
         return BinaryTranslator.translateToBoolean(matrix);
     }
 
-    protected Short[][] getMapping(boolean[][] primeMapping, MatrixMappingFunction mappingFunction) {
+    protected short[][] getMapping(boolean[][] primeMapping, MatrixMappingFunction mappingFunction) {
         log.info("Generating mapping...");
         return GenericTranslator.translate(primeMapping, mappingFunction);
     }
 
-    protected void generateImage(Short[][] matrixMapping, String outputPath) {
+    protected void generateImage(short[][] matrixMapping, String outputPath) {
         log.info("Generating image...");
-        BinaryImageExporter.generateImage(unwrap(matrixMapping), outputPath);
+        BinaryImageExporter.generateImage(matrixMapping, outputPath);
     }
 
     protected abstract MatrixMappingFunction defineMatrixMappingFunction();

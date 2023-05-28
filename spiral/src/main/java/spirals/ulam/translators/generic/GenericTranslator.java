@@ -9,9 +9,9 @@ public final class GenericTranslator {
 
     private static Instant lastLog = Instant.MIN;
 
-    public static Short[][] translate(boolean[][] matrix, MatrixMappingFunction function) {
+    public static short[][] translate(boolean[][] matrix, MatrixMappingFunction function) {
         int size = matrix.length;
-        Short[][] result = new Short[size][size];
+        short[][] result = new short[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 logProgress(i, j, size);

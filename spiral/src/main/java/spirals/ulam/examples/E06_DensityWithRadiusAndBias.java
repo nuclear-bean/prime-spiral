@@ -5,7 +5,6 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.OutputPathProvider;
-import utils.matrix.MatrixUtils;
 import utils.matrix.operations.MatrixContentOperations;
 
 /**
@@ -53,8 +52,8 @@ public class E06_DensityWithRadiusAndBias extends AbstractExample {
     }
 
     @Override
-    protected void generateImage(Short[][] matrixMapping, String outputPath) {
+    protected void generateImage(short[][] matrixMapping, String outputPath) {
         log.info("Generating image...");
-        DensityImageExporter.generateImage(MatrixUtils.unwrap(matrixMapping), outputPath);
+        DensityImageExporter.generateImage(matrixMapping, outputPath);
     }
 }

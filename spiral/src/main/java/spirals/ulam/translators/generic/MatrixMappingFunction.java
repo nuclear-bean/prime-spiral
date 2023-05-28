@@ -10,5 +10,5 @@ public interface MatrixMappingFunction {
      * @param matrix the matrix for reference
      * @return the mapped value
      */
-    Short map(int i, int j, boolean[][] matrix);
+    short map(int i, int j, boolean[][] matrix);
 }

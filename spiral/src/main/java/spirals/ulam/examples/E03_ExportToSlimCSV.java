@@ -9,8 +9,6 @@ import utils.OutputPathProvider;
 
 import java.io.IOException;
 
-import static utils.matrix.MatrixUtils.unwrap;
-
 /**
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.
  */
@@ -35,10 +33,10 @@ public class E03_ExportToSlimCSV extends AbstractExample {
     }
 
     @Override
-    protected void generateImage(Short[][] matrixMapping, String outputPath) {
+    protected void generateImage(short[][] matrixMapping, String outputPath) {
         try {
             log.info("Generating csv...");
-            boolean[][] primeMap = BinaryTranslator.translateToBoolean(unwrap(matrixMapping));
+            boolean[][] primeMap = BinaryTranslator.translateToBoolean(matrixMapping);
             SlimCSVExporter.generateCSV(primeMap, outputPath);
         } catch (IOException e) {
             e.printStackTrace();
