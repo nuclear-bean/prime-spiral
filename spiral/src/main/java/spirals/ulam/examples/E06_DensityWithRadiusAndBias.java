@@ -1,33 +1,34 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.examples.abstracts.AbstractDensityExample;
+import spirals.ulam.examples.abstracts.SimplifiedAbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
-import spirals.ulam.generators.SimpleUlamGenerator;
-import spirals.ulam.translators.BinaryTranslator;
-import spirals.ulam.translators.density.DensitySpecification;
-import spirals.ulam.translators.density.DensityTranslator;
+import spirals.ulam.translators.generic.MatrixMappingFunction;
+import utils.OutputPathProvider;
+import utils.matrix.MatrixUtils;
+import utils.matrix.operations.MatrixContentOperations;
 
 /**
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
 @Log4j2
-public class E06_DensityWithRadiusAndBias extends AbstractDensityExample {
+public class E06_DensityWithRadiusAndBias extends SimplifiedAbstractExample {
 
     private static int RADIUS;
     private static int PRIME_BIAS;
 
-    @SuppressWarnings("CallToThreadRun")
     public static void main(String[] args) {
-        new E06_DensityWithRadiusAndBias().run();
+        int SIZE = 501;
+        RADIUS = 3;
+        PRIME_BIAS = 15;
+        String path = OutputPathProvider.getOutputPath(
+                String.format("new_density_radius_%s_bias_%s", RADIUS, PRIME_BIAS), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
+        new E06_DensityWithRadiusAndBias().run(SIZE, path);
     }
 
     @Override
-    protected void prepare() {
-        SIZE = 501;
-        RADIUS = 3;
-        PRIME_BIAS = 15;
-        FILENAME = "density_radius_" + RADIUS + "_bias_" + PRIME_BIAS + "_GREEN";
+    protected void prepare(String outputPath) {
+        super.prepare(outputPath);
 
         DensityImageExporter.PRIME_CHANNEL = 1;
 
@@ -36,22 +37,25 @@ public class E06_DensityWithRadiusAndBias extends AbstractDensityExample {
         DensityImageExporter.BLUE_BASE_VALUE = 50;
     }
 
-
     @Override
-    protected short[][] mapMatrix(final long[][] matrix) {
-        log.info("translating matrix to boolean...");
-        boolean[][] primeMapping = BinaryTranslator.translateToBoolean(matrix);
-        log.info("calculating density...");
-        DensitySpecification spec = DensitySpecification.builder()
-                .matrix(primeMapping)
-                .radius(RADIUS)
-                .primeBias(PRIME_BIAS)
-                .build();
-        return DensityTranslator.translate(spec);
+    protected MatrixMappingFunction defineMatrixMappingFunction() {
+        return (i, j, matrix) -> {
+            short value = (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(MatrixUtils.unwrap(matrix), i, j, RADIUS);
+            value = applyPrimeBias(i, j, matrix, value);
+            return value;
+        };
     }
 
-    protected long[][] generateMatrix() {
-        log.info("generating matrix...");
-        return SimpleUlamGenerator.generateMatrix(SIZE);
+    private short applyPrimeBias(int i, int j, Boolean[][] matrix, short value) {
+        if (matrix[i][j]) {
+            value += PRIME_BIAS;
+        }
+        return value;
+    }
+
+    @Override
+    protected void generateImage(Short[][] matrixMapping, String outputPath) {
+        log.info("Generating image...");
+        DensityImageExporter.generateImage(MatrixUtils.unwrap(matrixMapping), outputPath);
     }
 }
