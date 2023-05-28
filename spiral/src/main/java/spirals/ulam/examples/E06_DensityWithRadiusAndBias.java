@@ -1,7 +1,7 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.examples.abstracts.SimplifiedAbstractExample;
+import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.OutputPathProvider;
@@ -12,7 +12,7 @@ import utils.matrix.operations.MatrixContentOperations;
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
 @Log4j2
-public class E06_DensityWithRadiusAndBias extends SimplifiedAbstractExample {
+public class E06_DensityWithRadiusAndBias extends AbstractExample {
 
     private static int RADIUS;
     private static int PRIME_BIAS;

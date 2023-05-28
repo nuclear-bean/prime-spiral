@@ -1,7 +1,7 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.examples.abstracts.SimplifiedAbstractExample;
+import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.csv.SlimCSVExporter;
 import spirals.ulam.translators.BinaryTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
@@ -15,7 +15,7 @@ import static utils.matrix.MatrixUtils.unwrap;
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.
  */
 @Log4j2
-public class E03_ExportToSlimCSV extends SimplifiedAbstractExample {
+public class E03_ExportToSlimCSV extends AbstractExample {
 
     public static void main(String[] args) {
         int size = 501;

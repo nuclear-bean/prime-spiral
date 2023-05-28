@@ -12,7 +12,7 @@ import static utils.matrix.MatrixUtils.unwrap;
 import static utils.matrix.MatrixUtils.wrap;
 
 @Log4j2
-public abstract class SimplifiedAbstractExample {
+public abstract class AbstractExample {
 
     protected void run(int size, String outputPath) {
         prepare(outputPath);
