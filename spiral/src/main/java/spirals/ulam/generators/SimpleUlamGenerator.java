@@ -5,7 +5,7 @@ import utils.annotations.Experimental;
 import utils.annotations.ExternalCode;
 import spirals.ulam.utils.Validator;
 
-@SuppressWarnings("DuplicatedCode")
+// TODO: improve this
 @UtilityClass
 @Experimental
 @ExternalCode

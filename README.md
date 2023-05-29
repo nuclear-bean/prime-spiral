@@ -22,6 +22,8 @@ explore spiral/src/main/java/spirals/ulam/examples for examples of how to genera
   the brighter the color.~~ **_DEPRECATED_**
 - **~~E05_CustomizableDensityRepresentation~~** - ~~same as E04, but allows for customizing the density calculation and color
   mapping.~~ **_DEPRECATED_**
-- **E06_DensityWithRadiusAndBias** - create density representation with custom radius and bias. Radius is the number of
+- **E06_DensityWithRadiusAndBias** - density representation with custom radius and bias. Radius is the number of
   neighbours to consider when calculating density. Bias is the amount of density to add to a specific point if it's a
   prime (useful for highlighting primes).
+- **E07_DiagonalConnectionsWithinRadius** - density representation that only considers diagonal neighbours within a specified 
+  radius. Prime bias is supported.
