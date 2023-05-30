@@ -5,7 +5,7 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.export.OutputPathProvider;
-import utils.matrix.operations.MatrixContentOperations;
+import matrix.operations.MatrixContentOperations;
 
 /**
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.

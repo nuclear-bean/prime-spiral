@@ -1,4 +1,4 @@
-package utils.matrix.operations;
+package matrix.operations;
 
 import java.util.ArrayList;
 import java.util.List;

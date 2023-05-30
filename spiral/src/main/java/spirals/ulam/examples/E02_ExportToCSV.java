@@ -5,7 +5,7 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.csv.BasicCSVExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.export.OutputPathProvider;
-import utils.matrix.MatrixMapper;
+import matrix.MatrixMapper;
 
 /**
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.

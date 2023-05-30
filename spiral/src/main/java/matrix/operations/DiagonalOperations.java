@@ -1,6 +1,6 @@
-package utils.matrix.operations;
+package matrix.operations;
 
-import static utils.matrix.MatrixUtils.safeIsTrue;
+import static matrix.MatrixUtils.safeIsTrue;
 
 class DiagonalOperations {
 

@@ -5,7 +5,7 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.csv.SlimCSVExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.export.OutputPathProvider;
-import utils.matrix.MatrixMapper;
+import matrix.MatrixMapper;
 
 import java.io.IOException;
 

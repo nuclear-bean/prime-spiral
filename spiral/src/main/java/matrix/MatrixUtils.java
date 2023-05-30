@@ -1,4 +1,4 @@
-package utils.matrix;
+package matrix;
 
 import lombok.NonNull;
 

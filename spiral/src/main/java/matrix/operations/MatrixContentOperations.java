@@ -1,10 +1,10 @@
-package utils.matrix.operations;
+package matrix.operations;
 
 import java.util.List;
 
-import static utils.matrix.operations.AxialOperations.get_axial_count_of_true_cells_within_radius;
-import static utils.matrix.operations.DiagonalOperations.diagonalCountOfTrueCellsWithinRadius;
-import static utils.matrix.operations.RetrievalWithinRadiusOperation.*;
+import static matrix.operations.AxialOperations.get_axial_count_of_true_cells_within_radius;
+import static matrix.operations.DiagonalOperations.diagonalCountOfTrueCellsWithinRadius;
+import static matrix.operations.RetrievalWithinRadiusOperation.*;
 
 /**
  * Utility class to retrieve matrix elements within a given radius from a specified point.

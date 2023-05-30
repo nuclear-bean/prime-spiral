@@ -5,7 +5,7 @@ import spirals.ulam.examples.abstracts.AbstractExample;
 import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.export.OutputPathProvider;
-import utils.matrix.operations.MatrixContentOperations;
+import matrix.operations.MatrixContentOperations;
 
 @Log4j2
 public class E07_DiagonalConnectionsWithinRadius extends AbstractExample {
@@ -13,6 +13,7 @@ public class E07_DiagonalConnectionsWithinRadius extends AbstractExample {
     private static int SIZE;
     private static int RADIUS;
     private static int PRIME_BIAS;
+    private static int CUTOFF;  // don't highlight points with value below this number
 
     public static void main(String[] args) {
         setValues();
@@ -28,6 +29,7 @@ public class E07_DiagonalConnectionsWithinRadius extends AbstractExample {
         SIZE = 1_001;
         RADIUS = 10;
         PRIME_BIAS = 10;
+        CUTOFF = 21;
 
         DensityImageExporter.PRIME_CHANNEL = 1;     //  0 - red, 1 - green, 2 - blue
         DensityImageExporter.RED_BASE_VALUE = 10;
@@ -37,7 +39,7 @@ public class E07_DiagonalConnectionsWithinRadius extends AbstractExample {
 
     private static String prepareFilename() {
         String color = DensityImageExporter.PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("highlighted_diagonals_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        return String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
     }
 
     @Override
@@ -54,7 +56,7 @@ public class E07_DiagonalConnectionsWithinRadius extends AbstractExample {
                 value += PRIME_BIAS;
             }
 
-            return value;
+            return value < CUTOFF ? 0 : value;
         };
     }
 }

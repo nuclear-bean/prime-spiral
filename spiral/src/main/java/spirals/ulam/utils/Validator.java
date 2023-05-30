@@ -1,6 +1,6 @@
 package spirals.ulam.utils;
 
-import utils.matrix.MatrixMapper;
+import matrix.MatrixMapper;
 
 public class Validator {
 
