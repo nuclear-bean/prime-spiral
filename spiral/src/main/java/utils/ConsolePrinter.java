@@ -34,10 +34,10 @@ public class ConsolePrinter {
         iterateOverMatrix(matrix, maxElementWidth);
     }
 
-    public <T extends Number> void printSimple(T[][] matrix) {
+    public void printSimple(long[][] matrix) {
         checkSize(matrix.length);
-        for (T[] row : matrix) {
-            for (T point : row) {
+        for (long[] row : matrix) {
+            for (long point : row) {
                 System.out.print(String.valueOf(point) + '\t');
             }
             System.out.println();
