@@ -5,6 +5,6 @@ import experimental.visualtization.PixelData;
 @FunctionalInterface
 public interface TranslationFunction {
 
-    void apply(long[][] matrix, PixelData[][] pixelData, int i, int j);
+    PixelData calculatePixelValue(long[][] matrix, int i, int j);
 
 }

@@ -9,11 +9,11 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor(access = PRIVATE)
 public final class PixelDataTranslator {
 
-    public static PixelData[][] translate(long[][] matrix, TranslationFunction translationFunction) {
+    public static PixelData[][] translate(long[][] matrix, TranslationFunction function) {
         PixelData[][] outputImageData = new PixelData[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                translationFunction.apply(matrix, outputImageData, i, j);
+                outputImageData[i][j] = function.calculatePixelValue(matrix, i, j);
             }
         }
         return outputImageData;

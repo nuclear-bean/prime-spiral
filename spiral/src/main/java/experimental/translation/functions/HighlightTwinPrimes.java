@@ -1,28 +1,20 @@
 package experimental.translation.functions;
 
 import experimental.visualtization.PixelData;
-import math.PrimeUtils;
+
+import static experimental.visualtization.PixelData.*;
+import static math.PrimeUtils.isPrime;
+import static math.PrimeUtils.isTwinPrime;
 
 public class HighlightTwinPrimes implements TranslationFunction {
 
     @Override
-    public void apply(long[][] matrix, PixelData[][] pixelData, int i, int j) {
+    public PixelData calculatePixelValue(long[][] matrix, int i, int j) {
         long value = matrix[i][j];
-        boolean prime = PrimeUtils.isPrime(value);
-
-        if (value == 1) {
-            pixelData[i][j] = PixelData.BLACK;
-            return;
-        }
-
-        if (prime) {
-            if (PrimeUtils.isTwinPrime(value)) {
-                pixelData[i][j] = PixelData.RED;
-            } else {
-                pixelData[i][j] = PixelData.BLUE;
-            }
+        if (isPrime(value)) {
+            return isTwinPrime(value) ? RED : BLUE;
         } else {
-            pixelData[i][j] = PixelData.WHITE;
+            return WHITE;
         }
     }
 
