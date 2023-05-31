@@ -24,7 +24,7 @@ public class DefaultImageExporter implements ImageExporter {
         for (int i = 0; i < pixelData.length; i++) {
             for (int j = 0; j < pixelData[i].length; j++) {
                 PixelData val = pixelData[i][j];
-                image.setRGB(i, j, calculatePixelValue(val));
+                image.setRGB(j, i, calculatePixelValue(val));
             }
         }
 
