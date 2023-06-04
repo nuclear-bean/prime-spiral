@@ -12,7 +12,7 @@ import utils.export.OutputPathProvider;
 public class E01_BasicBlackAndWhite extends AbstractExample {
 
     public static void main(String[] args) {
-        int size = 10_001;
+        int size = 501;
         final String outputPath =
                 OutputPathProvider.getOutputPath("basic_black_and_white", size, ".png", E01_BasicBlackAndWhite.class);
         new E01_BasicBlackAndWhite().run(size, outputPath);
