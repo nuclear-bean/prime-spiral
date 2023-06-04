@@ -1,4 +1,4 @@
-package experimental.visualtization;
+package visualtization;
 
 public class ImageExportException extends Exception {
 

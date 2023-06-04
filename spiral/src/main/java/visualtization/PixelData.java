@@ -1,4 +1,4 @@
-package experimental.visualtization;
+package visualtization;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
