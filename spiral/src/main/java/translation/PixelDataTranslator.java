@@ -1,39 +1,30 @@
 package translation;
 
-import groovy.util.logging.Slf4j;
 import translation.functions.TranslationFunction;
 import visualtization.PixelData;
-import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+class PixelDataTranslator {
 
-import static lombok.AccessLevel.PRIVATE;
+    private final long[][] matrix;
+    private final TranslationFunction function;
+    private final int matrixSize;
 
-@NoArgsConstructor(access = PRIVATE)
-public final class PixelDataTranslator {
+    private int i;
+    private int j;
 
-    private static Instant lastLog = Instant.now(); // todo SRP violation
-    private static Instant nextLog = Instant.now();
+    PixelDataTranslator(long[][] matrix, TranslationFunction function) {
+        this.matrix = matrix;
+        this.function = function;
+        this.matrixSize = matrix.length;
+    }
 
-    public static PixelData[][] translate(long[][] matrix, TranslationFunction function) {
-        PixelData[][] outputImageData = new PixelData[matrix.length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                logProgress(i,j,matrix.length);
+    PixelData[][] doTranslate() {
+        PixelData[][] outputImageData = new PixelData[matrixSize][matrixSize];
+        for (i = 0; i < matrixSize; i++) {
+            for (j = 0; j < matrixSize; j++) {
                 outputImageData[i][j] = function.calculatePixelValue(matrix, i, j);
             }
         }
         return outputImageData;
     }
-
-    private static void logProgress(int i, int j, int length) {
-        //todo SRP violation
-    }
-
-    private static void doLog(int i, int j, int length) {
-        int current = (i * length) + j;
-        double progress = (current*100) / (double) length;
-        System.out.println("translating matrix... progress: " + progress + " %");
-    }
-
 }
