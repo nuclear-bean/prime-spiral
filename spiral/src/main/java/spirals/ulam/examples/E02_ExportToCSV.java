@@ -7,7 +7,7 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 import utils.export.OutputPathProvider;
 
 /**
- * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents non-prime number.
+ * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents a composite number.
  */
 @Log4j2
 public class E02_ExportToCSV {
