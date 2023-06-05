@@ -14,7 +14,7 @@ class RetrievalWithinRadiusOperation {
      * @param radius radius from the specified point
      * @return list of elements within a given radius from a specified point
      */
-    static List<Integer> get_elements_within_radius(int[][] matrix, int i, int j, int radius) {
+    static List<Integer> retrieveElementsWithinRadius(int[][] matrix, int i, int j, int radius) {
         List<Integer> result = new ArrayList<>();
 
         int rows = matrix.length;
