@@ -3,6 +3,9 @@ package translation;
 import translation.functions.TranslationFunction;
 import visualtization.PixelData;
 
+/**
+ * Facade class to provide static access to PixelDataTranslator.doTranslate function.
+ */
 public final class PixelDataTranslatorFacade {
 
     public static PixelData[][] translate(long[][] matrix, TranslationFunction function) {

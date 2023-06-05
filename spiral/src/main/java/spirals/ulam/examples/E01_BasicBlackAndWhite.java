@@ -1,31 +1,27 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.examples.abstracts.AbstractExample;
-import spirals.ulam.translators.generic.MatrixMappingFunction;
+import spirals.ulam.generators.SimpleUlamGenerator;
+import translation.PixelDataTranslatorFacade;
 import utils.export.OutputPathProvider;
+import visualtization.DefaultImageExporter;
+import visualtization.ImageExportException;
+import visualtization.PixelData;
+
+import java.io.File;
+
+import static translation.functions.TranslationFunction.BASIC_BLACK_AND_WHITE;
 
 /**
  * Creates basic Ulam spiral and saves it as spirals.ulam.export.image. Primes are mapped to black pixels, non-primes to white.
  */
 @Log4j2
-public class E01_BasicBlackAndWhite extends AbstractExample {
+public class E01_BasicBlackAndWhite {
 
-    public static void main(String[] args) {
-        int size = 501;
-        final String outputPath =
-                OutputPathProvider.getOutputPath("basic_black_and_white", size, ".png", E01_BasicBlackAndWhite.class);
-        new E01_BasicBlackAndWhite().run(size, outputPath);
+    public static void main(String[] args) throws ImageExportException {
+        long[][] matrix = SimpleUlamGenerator.generateMatrix(501);
+        PixelData[][] imageData = PixelDataTranslatorFacade.translate(matrix, BASIC_BLACK_AND_WHITE());
+        new DefaultImageExporter().generateImage(imageData, new File(OutputPathProvider.getOutputPath("simple-black-and-white", matrix.length, ".png", E01_BasicBlackAndWhite.class)));
     }
 
-    @Override
-    public MatrixMappingFunction defineMatrixMappingFunction() {
-        return (i, j, primeMap) -> {
-            if (primeMap[i][j]) {
-                return (short) 1;
-            } else {
-                return (short) 0;
-            }
-        };
-    }
 }
