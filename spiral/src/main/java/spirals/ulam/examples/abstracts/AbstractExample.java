@@ -8,6 +8,7 @@ import spirals.ulam.translators.generic.GenericTranslator;
 import spirals.ulam.translators.generic.MatrixMappingFunction;
 import utils.ElapsedTimer;
 
+@Deprecated(forRemoval = true)
 @Log4j2
 public abstract class AbstractExample {
 

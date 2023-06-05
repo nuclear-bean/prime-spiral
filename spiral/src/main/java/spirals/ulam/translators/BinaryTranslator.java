@@ -23,9 +23,7 @@ public class BinaryTranslator {
         return binaryMatrix;
     } // todo can this be removed in favor of generic translator?
 
-    /**
-     * @return binary matrix. Primes are mapped to true, non-primes to false.
-     */
+    @Deprecated(forRemoval = true)
     public boolean[][] translateToBoolean(long[][] matrix) {
         boolean[][] binaryMatrix = new boolean[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
