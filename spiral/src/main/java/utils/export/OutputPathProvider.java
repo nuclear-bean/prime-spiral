@@ -1,14 +1,23 @@
 package utils.export;
 
+import lombok.NonNull;
+
 import java.io.File;
 
 public final class OutputPathProvider {
 
-    public static String getOutputPath(String name, int size, String extension, Class<?> clazz) {
+    public static String getOutputPath(@NonNull final String name, int size, @NonNull final String extension, @NonNull final Class<?> clazz) {
+        validateExtension(extension);
         String classPrefix = resolveClassPrefix(clazz);
         String path = constructPath(classPrefix, name, size, extension);
         createFiles(path);
         return path;
+    }
+
+    private static void validateExtension(String extension) {
+        if (!extension.startsWith(".")) {
+            throw new IllegalArgumentException("Extension must start with a dot");
+        }
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")

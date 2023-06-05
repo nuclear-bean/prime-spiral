@@ -25,4 +25,10 @@ class OutputPathProviderTest {
         Assertions.assertEquals("./output/E02/501_basic_black_and_white.png", path);
     }
 
+    @Test
+    void shouldNotAcceptInvalidExtensionArg() {
+        Throwable err = Assertions.assertThrows(IllegalArgumentException.class, () -> OutputPathProvider.getOutputPath("basic_black_and_white", 10_001, "png", E01_BasicBlackAndWhite.class));
+        Assertions.assertEquals("Extension must start with a dot", err.getMessage());
+    }
+
 }
