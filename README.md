@@ -8,7 +8,7 @@ Read more about Ulam Spiral here: https://en.wikipedia.org/wiki/Ulam_spiral
 
 ### Usage
 
-explore spiral/src/main/java/spirals/ulam/examples for examples of how to generate spirals.
+explore `spiral/src/main/java/spirals/ulam/examples` for examples on how to generate spirals.
 
 ### Examples
 
