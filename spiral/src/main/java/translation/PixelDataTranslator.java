@@ -9,8 +9,8 @@ class PixelDataTranslator {
     private final TranslationFunction function;
     private final int matrixSize;
 
-    private int i;
-    private int j;
+    int i;
+    int j;
 
     PixelDataTranslator(long[][] matrix, TranslationFunction function) {
         this.matrix = matrix;
