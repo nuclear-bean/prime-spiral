@@ -18,7 +18,7 @@ class GenericTranslatorTest {
 
         short[][] result = GenericTranslator.translate(matrix, function);
 
-        Short[][] expected = {
+        short[][] expected = {
                 {1, 0, 1},
                 {0, 1, 0},
                 {1, 0, 1}

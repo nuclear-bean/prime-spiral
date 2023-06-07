@@ -8,7 +8,7 @@ class MatrixContentOperationsTest {
 
     @Test
     void getElementsWithinRadiusTest_1() {
-        int[][] matrix = new int[][]{
+        long[][] matrix = new long[][]{
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
@@ -16,14 +16,14 @@ class MatrixContentOperationsTest {
         int i = 0;
         int j = 0;
         int radius = 1;
-        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Integer::intValue).toArray();
+        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Long::intValue).toArray();
         int[] expected = new int[]{1, 2, 4, 5};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void getElementsWithinRadiusTest_2() {
-        int[][] matrix = new int[][]{
+        long[][] matrix = new long[][]{
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
@@ -31,14 +31,14 @@ class MatrixContentOperationsTest {
         int i = 1;
         int j = 1;
         int radius = 1;
-        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Integer::intValue).toArray();
+        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Long::intValue).toArray();
         int[] expected = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void getElementsWithinRadiusTest_3() {
-        int[][] matrix = new int[][]{
+        long[][] matrix = new long[][]{
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
@@ -46,14 +46,14 @@ class MatrixContentOperationsTest {
         int i = 1;
         int j = 1;
         int radius = 0;
-        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Integer::intValue).toArray();
+        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Long::intValue).toArray();
         int[] expected = new int[]{5};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void getElementsWithinRadiusTest_4() {
-        int[][] matrix = new int[][]{
+        long[][] matrix = new long[][]{
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
@@ -61,14 +61,14 @@ class MatrixContentOperationsTest {
         int i = 1;
         int j = 2;
         int radius = 2;
-        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Integer::intValue).toArray();
+        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Long::intValue).toArray();
         int[] expected = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void getElementsWithinRadiusTest_5() {
-        int[][] matrix = new int[][]{
+        long[][] matrix = new long[][]{
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
@@ -76,7 +76,7 @@ class MatrixContentOperationsTest {
         int i = 1;
         int j = 2;
         int radius = 1;
-        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Integer::intValue).toArray();
+        int[] actual = MatrixContentOperations.getElementsWithinRadius(matrix, i, j, radius).stream().mapToInt(Long::intValue).toArray();
         int[] expected = new int[]{2, 3, 5, 6, 8, 9};
         assertArrayEquals(expected, actual);
     }

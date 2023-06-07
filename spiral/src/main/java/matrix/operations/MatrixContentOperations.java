@@ -20,7 +20,7 @@ public final class MatrixContentOperations {
      * @param radius radius from the specified point
      * @return list of elements within a given radius from a specified point
      */
-    public static List<Integer> getElementsWithinRadius(int[][] matrix, int i, int j, int radius) {
+    public static List<Long> getElementsWithinRadius(long[][] matrix, int i, int j, int radius) {
         return retrieveElementsWithinRadius(matrix, i, j, radius);
     }
 
