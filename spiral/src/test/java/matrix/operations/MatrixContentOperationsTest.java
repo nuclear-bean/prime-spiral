@@ -132,6 +132,18 @@ class MatrixContentOperationsTest {
     }
 
     @Test
+    void getCountOfTrueCellsTest_5() {
+        boolean[][] matrix = new boolean[][]{
+                {true, true, false},
+                {true, false, false},
+                {true, true, true}
+        };
+        int actual = MatrixContentOperations.getCountOfTrueCellsWithinRadius(matrix, 2, 2, 1);
+        int expected = 2;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void testGetCountOfTrueCellsHorizontalWithinRadius_1() {
         boolean[][] matrix = new boolean[][]{
                 {true, true, true},
