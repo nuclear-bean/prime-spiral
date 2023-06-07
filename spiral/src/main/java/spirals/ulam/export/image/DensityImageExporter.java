@@ -30,7 +30,7 @@ public class DensityImageExporter extends AbstractImageExporter {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 int val = calculatePixelValue(matrix[i][j] * step);
-                image.setRGB(i, j, val);
+                image.setRGB(j, i, val);
             }
         }
         return image;
