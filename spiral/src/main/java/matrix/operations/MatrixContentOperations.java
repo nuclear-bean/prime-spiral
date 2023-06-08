@@ -61,5 +61,7 @@ public final class MatrixContentOperations {
         return get_axial_count_of_true_cells_within_radius(matrix, i, j, radius);
     }
 
-
+    public static long getMaxValue(long[][] matrix) {
+        return MaxValueCalculator.getMaxValue(matrix);
+    }
 }

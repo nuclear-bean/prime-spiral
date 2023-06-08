@@ -263,5 +263,27 @@ class MatrixContentOperationsTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void testGetMaxValue_1() {
+        long[][] matrix = new long[][]{
+                {1, 2, 3},
+                {4, 5, 6}
+        };
+        long actual = MatrixContentOperations.getMaxValue(matrix);
+        long expected = 6;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGetMaxValue_2() {
+        long[][] matrix = new long[][]{
+                {1, 1, 1},
+                {1, 1, 1}
+        };
+        long actual = MatrixContentOperations.getMaxValue(matrix);
+        long expected = 1;
+        assertEquals(expected, actual);
+    }
+
 
 }
