@@ -88,7 +88,7 @@ public class E06_DensityWithRadiusAndBias {
 
     private static String prepareFilename() {
         String color = PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("NEW_density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
     }
 
 }
