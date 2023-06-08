@@ -1,6 +1,7 @@
 package translation;
 
 import lombok.extern.log4j.Log4j2;
+import translation.functions.Boolean2PixelDataFunction;
 import translation.functions.TranslationFunction;
 import visualtization.PixelData;
 
@@ -14,6 +15,19 @@ public class PixelDataTranslator {
 
     int i;
     int j;
+
+    public static PixelData[][] translate(boolean[][] matrix, Boolean2PixelDataFunction function) {
+        log.info("Starting translation");
+        int matrixSize = matrix.length;
+        PixelData[][] results = new PixelData[matrixSize][matrixSize];
+        for (int i = 0; i < matrixSize; i++) {
+            for (int j = 0; j < matrixSize; j++) {
+                results[i][j] = function.apply(matrix, i, j);
+            }
+        }
+        log.info("Translation finished");
+        return results;
+    }
 
     public static PixelData[][] translate(long[][] matrix, TranslationFunction function) {
         log.info("Starting translation");
