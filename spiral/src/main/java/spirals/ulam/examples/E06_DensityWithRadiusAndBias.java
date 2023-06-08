@@ -1,60 +1,94 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.examples.abstracts.AbstractExample;
-import spirals.ulam.export.image.DensityImageExporter;
-import spirals.ulam.translators.generic.MatrixMappingFunction;
-import utils.export.OutputPathProvider;
+import math.PrimeUtils;
 import matrix.operations.MatrixContentOperations;
+import spirals.ulam.export.image.DensityImageExporter;
+import spirals.ulam.generators.SimpleUlamGenerator;
+import translation.MatrixToMatrixTranslation;
+import translation.PixelDataTranslator;
+import translation.functions.MatrixMappingFunction;
+import translation.functions.TranslationFunction;
+import utils.export.OutputPathProvider;
+import visualtization.DefaultImageExporter;
+import visualtization.PixelData;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
 @Log4j2
-public class E06_DensityWithRadiusAndBias extends AbstractExample {
+public class E06_DensityWithRadiusAndBias {
 
-    private static int SIZE;
-    private static int RADIUS;
-    private static int PRIME_BIAS;
+    //todo really poor performance
 
-    public static void main(String[] args) {
-        setValues();
+    private static final int SIZE = 1001;
+    private static final int RADIUS = 3;
+    private static final int PRIME_BIAS = 3;
+
+    private static final int PRIME_CHANNEL = 1;       //  0 - red, 1 - green, 2 - blue
+    private static final int RED_BASE_VALUE = 10;
+    private static final int GREEN_BASE_VALUE = 0;
+    private static final int BLUE_BASE_VALUE = 50;
+
+    public static void main(String[] args) throws IOException {
+        long [][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
+        long[][] densityMatrix = calculateDensityMatrix(matrix);
+        PixelData[][] imageData = mapDensityToPixelData(densityMatrix);
         String path = OutputPathProvider.getOutputPath(prepareFilename(), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
-        new E06_DensityWithRadiusAndBias().run(SIZE, path);
+        DefaultImageExporter.generateImage(imageData, new File(path));
     }
 
-    /**
-     * Customize values here.
-     */
-    private static void setValues() {
-        SIZE = 10_001;
-        RADIUS = 10;
-        PRIME_BIAS = 5;
-        DensityImageExporter.PRIME_CHANNEL = 1;     //  0 - red, 1 - green, 2 - blue
-        DensityImageExporter.RED_BASE_VALUE = 10;
-        DensityImageExporter.GREEN_BASE_VALUE = 0;
-        DensityImageExporter.BLUE_BASE_VALUE = 50;
+    private static PixelData[][] mapDensityToPixelData(long[][] densityMatrix) {
+        long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
+        int step = 255 / (int) maxDensityValue;
+        TranslationFunction func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
+        return PixelDataTranslator.translate(densityMatrix, func);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private static PixelData calculatePixelValue(int step, long[][] matrix, int i, int j) {
+        int pixelValue = (int) matrix[i][j] * step;
+
+        int red = RED_BASE_VALUE;
+        int green = GREEN_BASE_VALUE;
+        int blue = BLUE_BASE_VALUE;
+
+        if (PRIME_CHANNEL == 0) {
+            red += pixelValue;
+        } else if (PRIME_CHANNEL == 1) {
+            green += pixelValue;
+        } else if (PRIME_CHANNEL == 2) {
+            blue += pixelValue;
+        } else {
+            throw new IllegalArgumentException("CHANNEL must be 0, 1, or 2");
+        }
+
+        red = Math.min(red, 255);
+        green = Math.min(green, 255);
+        blue = Math.min(blue, 255);
+
+        return new PixelData(red, green, blue);
+    }
+
+    private static long[][] calculateDensityMatrix(long[][] matrix) {
+        MatrixMappingFunction func = (m, i, j) -> {
+            long densityValue = MatrixContentOperations.getElementsWithinRadius(m, i, j, RADIUS).stream()
+                    .filter(PrimeUtils::isPrime)
+                    .count();
+            if (PrimeUtils.isPrime(matrix[i][j])) {
+                densityValue += PRIME_BIAS;
+            }
+            return densityValue;
+        };
+        return MatrixToMatrixTranslation.translate(matrix, func);
     }
 
     private static String prepareFilename() {
-        String color = DensityImageExporter.PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        String color = PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
+        return String.format("NEW_density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
     }
 
-    @Override
-    protected MatrixMappingFunction defineMatrixMappingFunction() {
-        return (i, j, matrix) -> {
-            short value = (short) MatrixContentOperations.getCountOfTrueCellsWithinRadius(matrix, i, j, RADIUS);
-            if (matrix[i][j]) {
-                value += PRIME_BIAS;
-            }
-            return value;
-        };
-    }
-
-    @Override
-    protected void generateImage(short[][] matrixMapping, String outputPath) {
-        log.info("Generating image...");
-        DensityImageExporter.generateImage(matrixMapping, outputPath);
-    }
 }
