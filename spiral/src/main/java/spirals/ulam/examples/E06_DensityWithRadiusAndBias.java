@@ -3,7 +3,6 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import math.PrimeUtils;
 import matrix.operations.MatrixContentOperations;
-import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixToMatrixTranslation;
 import translation.PixelDataTranslator;
@@ -87,7 +86,7 @@ public class E06_DensityWithRadiusAndBias {
     }
 
     private static String prepareFilename() {
-        String color = PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
         return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
     }
 

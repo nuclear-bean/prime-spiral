@@ -2,7 +2,6 @@ package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
 import matrix.operations.MatrixContentOperations;
-import spirals.ulam.export.image.DensityImageExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.Boolean2LongTranslator;
 import translation.Long2BooleanTranslator;
@@ -87,7 +86,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     }
 
     private static String prepareFilename() {
-        String color = DensityImageExporter.PRIME_CHANNEL == 0 ? "red" : DensityImageExporter.PRIME_CHANNEL == 1 ? "green" : "blue";
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
         return String.format("NEW_highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
     }
 
