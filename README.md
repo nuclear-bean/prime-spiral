@@ -25,3 +25,8 @@ explore `spiral/src/main/java/spirals/ulam/examples` for examples on how to gene
 - **E07_DiagonalConnectionsWithinRadius** - density representation that only considers diagonal neighbours within a specified 
   radius. Prime bias is supported.
 - **E08_HighlightTwinPrimes** - Similar to E01 but twin primes are highlighted in red.
+
+
+#### todo notes
+- matrix compression (ability to store huge matrices in a small file)
+- matrix caching - to speed up the generation process - pre-generated matrix to be read from file
