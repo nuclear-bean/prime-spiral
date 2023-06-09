@@ -28,15 +28,27 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static final int BLUE_BASE_VALUE = 50;
 
     public static void main(String[] args) throws IOException {
-        long[][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
+        long[][] matrix = generateBaseMatrix();
         boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
-        long [][] densityMatrix = translateToDensityMatrix(booleanMatrix);
-        PixelData[][] pixelData = translateDensityToPixelData(densityMatrix);
-        String path = OutputPathProvider.getOutputPath(prepareFilename(), SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
-        DefaultImageExporter.generateImage(pixelData, new File(path));
+        long [][] densityMatrix = calculateDensityMatrix(booleanMatrix);
+        PixelData[][] pixelData = calculatePixelData(densityMatrix);
+        DefaultImageExporter.generateImage(pixelData, getOutputFile());
     }
 
-    private static PixelData[][] translateDensityToPixelData(long[][] densityMatrix) {
+    private static File getOutputFile() {
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
+        String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
+        return new File(path);
+    }
+
+    private static long[][] generateBaseMatrix() {
+        log.info("Generating base matrix ...");
+        return SimpleUlamGenerator.generateMatrix(SIZE);
+    }
+
+    private static PixelData[][] calculatePixelData(long[][] densityMatrix) {
+        log.info("Calculating pixel data ...");
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
         return MatrixTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
@@ -48,7 +60,8 @@ public class E07_DiagonalConnectionsWithinRadius {
         ));
     }
 
-    private static long[][] translateToDensityMatrix(boolean[][] booleanMatrix) {
+    private static long[][] calculateDensityMatrix(boolean[][] booleanMatrix) {
+        log.info("Calculating density matrix ...");
         Boolean2LongFunction function = (matrix, i, j) -> {
             short value = (short) MatrixContentOperations.getDiagonalCountOfTrueCellsWithinRadius(matrix, i, j, RADIUS);
             if (matrix[i][j]) {
@@ -61,12 +74,8 @@ public class E07_DiagonalConnectionsWithinRadius {
     }
 
     private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
+        log.info("Translating to boolean matrix ...");
         return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
-    }
-
-    private static String prepareFilename() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
     }
 
 }

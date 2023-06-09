@@ -7,6 +7,7 @@ import translation.MatrixTranslator;
 import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
+import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
 import visualtization.DefaultImageExporter;
 import visualtization.PixelData;
@@ -20,7 +21,7 @@ import java.io.IOException;
 @Log4j2
 public class E06_DensityWithRadiusAndBias {
 
-    private static final int SIZE = 501;
+    private static final int SIZE = 2001;
     private static final int RADIUS = 3;
     private static final int PRIME_BIAS = 3;
 
@@ -30,15 +31,28 @@ public class E06_DensityWithRadiusAndBias {
     private static final int BLUE_BASE_VALUE = 50;
 
     public static void main(String[] args) throws IOException {
-        long [][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
+        ElapsedTimer.start();
+        long [][] matrix = generateBaseMatrix();
         boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
-        long [][] densityMatrix = translateToDensityMatrix(booleanMatrix);
-        PixelData[][] imageData = mapDensityToPixelData(densityMatrix);
-        String path = OutputPathProvider.getOutputPath(prepareFilename(), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
-        DefaultImageExporter.generateImage(imageData, new File(path));
+        long [][] densityMatrix = calculateDensityMatrix(booleanMatrix);
+        PixelData[][] imageData = calculatePixelData(densityMatrix);
+        DefaultImageExporter.generateImage(imageData, getOutputFile());
     }
 
-    private static long[][] translateToDensityMatrix(boolean[][] booleanMatrix) {
+    private static File getOutputFile() {
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
+        String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E06_DensityWithRadiusAndBias.class);
+        return new File(path);
+    }
+
+    private static long[][] generateBaseMatrix() {
+        log.info("Generating base matrix ...");
+        return SimpleUlamGenerator.generateMatrix(SIZE);
+    }
+
+    private static long[][] calculateDensityMatrix(boolean[][] booleanMatrix) {
+        log.info("Calculating density ...");
         Boolean2LongFunction function = (matrix, i, j) -> {
             long val = MatrixContentOperations.getCountOfTrueCellsWithinRadius(booleanMatrix, i, j, RADIUS);
             if (booleanMatrix[i][j]) {
@@ -50,24 +64,22 @@ public class E06_DensityWithRadiusAndBias {
     }
 
     private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
+        log.info("Translating to boolean matrix ...");
         return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
     }
 
-    private static PixelData[][] mapDensityToPixelData(long[][] densityMatrix) {
+    private static PixelData[][] calculatePixelData(long[][] densityMatrix) {
+        log.info("Calculating pixel data ...");
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        return MatrixTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
+        Long2PixelData function = Long2PixelData.BASIC_DENSITY(
                 RED_BASE_VALUE,
                 GREEN_BASE_VALUE,
                 BLUE_BASE_VALUE,
                 PRIME_CHANNEL,
                 step
-        ));
-    }
-
-    private static String prepareFilename() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        );
+        return MatrixTranslator.translate(densityMatrix, function);
     }
 
 }

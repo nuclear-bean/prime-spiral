@@ -1,5 +1,6 @@
 package spirals.ulam.examples;
 
+import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
 import utils.export.OutputPathProvider;
@@ -11,12 +12,29 @@ import java.io.IOException;
 import static translation.functions.Long2PixelData.HIGHLIGHT_TWIN_PRIMES;
 import static visualtization.DefaultImageExporter.generateImage;
 
+@Log4j2
 public class E08_HighlightTwinPrimes {
 
+    private static final int SIZE = 2001;
+
     public static void main(String[] args) throws IOException {
-        long[][] matrix = SimpleUlamGenerator.generateMatrix(2001);
-        PixelData[][] imageData = MatrixTranslator.translate(matrix, HIGHLIGHT_TWIN_PRIMES());
-        generateImage(imageData, new File(OutputPathProvider.getOutputPath("twin-primes", matrix.length, ".png", E08_HighlightTwinPrimes.class)));
+        long[][] matrix = generateBaseMatrix();
+        PixelData[][] imageData = calculatePixelData(matrix);
+        generateImage(imageData, getOutputFile());
+    }
+
+    private static File getOutputFile() {
+        return new File(OutputPathProvider.getOutputPath("twin-primes", SIZE, ".png", E08_HighlightTwinPrimes.class));
+    }
+
+    private static PixelData[][] calculatePixelData(long[][] matrix) {
+        log.info("Calculating pixel data ...");
+        return MatrixTranslator.translate(matrix, HIGHLIGHT_TWIN_PRIMES());
+    }
+
+    private static long[][] generateBaseMatrix() {
+        log.info("Generating base matrix ...");
+        return SimpleUlamGenerator.generateMatrix(SIZE);
     }
 
 }

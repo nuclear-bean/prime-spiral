@@ -21,8 +21,8 @@ public final class MatrixTranslator {
         PixelData[][] results = new PixelData[matrixSize][matrixSize];
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
-                logProgress(i, j, matrixSize);
                 results[i][j] = function.calculatePixelValue(matrix, i, j);
+                logProgress(i, j, matrixSize);
             }
         }
         return results;
@@ -34,6 +34,7 @@ public final class MatrixTranslator {
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
                 results[i][j] = function.apply(matrix[i][j]);
+                logProgress(i, j, matrixSize);
             }
         }
         return results;
@@ -45,6 +46,7 @@ public final class MatrixTranslator {
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
                 results[i][j] = function.apply(matrix, i, j);
+                logProgress(i, j, matrixSize);
             }
         }
         return results;
