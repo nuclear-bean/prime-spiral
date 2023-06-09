@@ -23,10 +23,6 @@ public class E08_HighlightTwinPrimes {
         generateImage(imageData, getOutputFile());
     }
 
-    private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("twin-primes", SIZE, ".png", E08_HighlightTwinPrimes.class));
-    }
-
     private static PixelData[][] calculatePixelData(long[][] matrix) {
         log.info("Calculating pixel data ...");
         return MatrixTranslator.translate(matrix, HIGHLIGHT_TWIN_PRIMES());
@@ -37,4 +33,7 @@ public class E08_HighlightTwinPrimes {
         return SimpleUlamGenerator.generateMatrix(SIZE);
     }
 
+    private static File getOutputFile() {
+        return new File(OutputPathProvider.getOutputPath("twin-primes", SIZE, ".png", E08_HighlightTwinPrimes.class));
+    }
 }

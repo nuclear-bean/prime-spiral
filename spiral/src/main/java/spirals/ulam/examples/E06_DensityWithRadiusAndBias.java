@@ -39,13 +39,6 @@ public class E06_DensityWithRadiusAndBias {
         DefaultImageExporter.generateImage(imageData, getOutputFile());
     }
 
-    private static File getOutputFile() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E06_DensityWithRadiusAndBias.class);
-        return new File(path);
-    }
-
     private static long[][] generateBaseMatrix() {
         log.info("Generating base matrix ...");
         return SimpleUlamGenerator.generateMatrix(SIZE);
@@ -80,6 +73,13 @@ public class E06_DensityWithRadiusAndBias {
                 step
         );
         return MatrixTranslator.translate(densityMatrix, function);
+    }
+
+    private static File getOutputFile() {
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
+        String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E06_DensityWithRadiusAndBias.class);
+        return new File(path);
     }
 
 }

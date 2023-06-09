@@ -1,7 +1,5 @@
 package spirals.ulam.utils;
 
-import matrix.MatrixMapper;
-
 public class Validator {
 
     private static final Integer MIN_SIZE = 3;
@@ -18,11 +16,6 @@ public class Validator {
         if (isEven(size)) {
             throw new IllegalArgumentException("Only odd spirals are allowed");
         }
-    }
-
-    public static void validateMatrix(short[][] matrix) throws IllegalArgumentException {
-        long[][] longMatrix = MatrixMapper.shorts2longs(matrix);
-        validateMatrix(longMatrix);
     }
 
     public static void validateMatrix(long[][] matrix) throws IllegalArgumentException {

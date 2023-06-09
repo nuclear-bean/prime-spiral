@@ -26,10 +26,6 @@ public class E01_BasicBlackAndWhite {
         DefaultImageExporter.generateImage(imageData, getOutputFile());
     }
 
-    private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("simple_black_and_white", SIZE, ".png", E01_BasicBlackAndWhite.class));
-    }
-
     private static PixelData[][] calculatePixelData(long[][] matrix) {
         log.info("Calculating pixel data ...");
         return MatrixTranslator.translate(matrix, BASIC_BLACK_AND_WHITE());
@@ -38,6 +34,10 @@ public class E01_BasicBlackAndWhite {
     private static long[][] generateBaseMatrix() {
         log.info("Generating base matrix ...");
         return SimpleUlamGenerator.generateMatrix(SIZE);
+    }
+
+    private static File getOutputFile() {
+        return new File(OutputPathProvider.getOutputPath("simple_black_and_white", SIZE, ".png", E01_BasicBlackAndWhite.class));
     }
 
 }

@@ -1,9 +1,10 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import matrix.MatrixMapper;
 import spirals.ulam.export.csv.SlimCSVExporter;
 import spirals.ulam.generators.SimpleUlamGenerator;
+import translation.MatrixTranslator;
+import translation.functions.Long2BooleanFunction;
 import utils.export.OutputPathProvider;
 
 import java.io.IOException;
@@ -15,9 +16,25 @@ import java.io.IOException;
 @Log4j2
 public class E03_ExportToSlimCSV {
 
+    private static final int SIZE = 1001;
+
     public static void main(String[] args) throws IOException {
-        long[][] matrix = SimpleUlamGenerator.generateMatrix(501);
-        boolean[][] booleanMapping = MatrixMapper.mapToBoolean(matrix);
-        SlimCSVExporter.generateCSV(booleanMapping, OutputPathProvider.getOutputPath("ulam_slim", matrix.length, ".csv", E03_ExportToSlimCSV.class));
+        long[][] matrix = generateBaseMatrix();
+        boolean[][] booleanMapping = translateToBoolean(matrix);
+        SlimCSVExporter.generateCSV(booleanMapping, getOutputPath());
+    }
+
+    private static boolean[][] translateToBoolean(long[][] matrix) {
+        log.info("Translating to boolean matrix ...");
+        return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
+    }
+
+    private static long[][] generateBaseMatrix() {
+        log.info("Generating base matrix ...");
+        return SimpleUlamGenerator.generateMatrix(SIZE);
+    }
+
+    private static String getOutputPath() {
+        return OutputPathProvider.getOutputPath("ulam_slim", SIZE, ".csv", E03_ExportToSlimCSV.class);
     }
 }

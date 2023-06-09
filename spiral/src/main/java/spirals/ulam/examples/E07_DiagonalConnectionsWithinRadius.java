@@ -35,13 +35,6 @@ public class E07_DiagonalConnectionsWithinRadius {
         DefaultImageExporter.generateImage(pixelData, getOutputFile());
     }
 
-    private static File getOutputFile() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
-        return new File(path);
-    }
-
     private static long[][] generateBaseMatrix() {
         log.info("Generating base matrix ...");
         return SimpleUlamGenerator.generateMatrix(SIZE);
@@ -76,6 +69,13 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
         log.info("Translating to boolean matrix ...");
         return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
+    }
+
+    private static File getOutputFile() {
+        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
+        String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
+        return new File(path);
     }
 
 }
