@@ -1,12 +1,13 @@
 package spirals.ulam.examples;
 
 import lombok.extern.log4j.Log4j2;
-import math.PrimeUtils;
 import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
-import translation.MatrixToMatrixTranslation;
+import translation.Boolean2LongTranslator;
+import translation.Long2BooleanTranslator;
 import translation.PixelDataTranslator;
-import translation.functions.Long2LongFunction;
+import translation.functions.Boolean2LongFunction;
+import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
 import utils.export.OutputPathProvider;
 import visualtization.DefaultImageExporter;
@@ -21,8 +22,6 @@ import java.io.IOException;
 @Log4j2
 public class E06_DensityWithRadiusAndBias {
 
-    //todo really poor performance
-
     private static final int SIZE = 1001;
     private static final int RADIUS = 3;
     private static final int PRIME_BIAS = 3;
@@ -34,10 +33,26 @@ public class E06_DensityWithRadiusAndBias {
 
     public static void main(String[] args) throws IOException {
         long [][] matrix = SimpleUlamGenerator.generateMatrix(SIZE);
-        long[][] densityMatrix = calculateDensityMatrix(matrix);
+        boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
+        long [][] densityMatrix = translateToDensityMatrix(booleanMatrix);
         PixelData[][] imageData = mapDensityToPixelData(densityMatrix);
         String path = OutputPathProvider.getOutputPath(prepareFilename(), SIZE, ".png", E06_DensityWithRadiusAndBias.class);
         DefaultImageExporter.generateImage(imageData, new File(path));
+    }
+
+    private static long[][] translateToDensityMatrix(boolean[][] booleanMatrix) {
+        Boolean2LongFunction function = (matrix, i, j) -> {
+            long val = MatrixContentOperations.getCountOfTrueCellsWithinRadius(booleanMatrix, i, j, RADIUS);
+            if (booleanMatrix[i][j]) {
+                val += PRIME_BIAS;
+            }
+            return val;
+        };
+        return Boolean2LongTranslator.translate(booleanMatrix, function);
+    }
+
+    private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
+        return Long2BooleanTranslator.translate(matrix, Long2BooleanFunction.PRIME);
     }
 
     private static PixelData[][] mapDensityToPixelData(long[][] densityMatrix) {
@@ -52,22 +67,9 @@ public class E06_DensityWithRadiusAndBias {
         ));
     }
 
-    private static long[][] calculateDensityMatrix(long[][] matrix) {
-        Long2LongFunction func = (m, i, j) -> {
-            long densityValue = MatrixContentOperations.getElementsWithinRadius(m, i, j, RADIUS).stream()
-                    .filter(PrimeUtils::isPrime)
-                    .count();
-            if (PrimeUtils.isPrime(matrix[i][j])) {
-                densityValue += PRIME_BIAS;
-            }
-            return densityValue;
-        };
-        return MatrixToMatrixTranslation.translate(matrix, func);
-    }
-
     private static String prepareFilename() {
         String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        return String.format("NEWW_density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
     }
 
 }
