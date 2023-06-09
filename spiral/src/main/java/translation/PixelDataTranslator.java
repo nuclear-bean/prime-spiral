@@ -2,14 +2,14 @@ package translation;
 
 import lombok.extern.log4j.Log4j2;
 import translation.functions.Boolean2PixelDataFunction;
-import translation.functions.TranslationFunction;
+import translation.functions.Long2PixelData;
 import visualtization.PixelData;
 
 @Log4j2
 public class PixelDataTranslator {
 
     private final long[][] matrix;
-    private final TranslationFunction function;
+    private final Long2PixelData function;
     private final int matrixSize;
     private final BasicPDTLogger logger;
 
@@ -29,14 +29,14 @@ public class PixelDataTranslator {
         return results;
     }
 
-    public static PixelData[][] translate(long[][] matrix, TranslationFunction function) {
+    public static PixelData[][] translate(long[][] matrix, Long2PixelData function) {
         log.info("Starting translation");
         PixelData[][] data = new PixelDataTranslator(matrix, function).doTranslate();
         log.info("Translation finished");
         return data;
     }
 
-    private PixelDataTranslator(long[][] matrix, TranslationFunction function) {
+    private PixelDataTranslator(long[][] matrix, Long2PixelData function) {
         this.matrix = matrix;
         this.function = function;
         this.matrixSize = matrix.length;

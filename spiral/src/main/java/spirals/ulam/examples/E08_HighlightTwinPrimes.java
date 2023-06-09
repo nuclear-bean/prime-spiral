@@ -8,7 +8,7 @@ import visualtization.PixelData;
 import java.io.File;
 import java.io.IOException;
 
-import static translation.functions.TranslationFunction.HIGHLIGHT_TWIN_PRIMES;
+import static translation.functions.Long2PixelData.HIGHLIGHT_TWIN_PRIMES;
 import static visualtization.DefaultImageExporter.generateImage;
 
 public class E08_HighlightTwinPrimes {

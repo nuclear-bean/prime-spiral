@@ -9,7 +9,7 @@ import visualtization.PixelData;
 import java.io.File;
 import java.io.IOException;
 
-import static translation.functions.TranslationFunction.BASIC_BLACK_AND_WHITE;
+import static translation.functions.Long2PixelData.BASIC_BLACK_AND_WHITE;
 import static visualtization.DefaultImageExporter.generateImage;
 
 /**

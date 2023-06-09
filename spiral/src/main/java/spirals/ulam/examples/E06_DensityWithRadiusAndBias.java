@@ -6,8 +6,8 @@ import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixToMatrixTranslation;
 import translation.PixelDataTranslator;
-import translation.functions.MatrixMappingFunction;
-import translation.functions.TranslationFunction;
+import translation.functions.Long2LongFunction;
+import translation.functions.Long2PixelData;
 import utils.export.OutputPathProvider;
 import visualtization.DefaultImageExporter;
 import visualtization.PixelData;
@@ -43,7 +43,7 @@ public class E06_DensityWithRadiusAndBias {
     private static PixelData[][] mapDensityToPixelData(long[][] densityMatrix) {
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        TranslationFunction func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
+        Long2PixelData func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
         return PixelDataTranslator.translate(densityMatrix, func);
     }
 
@@ -73,7 +73,7 @@ public class E06_DensityWithRadiusAndBias {
     }
 
     private static long[][] calculateDensityMatrix(long[][] matrix) {
-        MatrixMappingFunction func = (m, i, j) -> {
+        Long2LongFunction func = (m, i, j) -> {
             long densityValue = MatrixContentOperations.getElementsWithinRadius(m, i, j, RADIUS).stream()
                     .filter(PrimeUtils::isPrime)
                     .count();

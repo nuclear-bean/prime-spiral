@@ -1,6 +1,6 @@
 package translation.functions;
 
 @FunctionalInterface
-public interface BooleanToLongFunction {
+public interface Boolean2LongFunction {
     long apply(boolean[][] matrix, int i, int j);
 }

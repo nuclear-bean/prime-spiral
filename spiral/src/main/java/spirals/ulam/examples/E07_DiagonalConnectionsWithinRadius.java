@@ -6,9 +6,9 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.Boolean2LongTranslator;
 import translation.Long2BooleanTranslator;
 import translation.PixelDataTranslator;
-import translation.functions.BooleanToLongFunction;
+import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
-import translation.functions.TranslationFunction;
+import translation.functions.Long2PixelData;
 import utils.export.OutputPathProvider;
 import visualtization.DefaultImageExporter;
 import visualtization.PixelData;
@@ -41,7 +41,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static PixelData[][] translateDensityToPixelData(long[][] densityMatrix) {
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        TranslationFunction func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
+        Long2PixelData func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
         return PixelDataTranslator.translate(densityMatrix, func);
     }
 
@@ -70,7 +70,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     }
 
     private static long[][] translateToDensityMatrix(boolean[][] booleanMatrix) {
-        BooleanToLongFunction function = (matrix, i, j) -> {
+        Boolean2LongFunction function = (matrix, i, j) -> {
             short value = (short) MatrixContentOperations.getDiagonalCountOfTrueCellsWithinRadius(matrix, i, j, RADIUS);
             if (matrix[i][j]) {
                 value += PRIME_BIAS;

@@ -7,14 +7,14 @@ import static math.PrimeUtils.isTwinPrime;
 import static visualtization.PixelData.*;
 
 @FunctionalInterface
-public interface TranslationFunction {
+public interface Long2PixelData {
 
     PixelData calculatePixelValue(long[][] matrix, int i, int j);
 
     /**
      * Basic mapping function. Primes are mapped to black and composites to white pixels.
      */
-    static TranslationFunction BASIC_BLACK_AND_WHITE() {
+    static Long2PixelData BASIC_BLACK_AND_WHITE() {
         return (matrix, i, j) -> {
             long value = matrix[i][j];
             if (value == 1) return RED;
@@ -25,7 +25,7 @@ public interface TranslationFunction {
     /**
      * Function that highlights twin primes. Twin primes are mapped to red, normal primes to black and composites to white.
      */
-    static TranslationFunction HIGHLIGHT_TWIN_PRIMES() {
+    static Long2PixelData HIGHLIGHT_TWIN_PRIMES() {
         return (matrix, i, j) -> {
             long value = matrix[i][j];
             if (isPrime(value)) {
