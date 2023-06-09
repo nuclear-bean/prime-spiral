@@ -1,7 +1,7 @@
 package spirals.ulam.examples;
 
 import spirals.ulam.generators.SimpleUlamGenerator;
-import translation.PixelDataTranslator;
+import translation.MatrixTranslator;
 import utils.export.OutputPathProvider;
 import visualtization.PixelData;
 
@@ -15,7 +15,7 @@ public class E08_HighlightTwinPrimes {
 
     public static void main(String[] args) throws IOException {
         long[][] matrix = SimpleUlamGenerator.generateMatrix(2001);
-        PixelData[][] imageData = PixelDataTranslator.translate(matrix, HIGHLIGHT_TWIN_PRIMES());
+        PixelData[][] imageData = MatrixTranslator.translate(matrix, HIGHLIGHT_TWIN_PRIMES());
         generateImage(imageData, new File(OutputPathProvider.getOutputPath("twin-primes", matrix.length, ".png", E08_HighlightTwinPrimes.class)));
     }
 

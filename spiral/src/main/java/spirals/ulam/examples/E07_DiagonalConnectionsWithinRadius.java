@@ -3,9 +3,7 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
-import translation.Boolean2LongTranslator;
-import translation.Long2BooleanTranslator;
-import translation.PixelDataTranslator;
+import translation.MatrixTranslator;
 import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
@@ -41,7 +39,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static PixelData[][] translateDensityToPixelData(long[][] densityMatrix) {
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        return PixelDataTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
+        return MatrixTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
                 RED_BASE_VALUE,
                 GREEN_BASE_VALUE,
                 BLUE_BASE_VALUE,
@@ -59,17 +57,16 @@ public class E07_DiagonalConnectionsWithinRadius {
 
             return value < CUTOFF ? 0 : value;
         };
-        return Boolean2LongTranslator.translate(booleanMatrix, function);
+        return MatrixTranslator.translate(booleanMatrix, function);
     }
 
     private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
-        return Long2BooleanTranslator.translate(matrix, Long2BooleanFunction.PRIME);
+        return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
     }
 
     private static String prepareFilename() {
         String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("NEW_highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
+        return String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
     }
-
 
 }

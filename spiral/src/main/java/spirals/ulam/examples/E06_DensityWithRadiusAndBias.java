@@ -3,9 +3,7 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
-import translation.Boolean2LongTranslator;
-import translation.Long2BooleanTranslator;
-import translation.PixelDataTranslator;
+import translation.MatrixTranslator;
 import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
@@ -22,7 +20,7 @@ import java.io.IOException;
 @Log4j2
 public class E06_DensityWithRadiusAndBias {
 
-    private static final int SIZE = 1001;
+    private static final int SIZE = 501;
     private static final int RADIUS = 3;
     private static final int PRIME_BIAS = 3;
 
@@ -48,17 +46,17 @@ public class E06_DensityWithRadiusAndBias {
             }
             return val;
         };
-        return Boolean2LongTranslator.translate(booleanMatrix, function);
+        return MatrixTranslator.translate(booleanMatrix, function);
     }
 
     private static boolean[][] translateToBooleanMatrix(long[][] matrix) {
-        return Long2BooleanTranslator.translate(matrix, Long2BooleanFunction.PRIME);
+        return MatrixTranslator.translate(matrix, Long2BooleanFunction.PRIME);
     }
 
     private static PixelData[][] mapDensityToPixelData(long[][] densityMatrix) {
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        return PixelDataTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
+        return MatrixTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
                 RED_BASE_VALUE,
                 GREEN_BASE_VALUE,
                 BLUE_BASE_VALUE,
@@ -69,7 +67,7 @@ public class E06_DensityWithRadiusAndBias {
 
     private static String prepareFilename() {
         String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        return String.format("NEWW_density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        return String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
     }
 
 }
