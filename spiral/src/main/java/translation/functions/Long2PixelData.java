@@ -36,6 +36,35 @@ public interface Long2PixelData {
         };
     }
 
+    /**
+     * Basic density calculation function.
+     */
+    static Long2PixelData BASIC_DENSITY(int RED_BASE_VALUE, int GREEN_BASE_VALUE, int BLUE_BASE_VALUE, int PRIME_CHANNEL, int step) {
+        return (matrix, i, j) -> {
+            int pixelValue = (int) matrix[i][j] * step;
+
+            int red = RED_BASE_VALUE;
+            int green = GREEN_BASE_VALUE;
+            int blue = BLUE_BASE_VALUE;
+
+            if (PRIME_CHANNEL == 0) {
+                red += pixelValue;
+            } else if (PRIME_CHANNEL == 1) {
+                green += pixelValue;
+            } else if (PRIME_CHANNEL == 2) {
+                blue += pixelValue;
+            } else {
+                throw new IllegalArgumentException("CHANNEL must be 0, 1, or 2");
+            }
+
+            red = Math.min(red, 255);
+            green = Math.min(green, 255);
+            blue = Math.min(blue, 255);
+
+            return new PixelData(red, green, blue);
+        };
+    }
+
 
 
 }

@@ -41,32 +41,13 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static PixelData[][] translateDensityToPixelData(long[][] densityMatrix) {
         long maxDensityValue = MatrixContentOperations.getMaxValue(densityMatrix);
         int step = 255 / (int) maxDensityValue;
-        Long2PixelData func = (matrix, i, j) -> calculatePixelValue(step, matrix, i, j);
-        return PixelDataTranslator.translate(densityMatrix, func);
-    }
-
-    private static PixelData calculatePixelValue(int step, long[][] matrix, int i, int j) {
-        int pixelValue = (int) matrix[i][j] * step;
-
-        int red = RED_BASE_VALUE;
-        int green = GREEN_BASE_VALUE;
-        int blue = BLUE_BASE_VALUE;
-
-        if (PRIME_CHANNEL == 0) {
-            red += pixelValue;
-        } else if (PRIME_CHANNEL == 1) {
-            green += pixelValue;
-        } else if (PRIME_CHANNEL == 2) {
-            blue += pixelValue;
-        } else {
-            throw new IllegalArgumentException("CHANNEL must be 0, 1, or 2");
-        }
-
-        red = Math.min(red, 255);
-        green = Math.min(green, 255);
-        blue = Math.min(blue, 255);
-
-        return new PixelData(red, green, blue);
+        return PixelDataTranslator.translate(densityMatrix, Long2PixelData.BASIC_DENSITY(
+                RED_BASE_VALUE,
+                GREEN_BASE_VALUE,
+                BLUE_BASE_VALUE,
+                PRIME_CHANNEL,
+                step
+        ));
     }
 
     private static long[][] translateToDensityMatrix(boolean[][] booleanMatrix) {
