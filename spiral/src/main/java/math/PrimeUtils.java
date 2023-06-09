@@ -1,11 +1,8 @@
 package math;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
 public class PrimeUtils {
 
-    public boolean isPrime(long number) {
+    public static boolean isPrime(long number) {
         if (number <= 1) {
             return false;
         }
@@ -19,7 +16,7 @@ public class PrimeUtils {
         return true;
     }
 
-    public long[] firstNPrimes(long n) {
+    public static long[] firstNPrimes(long n) {
         long[] primes = new long[(int) n];
         long count = 0;
         long number = 2;
@@ -33,7 +30,7 @@ public class PrimeUtils {
         return primes;
     }
 
-    public boolean isTwinPrime(long number) {
+    public static boolean isTwinPrime(long number) {
         return isPrime(number) && (isPrime(number - 2) || isPrime(number + 2));
     }
 }
