@@ -1,26 +1,32 @@
 package utils;
 
-import lombok.experimental.UtilityClass;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.time.Instant;
 
-@Log
-@UtilityClass
+@Log4j2
 public final class ElapsedTimer {
 
-    private Instant start;
-    private Instant end;
+    private static Instant start;
+    private static Instant end;
 
-    public void start() {
+    public static void start() {
         start = Instant.now();
         createShutdownHook();
     }
 
     private static void createShutdownHook() {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        Thread hook = createHookThread();
+        Runtime.getRuntime().addShutdownHook(hook);
+    }
+
+    private static Thread createHookThread() {
+        Thread hook = new Thread(() -> {
             end = Instant.now();
-            log.info("(shutdown) Time elapsed: " + (end.toEpochMilli() - start.toEpochMilli()) + " ms");
-        }));
+            long elapsed = end.toEpochMilli() - start.toEpochMilli();
+            log.info("(shutdown) Time elapsed: {} ms", elapsed);
+        });
+        hook.setName("timer");
+        return hook;
     }
 }
