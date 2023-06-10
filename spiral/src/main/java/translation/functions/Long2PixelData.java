@@ -23,6 +23,16 @@ public interface Long2PixelData {
     }
 
     /**
+     * Twin primes are mapped to black pixels. Everything else is mapped to white pixels.
+     */
+    static Long2PixelData TWIN_PRIMES_BLACK_AND_WHITE() {
+        return (matrix, i, j) -> {
+            long value = matrix[i][j];
+            return isTwinPrime(value) ? BLACK : WHITE;
+        };
+    }
+
+    /**
      * Function that highlights twin primes. Twin primes are mapped to red, normal primes to black and composites to white.
      */
     static Long2PixelData HIGHLIGHT_TWIN_PRIMES() {

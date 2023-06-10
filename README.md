@@ -17,7 +17,7 @@ explore `spiral/src/main/java/spirals/ulam/examples` for examples on how to gene
 - **E02_ExportToCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0.
 - **E03_ExportToSlimCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0. The csv
   file does not contain commas to save size.
-- ~~**E04_DensityRepresentation**~~ - **_DEPRECATED_**
+- **E04_TwinPrimesBlackAndWhite** - same as E01 but only twin primes are marked on the output image.
 - ~~**E05_CustomizableDensityRepresentation**~~ - **_DEPRECATED_**
 - **E06_DensityWithRadiusAndBias** - density representation with custom radius and bias. Radius is the number of
   neighbours to consider when calculating density. Bias is the amount of density to add to a specific point if it's a

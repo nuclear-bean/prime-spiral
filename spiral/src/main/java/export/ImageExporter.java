@@ -9,20 +9,17 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import static utils.export.OutputFileValidator.*;
-
 @Log4j2
 public final class ImageExporter {
 
     public static void generateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {
         log.info("Starting image export");
-        validateInputData(pixelData, outputFile);
+        validateInputData(pixelData);
         doGenerateImage(pixelData, outputFile);
         log.info("Image export finished and saved to: {}", outputFile.getAbsolutePath());
     }
 
-    private static void validateInputData(PixelData[][] pixelData, File outputFile) {
-        validateOutputFile(outputFile);
+    private static void validateInputData(PixelData[][] pixelData) {
         MatrixValidator.validateMatrixSize(pixelData.length);
         MatrixValidator.validateMatrixSize(pixelData[0].length);
         assert pixelData.length == pixelData[0].length;
