@@ -1,4 +1,4 @@
-package visualtization;
+package export;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -8,8 +8,8 @@ import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
 import utils.export.OutputPathProvider;
-import visualtization.DefaultImageExporter;
-import visualtization.PixelData;
+import export.ImageExporter;
+import export.PixelData;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class E07_DiagonalConnectionsWithinRadius {
         boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
         long [][] densityMatrix = calculateDensityMatrix(booleanMatrix);
         PixelData[][] pixelData = calculatePixelData(densityMatrix);
-        DefaultImageExporter.generateImage(pixelData, getOutputFile());
+        ImageExporter.generateImage(pixelData, getOutputFile());
     }
 
     private static long[][] generateBaseMatrix() {

@@ -4,8 +4,8 @@ import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
 import utils.export.OutputPathProvider;
-import visualtization.DefaultImageExporter;
-import visualtization.PixelData;
+import export.ImageExporter;
+import export.PixelData;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class E01_BasicBlackAndWhite {
     public static void main(String[] args) throws IOException {
         long[][] matrix = generateBaseMatrix();
         PixelData[][] imageData = calculatePixelData(matrix);
-        DefaultImageExporter.generateImage(imageData, getOutputFile());
+        ImageExporter.generateImage(imageData, getOutputFile());
     }
 
     private static PixelData[][] calculatePixelData(long[][] matrix) {

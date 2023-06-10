@@ -9,8 +9,8 @@ import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
 import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
-import visualtization.DefaultImageExporter;
-import visualtization.PixelData;
+import export.ImageExporter;
+import export.PixelData;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class E06_DensityWithRadiusAndBias {
         boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
         long [][] densityMatrix = calculateDensityMatrix(booleanMatrix);
         PixelData[][] imageData = calculatePixelData(densityMatrix);
-        DefaultImageExporter.generateImage(imageData, getOutputFile());
+        ImageExporter.generateImage(imageData, getOutputFile());
     }
 
     private static long[][] generateBaseMatrix() {
