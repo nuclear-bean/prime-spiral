@@ -1,6 +1,7 @@
 package export;
 
 import lombok.extern.log4j.Log4j2;
+import utils.MatrixValidator;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,12 +18,19 @@ public final class CSVExporter {
      */
     public static void generateCSV(final boolean[][] matrix, final File outputFile) {
         log.info("Starting CSV export");
-        validateOutputFile(outputFile);
-        exportCSV(matrix, outputFile);
+        validateInputData(matrix, outputFile);
+        generateAndExport(matrix, outputFile);
         log.info("CSV export finished. File saved to: {}", outputFile.getAbsolutePath());
     }
 
-    private static void exportCSV(boolean[][] matrix, File outputFile) {
+    private static void validateInputData(boolean [][] matrix, File outputFile) {
+        validateOutputFile(outputFile);
+        MatrixValidator.validateMatrixSize(matrix.length);
+        MatrixValidator.validateMatrixSize(matrix[0].length);
+        assert matrix.length == matrix[0].length;
+    }
+
+    private static void generateAndExport(boolean[][] matrix, File outputFile) {
         try {
             String content = generateFileContent(matrix);
             writeToFile(content, outputFile);
@@ -36,7 +44,7 @@ public final class CSVExporter {
      */
     public static void generateSlimCSV(final boolean[][] matrix, final File outputFile) {
         log.info("Starting slim CSV export");
-        validateOutputFile(outputFile);
+        validateInputData(matrix, outputFile);
         exportSlimCSV(matrix, outputFile);
         log.info("Slim CSV export finished. File saved to: {}", outputFile.getAbsolutePath());
     }

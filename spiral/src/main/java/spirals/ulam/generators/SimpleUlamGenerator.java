@@ -1,9 +1,9 @@
 package spirals.ulam.generators;
 
 import lombok.experimental.UtilityClass;
+import utils.MatrixValidator;
 import utils.annotations.Experimental;
 import utils.annotations.ExternalCode;
-import spirals.ulam.utils.Validator;
 
 // TODO: improve this
 @UtilityClass
@@ -12,7 +12,7 @@ import spirals.ulam.utils.Validator;
 public class SimpleUlamGenerator {
 
     public long[][] generateMatrix(int size) {
-        Validator.validateMatrixSize(size);
+        MatrixValidator.validateMatrixSize(size);
         long[][] matrix = new long[size][size];
         ulamSpiralCounterClockwise(matrix);
         return matrix;

@@ -2,22 +2,30 @@ package export;
 
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
-import utils.export.OutputFileValidator;
+import utils.MatrixValidator;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static utils.export.OutputFileValidator.*;
+
 @Log4j2
 public final class ImageExporter {
 
     public static void generateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {
         log.info("Starting image export");
-        OutputFileValidator.validateOutputFile(outputFile);
-        //todo validate matrix
+        validateInputData(pixelData, outputFile);
         new ImageExporter().doGenerateImage(pixelData, outputFile);
         log.info("Image export finished and saved to: {}", outputFile.getAbsolutePath());
+    }
+
+    private static void validateInputData(PixelData[][] pixelData, File outputFile) {
+        validateOutputFile(outputFile);
+        MatrixValidator.validateMatrixSize(pixelData.length);
+        MatrixValidator.validateMatrixSize(pixelData[0].length);
+        assert pixelData.length == pixelData[0].length;
     }
 
     private void doGenerateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {

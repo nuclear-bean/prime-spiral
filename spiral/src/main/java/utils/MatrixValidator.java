@@ -1,6 +1,6 @@
-package spirals.ulam.utils;
+package utils;
 
-public class Validator {
+public final class MatrixValidator {
 
     private static final Integer MIN_SIZE = 3;
 
@@ -18,22 +18,12 @@ public class Validator {
         }
     }
 
-    public static void validateMatrix(long[][] matrix) throws IllegalArgumentException {
-        if (isSquareMatrix(matrix)) {
-            throw new IllegalArgumentException("Spiral has to be a square matrix");
-        }
-        validateMatrixSize(matrix.length);
-    }
-
-    private static boolean isSquareMatrix(long[][] matrix) {
-        return matrix.length != matrix[0].length;
+    private static boolean isTooSmall(int size) {
+        return size < MIN_SIZE;
     }
 
     private static boolean isEven(int size) {
         return size % 2 == 0;
     }
 
-    private static boolean isTooSmall(int size) {
-        return size < MIN_SIZE;
-    }
 }
