@@ -17,7 +17,7 @@ public final class ImageExporter {
     public static void generateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {
         log.info("Starting image export");
         validateInputData(pixelData, outputFile);
-        new ImageExporter().doGenerateImage(pixelData, outputFile);
+        doGenerateImage(pixelData, outputFile);
         log.info("Image export finished and saved to: {}", outputFile.getAbsolutePath());
     }
 
@@ -28,18 +28,18 @@ public final class ImageExporter {
         assert pixelData.length == pixelData[0].length;
     }
 
-    private void doGenerateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {
+    private static void doGenerateImage(@NonNull final PixelData[][] pixelData, @NonNull final File outputFile) throws IOException {
         BufferedImage image = createBufferedImage(pixelData);
         saveBufferedImage(image, outputFile.getAbsolutePath());
     }
 
-    private BufferedImage createBufferedImage(final PixelData[][] pixelData) {
+    private static BufferedImage createBufferedImage(final PixelData[][] pixelData) {
         BufferedImage image = new BufferedImage(pixelData.length, pixelData.length, BufferedImage.TYPE_INT_RGB);
         iterateOverMatrix(pixelData, image);
         return image;
     }
 
-    private void iterateOverMatrix(PixelData[][] pixelData, BufferedImage image) {
+    private static void iterateOverMatrix(PixelData[][] pixelData, BufferedImage image) {
         for (int i = 0; i < pixelData.length; i++) {
             for (int j = 0; j < pixelData[i].length; j++) {
                 PixelData val = pixelData[i][j];
@@ -48,11 +48,11 @@ public final class ImageExporter {
         }
     }
 
-    private int calculatePixelValue(final PixelData val) {
+    private static int calculatePixelValue(final PixelData val) {
         return (val.getRed() << 16) + (val.getGreen() << 8) + val.getBlue();
     }
 
-    private void saveBufferedImage(final BufferedImage image, final String outputPath) throws IOException {
+    private static void saveBufferedImage(final BufferedImage image, final String outputPath) throws IOException {
         File outputFile = new File(outputPath);
         ImageIO.write(image, "png", outputFile);
     }
