@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static utils.export.OutputFileValidator.*;
-
 @Log4j2
 public final class CSVExporter {
 
@@ -18,13 +16,12 @@ public final class CSVExporter {
      */
     public static void generateCSV(final boolean[][] matrix, final File outputFile) {
         log.info("Starting CSV export");
-        validateInputData(matrix, outputFile);
+        validateInputData(matrix);
         generateAndExport(matrix, outputFile);
         log.info("CSV export finished. File saved to: {}", outputFile.getAbsolutePath());
     }
 
-    private static void validateInputData(boolean [][] matrix, File outputFile) {
-        validateOutputFile(outputFile);
+    private static void validateInputData(boolean[][] matrix) {
         MatrixValidator.validateMatrixSize(matrix.length);
         MatrixValidator.validateMatrixSize(matrix[0].length);
         assert matrix.length == matrix[0].length;
@@ -44,7 +41,7 @@ public final class CSVExporter {
      */
     public static void generateSlimCSV(final boolean[][] matrix, final File outputFile) {
         log.info("Starting slim CSV export");
-        validateInputData(matrix, outputFile);
+        validateInputData(matrix);
         exportSlimCSV(matrix, outputFile);
         log.info("Slim CSV export finished. File saved to: {}", outputFile.getAbsolutePath());
     }
