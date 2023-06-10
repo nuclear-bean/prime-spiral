@@ -21,8 +21,8 @@ import java.io.IOException;
 @Log4j2
 public class E06_DensityWithRadiusAndBias {
 
-    private static final int SIZE = 2001;
-    private static final int RADIUS = 3;
+    private static final int SIZE = 501;
+    private static final int RADIUS = 1;
     private static final int PRIME_BIAS = 3;
 
     private static final int PRIME_CHANNEL = 1;       //  0 - red, 1 - green, 2 - blue
