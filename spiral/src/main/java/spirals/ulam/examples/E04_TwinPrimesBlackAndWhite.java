@@ -38,7 +38,7 @@ public class E04_TwinPrimesBlackAndWhite {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("simple_black_and_white", SIZE, ".png", E04_TwinPrimesBlackAndWhite.class));
+        return new File(OutputPathProvider.getOutputPath("twin_primes", SIZE, ".png", E04_TwinPrimesBlackAndWhite.class));
     }
 
 }
