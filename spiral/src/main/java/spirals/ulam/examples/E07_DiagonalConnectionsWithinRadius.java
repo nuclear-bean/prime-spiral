@@ -1,5 +1,6 @@
 package spirals.ulam.examples;
 
+import export.image.RGBChannel;
 import lombok.extern.log4j.Log4j2;
 import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
@@ -15,6 +16,8 @@ import export.image.PixelData;
 import java.io.File;
 import java.io.IOException;
 
+import static export.image.RGBChannel.*;
+
 @Log4j2
 public class E07_DiagonalConnectionsWithinRadius {
 
@@ -23,7 +26,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static final int PRIME_BIAS = 10;
     private static final int CUTOFF = 19;  // don't highlight points with value below this number
 
-    private static final int PRIME_CHANNEL = 1;
+    private static final RGBChannel PRIME_CHANNEL = GREEN;
     private static final int RED_BASE_VALUE = 10;
     private static final int GREEN_BASE_VALUE = 0;
     private static final int BLUE_BASE_VALUE = 50;
@@ -74,8 +77,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     }
 
     private static File getOutputFile() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, color);
+        String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, PRIME_CHANNEL.name().toLowerCase());
         String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
         return new File(path);
     }

@@ -1,5 +1,6 @@
 package spirals.ulam.examples;
 
+import export.image.RGBChannel;
 import lombok.extern.log4j.Log4j2;
 import matrix.operations.MatrixContentOperations;
 import spirals.ulam.generators.SimpleUlamGenerator;
@@ -15,6 +16,8 @@ import export.image.PixelData;
 import java.io.File;
 import java.io.IOException;
 
+import static export.image.RGBChannel.*;
+
 /**
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
@@ -25,7 +28,7 @@ public class E06_DensityWithRadiusAndBias {
     private static final int RADIUS = 10;
     private static final int PRIME_BIAS = 5;
 
-    private static final int PRIME_CHANNEL = 0;       //  0 - red, 1 - green, 2 - blue
+    private static final RGBChannel PRIME_CHANNEL = RED;
     private static final int RED_BASE_VALUE = 10;
     private static final int GREEN_BASE_VALUE = 0;
     private static final int BLUE_BASE_VALUE = 50;
@@ -76,8 +79,7 @@ public class E06_DensityWithRadiusAndBias {
     }
 
     private static File getOutputFile() {
-        String color = PRIME_CHANNEL == 0 ? "red" : PRIME_CHANNEL == 1 ? "green" : "blue";
-        String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, color);
+        String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, PRIME_CHANNEL.name().toLowerCase());
         String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E06_DensityWithRadiusAndBias.class);
         return new File(path);
     }
