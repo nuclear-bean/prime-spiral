@@ -7,6 +7,7 @@ import translation.MatrixTranslator;
 import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
+import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
 import export.ImageExporter;
 import export.PixelData;
@@ -17,10 +18,10 @@ import java.io.IOException;
 @Log4j2
 public class E07_DiagonalConnectionsWithinRadius {
 
-    private static final int SIZE = 1001;
+    private static final int SIZE = 1_001;
     private static final int RADIUS = 10;
     private static final int PRIME_BIAS = 10;
-    private static final int CUTOFF = 21;  // don't highlight points with value below this number
+    private static final int CUTOFF = 19;  // don't highlight points with value below this number
 
     private static final int PRIME_CHANNEL = 1;
     private static final int RED_BASE_VALUE = 10;
@@ -28,6 +29,7 @@ public class E07_DiagonalConnectionsWithinRadius {
     private static final int BLUE_BASE_VALUE = 50;
 
     public static void main(String[] args) throws IOException {
+        ElapsedTimer.start();
         long[][] matrix = generateBaseMatrix();
         boolean [][] booleanMatrix = translateToBooleanMatrix(matrix);
         long [][] densityMatrix = calculateDensityMatrix(booleanMatrix);

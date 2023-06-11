@@ -21,11 +21,11 @@ import java.io.IOException;
 @Log4j2
 public class E06_DensityWithRadiusAndBias {
 
-    private static final int SIZE = 501;
-    private static final int RADIUS = 1;
-    private static final int PRIME_BIAS = 3;
+    private static final int SIZE = 1_001;
+    private static final int RADIUS = 10;
+    private static final int PRIME_BIAS = 5;
 
-    private static final int PRIME_CHANNEL = 1;       //  0 - red, 1 - green, 2 - blue
+    private static final int PRIME_CHANNEL = 0;       //  0 - red, 1 - green, 2 - blue
     private static final int RED_BASE_VALUE = 10;
     private static final int GREEN_BASE_VALUE = 0;
     private static final int BLUE_BASE_VALUE = 50;

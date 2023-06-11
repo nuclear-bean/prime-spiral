@@ -3,6 +3,7 @@ package spirals.ulam.examples;
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
+import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
 import export.PixelData;
 
@@ -15,9 +16,10 @@ import static export.ImageExporter.generateImage;
 @Log4j2
 public class E08_HighlightTwinPrimes {
 
-    private static final int SIZE = 2001;
+    private static final int SIZE = 1_001;
 
     public static void main(String[] args) throws IOException {
+        ElapsedTimer.start();
         long[][] matrix = generateBaseMatrix();
         PixelData[][] imageData = calculatePixelData(matrix);
         generateImage(imageData, getOutputFile());

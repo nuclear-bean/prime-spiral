@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
 import translation.functions.Long2BooleanFunction;
+import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
 
 import java.io.File;
@@ -15,9 +16,10 @@ import java.io.File;
 @Log4j2
 public class E02_ExportToCSV {
 
-    private static final int SIZE = 1001;
+    private static final int SIZE = 1_001;
 
     public static void main(String[] args) {
+        ElapsedTimer.start();
         long[][] matrix = generateBaseMatrix();
         boolean[][] booleanMapping = translateToBoolean(matrix);
         CSVExporter.generateCSV(booleanMapping, getOutputPath());
