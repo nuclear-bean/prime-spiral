@@ -1,6 +1,6 @@
 package translation.functions;
 
-import export.PixelData;
+import export.image.PixelData;
 
 @FunctionalInterface
 public interface Boolean2PixelDataFunction {

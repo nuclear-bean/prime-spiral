@@ -1,10 +1,10 @@
 package translation.functions;
 
-import export.PixelData;
+import export.image.PixelData;
 
 import static math.PrimeUtils.isPrime;
 import static math.PrimeUtils.isTwinPrime;
-import static export.PixelData.*;
+import static export.image.PixelData.*;
 
 @FunctionalInterface
 public interface Long2PixelData {

@@ -1,5 +1,6 @@
 package export;
 
+import export.image.PixelData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

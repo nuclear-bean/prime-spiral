@@ -1,7 +1,7 @@
 package spirals.ulam.examples;
 
-import export.ImageExporter;
-import export.PixelData;
+import export.image.ImageExporter;
+import export.image.PixelData;
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
@@ -11,7 +11,6 @@ import utils.export.OutputPathProvider;
 import java.io.File;
 import java.io.IOException;
 
-import static translation.functions.Long2PixelData.BASIC_BLACK_AND_WHITE;
 import static translation.functions.Long2PixelData.TWIN_PRIMES_BLACK_AND_WHITE;
 
 /**

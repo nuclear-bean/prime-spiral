@@ -1,4 +1,4 @@
-package export;
+package export.image;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

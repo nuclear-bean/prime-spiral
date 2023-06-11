@@ -1,6 +1,6 @@
 package spirals.ulam.examples;
 
-import export.CSVExporter;
+import export.csv.CSVExporter;
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;

@@ -5,8 +5,8 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
 import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
-import export.ImageExporter;
-import export.PixelData;
+import export.image.ImageExporter;
+import export.image.PixelData;
 
 import java.io.File;
 import java.io.IOException;

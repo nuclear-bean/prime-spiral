@@ -3,7 +3,7 @@ package translation;
 import math.PrimeUtils;
 import org.junit.jupiter.api.Test;
 import translation.functions.Long2PixelData;
-import export.PixelData;
+import export.image.PixelData;
 
 import static org.junit.jupiter.api.Assertions.*;
 

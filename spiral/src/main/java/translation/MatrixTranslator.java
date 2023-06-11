@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import translation.functions.Boolean2LongFunction;
 import translation.functions.Long2BooleanFunction;
 import translation.functions.Long2PixelData;
-import export.PixelData;
+import export.image.PixelData;
 
 import java.time.Instant;
 

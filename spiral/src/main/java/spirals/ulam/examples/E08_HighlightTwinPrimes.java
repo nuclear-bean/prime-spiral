@@ -5,13 +5,13 @@ import spirals.ulam.generators.SimpleUlamGenerator;
 import translation.MatrixTranslator;
 import utils.ElapsedTimer;
 import utils.export.OutputPathProvider;
-import export.PixelData;
+import export.image.PixelData;
 
 import java.io.File;
 import java.io.IOException;
 
 import static translation.functions.Long2PixelData.HIGHLIGHT_TWIN_PRIMES;
-import static export.ImageExporter.generateImage;
+import static export.image.ImageExporter.generateImage;
 
 @Log4j2
 public class E08_HighlightTwinPrimes {
