@@ -3,9 +3,8 @@ package translation.functions;
 import export.image.PixelData;
 import export.image.RGBChannel;
 
-import static math.PrimeUtils.isPrime;
-import static math.PrimeUtils.isTwinPrime;
 import static export.image.PixelData.*;
+import static math.PrimeUtils.*;
 
 @FunctionalInterface
 public interface Long2PixelData {
@@ -30,6 +29,13 @@ public interface Long2PixelData {
         return (matrix, i, j) -> {
             long value = matrix[i][j];
             return isTwinPrime(value) ? BLACK : WHITE;
+        };
+    }
+
+    static Long2PixelData SEXY_PRIMES_BLACK_AND_WHITE() {
+        return (matrix, i, j) -> {
+            long value = matrix[i][j];
+            return isSexyPrime(value) ? BLACK : WHITE;
         };
     }
 
@@ -71,7 +77,4 @@ public interface Long2PixelData {
             return new PixelData(red, green, blue);
         };
     }
-
-
-
 }

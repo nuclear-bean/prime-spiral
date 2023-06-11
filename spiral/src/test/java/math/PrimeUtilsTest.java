@@ -80,4 +80,49 @@ class PrimeUtilsTest {
         Assertions.assertFalse(PrimeUtils.isTwinPrime(4));
         Assertions.assertFalse(PrimeUtils.isTwinPrime(6));
     }
+
+    @Test
+    void testIsSexyPrime() {
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(5));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(7));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(11));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(13));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(17));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(19));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(29));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(31));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(41));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(43));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(59));
+        Assertions.assertTrue(PrimeUtils.isSexyPrime(61));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(2));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(3));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(4));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(6));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(8));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(10));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(12));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(14));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(16));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(18));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(20));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(22));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(24));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(26));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(28));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(30));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(32));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(34));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(36));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(38));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(40));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(42));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(44));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(46));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(48));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(50));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(52));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(54));
+        Assertions.assertFalse(PrimeUtils.isSexyPrime(56));
+    }
 }
