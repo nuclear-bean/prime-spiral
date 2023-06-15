@@ -14,7 +14,7 @@ public final class CSVExporter {
     /**
      * Exports given matrix to CSV file. Each cell is separated by comma. True is represented by 1, false by 0.
      */
-    public static void generateCSV(final boolean[][] matrix, final File outputFile) {
+    public static void generateCSV(final boolean[][] matrix, final File outputFile) throws IOException {
         log.info("Starting CSV export");
         validateInputData(matrix);
         generateAndExport(matrix, outputFile);
@@ -27,31 +27,33 @@ public final class CSVExporter {
         assert matrix.length == matrix[0].length;
     }
 
-    private static void generateAndExport(boolean[][] matrix, File outputFile) {
+    private static void generateAndExport(boolean[][] matrix, File outputFile) throws IOException {
         try {
             String content = generateFileContent(matrix);
             writeToFile(content, outputFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Failed to export CSV due to {}", e.getMessage());
+            throw e;
         }
     }
 
     /**
      * Generates CSV file with no commas between values. True is represented by 1, false by 0.
      */
-    public static void generateSlimCSV(final boolean[][] matrix, final File outputFile) {
+    public static void generateSlimCSV(final boolean[][] matrix, final File outputFile) throws IOException {
         log.info("Starting slim CSV export");
         validateInputData(matrix);
         exportSlimCSV(matrix, outputFile);
         log.info("Slim CSV export finished. File saved to: {}", outputFile.getAbsolutePath());
     }
 
-    private static void exportSlimCSV(boolean[][] matrix, File outputFile) {
+    private static void exportSlimCSV(boolean[][] matrix, File outputFile) throws IOException {
         try {
             String content = generateSlimFileContent(matrix);
             writeToFile(content, outputFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Failed to export CSV due to {}", e.getMessage());
+            throw e;
         }
     }
 
