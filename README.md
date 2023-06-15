@@ -12,20 +12,23 @@ explore `spiral/src/main/java/spirals/ulam/examples` for examples on how to gene
 
 ### Examples
 
-- **E01_BasicBlackAndWhite** - simply generates a spiral and exports it to a png file. Primes are mapped to black pixels, non-primes are
-  white.
-- **E02_ExportToCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0.
-- **E03_ExportToSlimCSV** - generates a spiral and exports it to a csv file. Primes are 1, non-primes are 0. The csv
-  file does not contain commas to save size.
-- **E04_TwinPrimesBlackAndWhite** - same as E01 but only [twin primes](https://en.wikipedia.org/wiki/Twin_prime) are marked on the output image.
-- **E05_SexyPrimesBlackAndWhite** - same as E01 but only [sexy primes](https://en.wikipedia.org/wiki/Sexy_prime) are marked on the output image.
-- **E06_DensityWithRadiusAndBias** - density representation with custom radius and bias. Radius is the number of
-  neighbours to consider when calculating density. Bias is the amount of density to add to a specific point if it's a
-  prime (useful for highlighting primes).
-- **E07_DiagonalConnectionsWithinRadius** - density representation that only considers diagonal neighbours within a specified 
-  radius. Prime bias is supported.
-- **E08_HighlightTwinPrimes** - Similar to E01 but twin primes are highlighted in red.
+Example classes can be found under `./spiral/src/main/java/spirals/ulam/examples`. Currently, divided into 2 categories: _basic_ and _density_. Basic examples 
+simply calculate an Ulam's spiral and highlight or filter for a specific type of primes. Density examples calculate density of primes using different strategies. 
+Each example class can be customized, just modify the static variables above _main_ method and run the method itself. Output will be saved 
+to an appropriate directory in `./output`
 
+#### List of example classes with description:
+
+##### Basic
+- **EB01_BasicUlam** - generates simple Ulam's spiral of given size. Primes are black pixels, composites are white
+- **EB02_TwinPrimes** - marks only [twin primes](https://en.wikipedia.org/wiki/Twin_prime) or highlights them in red amongst all primes
+- **EB03_SexyPrimes** - marks only [sexy primes](https://en.wikipedia.org/wiki/Sexy_prime)
+
+##### Density
+- **ED01_RadiusBias** - generates matrix of given size. Then each point is assigned a value equal to number of primes in a given radius. The brighter the pixel, 
+the more primes are located around it. Actual primes can be applied a _bias_ value - which is useful for highlighting them. 
+- **ED02_DiagonalConnectionsWithinRadiusWithCutoff** - similar to ED01 but only primes that are placed diagonally to given point are taken into consideration.
+Cutoff value can be set - points with density value below this threshold will not be marked (corresponding pixels will be same as background value)
 
 #### todo notes
 - matrix compression (ability to store huge matrices in a small file)

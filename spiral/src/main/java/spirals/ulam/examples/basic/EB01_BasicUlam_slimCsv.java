@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import export.csv.CSVExporter;
 import lombok.extern.log4j.Log4j2;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * Output file does not contain commas to save some space.
  */
 @Log4j2
-public class E03_ExportToSlimCSV {
+public class EB01_BasicUlam_slimCsv {
 
     private static final int SIZE = 1_001;
 
@@ -38,7 +38,7 @@ public class E03_ExportToSlimCSV {
     }
 
     private static File getOutputFile() {
-        String path = OutputPathProvider.getOutputPath("ulam_slim", SIZE, ".csv", E03_ExportToSlimCSV.class);
+        String path = OutputPathProvider.getOutputPath("basic_ulam", SIZE, ".slimcsv", EB01_BasicUlam_slimCsv.class);
         return new File(path);
     }
 }

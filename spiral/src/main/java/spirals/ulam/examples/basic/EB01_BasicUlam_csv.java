@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import export.csv.CSVExporter;
 import lombok.extern.log4j.Log4j2;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * Creates basic Ulam spiral and saves it as csv. Output file is a matrix of given size filled with 0s and 1s where 1 represents prime number and 0 represents a composite number.
  */
 @Log4j2
-public class E02_ExportToCSV {
+public class EB01_BasicUlam_csv {
 
     private static final int SIZE = 1_001;
 
@@ -37,7 +37,7 @@ public class E02_ExportToCSV {
     }
 
     private static File getOutputPath() {
-        String path = OutputPathProvider.getOutputPath("ulam", SIZE, ".csv", E02_ExportToCSV.class);
+        String path = OutputPathProvider.getOutputPath("basic_ulam", SIZE, ".csv", EB01_BasicUlam_csv.class);
         return new File(path);
     }
 }

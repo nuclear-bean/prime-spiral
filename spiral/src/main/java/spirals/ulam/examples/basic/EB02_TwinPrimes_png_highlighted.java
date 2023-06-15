@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
@@ -14,7 +14,7 @@ import static translation.functions.Long2PixelData.HIGHLIGHT_TWIN_PRIMES;
 import static export.image.ImageExporter.generateImage;
 
 @Log4j2
-public class E08_HighlightTwinPrimes {
+public class EB02_TwinPrimes_png_highlighted {
 
     private static final int SIZE = 1_001;
 
@@ -36,6 +36,6 @@ public class E08_HighlightTwinPrimes {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("twin-primes", SIZE, ".png", E08_HighlightTwinPrimes.class));
+        return new File(OutputPathProvider.getOutputPath("twin_primes_highlighted", SIZE, ".png", EB02_TwinPrimes_png_highlighted.class));
     }
 }

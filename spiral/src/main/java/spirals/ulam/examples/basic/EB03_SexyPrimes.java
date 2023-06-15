@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import export.image.ImageExporter;
 import export.image.PixelData;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import static translation.functions.Long2PixelData.SEXY_PRIMES_BLACK_AND_WHITE;
 
 @Log4j2
-public class E05_SexyPrimesBlackAndWhite {
+public class EB03_SexyPrimes {
 
     private static final int SIZE = 1_001;
 
@@ -36,7 +36,7 @@ public class E05_SexyPrimesBlackAndWhite {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("sexy_primes", SIZE, ".png", E05_SexyPrimesBlackAndWhite.class));
+        return new File(OutputPathProvider.getOutputPath("sexy_primes", SIZE, ".png", EB03_SexyPrimes.class));
     }
 
 }

@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import export.image.ImageExporter;
 import export.image.PixelData;
@@ -17,7 +17,7 @@ import static translation.functions.Long2PixelData.TWIN_PRIMES_BLACK_AND_WHITE;
  * Creates basic Ulam spiral and saves it as spirals.ulam.export.image. Primes are mapped to black pixels, non-primes to white.
  */
 @Log4j2
-public class E04_TwinPrimesBlackAndWhite {
+public class EB02_TwinPrimes_png {
 
     private static final int SIZE = 1_001;
 
@@ -39,7 +39,7 @@ public class E04_TwinPrimesBlackAndWhite {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("twin_primes", SIZE, ".png", E04_TwinPrimesBlackAndWhite.class));
+        return new File(OutputPathProvider.getOutputPath("twin_primes", SIZE, ".png", EB02_TwinPrimes_png.class));
     }
 
 }

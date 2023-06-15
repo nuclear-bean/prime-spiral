@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.density;
 
 import export.image.RGBChannel;
 import lombok.extern.log4j.Log4j2;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import static export.image.RGBChannel.*;
 
 @Log4j2
-public class E07_DiagonalConnectionsWithinRadius {
+public class ED02_DiagonalConnectionsWithinRadiusWithCutoff {
 
     private static final int SIZE = 1_001;
     private static final int RADIUS = 10;
@@ -78,7 +78,7 @@ public class E07_DiagonalConnectionsWithinRadius {
 
     private static File getOutputFile() {
         String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, PRIME_CHANNEL.name().toLowerCase());
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E07_DiagonalConnectionsWithinRadius.class);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", ED02_DiagonalConnectionsWithinRadiusWithCutoff.class);
         return new File(path);
     }
 

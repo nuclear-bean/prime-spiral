@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.density;
 
 import export.image.RGBChannel;
 import lombok.extern.log4j.Log4j2;
@@ -22,7 +22,7 @@ import static export.image.RGBChannel.*;
  * Creates density representation of Ulam spiral and saves it as image. Density calculation strategy can be customized.
  */
 @Log4j2
-public class E06_DensityWithRadiusAndBias {
+public class ED01_RadiusBias {
 
     private static final int SIZE = 1_001;
     private static final int RADIUS = 10;
@@ -80,7 +80,7 @@ public class E06_DensityWithRadiusAndBias {
 
     private static File getOutputFile() {
         String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, PRIME_CHANNEL.name().toLowerCase());
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", E06_DensityWithRadiusAndBias.class);
+        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", ED01_RadiusBias.class);
         return new File(path);
     }
 

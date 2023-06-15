@@ -1,4 +1,4 @@
-package spirals.ulam.examples;
+package spirals.ulam.examples.basic;
 
 import lombok.extern.log4j.Log4j2;
 import spirals.ulam.generators.SimpleUlamGenerator;
@@ -17,7 +17,7 @@ import static translation.functions.Long2PixelData.BASIC_BLACK_AND_WHITE;
  * Creates basic Ulam spiral and saves it as spirals.ulam.export.image. Primes are mapped to black pixels, non-primes to white.
  */
 @Log4j2
-public class E01_BasicBlackAndWhite {
+public class EB01_BasicUlam_png {
 
     private static final int SIZE = 1_001;
 
@@ -39,7 +39,7 @@ public class E01_BasicBlackAndWhite {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("simple_black_and_white", SIZE, ".png", E01_BasicBlackAndWhite.class));
+        return new File(OutputPathProvider.getOutputPath("basic_ulam", SIZE, ".png", EB01_BasicUlam_png.class));
     }
 
 }
