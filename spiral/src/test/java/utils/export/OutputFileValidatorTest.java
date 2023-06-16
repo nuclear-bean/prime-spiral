@@ -14,6 +14,7 @@ class OutputFileValidatorTest {
     @BeforeAll
     static void setup() throws IOException {
         File file = new File("non_writeable_file");
+        file.createNewFile();
         file.setWritable(false);
         File writeableFile = new File("writeable_file");
         writeableFile.setWritable(true);
