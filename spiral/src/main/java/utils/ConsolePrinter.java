@@ -5,6 +5,7 @@ import utils.annotations.ExternalCode;
 /**
  * Prints long[][] matrix to console
  */
+@SuppressWarnings("unused")
 @ExternalCode
 public class ConsolePrinter {
 
