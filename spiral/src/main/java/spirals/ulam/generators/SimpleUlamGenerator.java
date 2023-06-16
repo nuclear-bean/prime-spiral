@@ -1,24 +1,20 @@
 package spirals.ulam.generators;
 
-import lombok.experimental.UtilityClass;
 import utils.MatrixValidator;
-import utils.annotations.Experimental;
 import utils.annotations.ExternalCode;
 
 // TODO: improve this
-@UtilityClass
-@Experimental
 @ExternalCode
-public class SimpleUlamGenerator {
+public final class SimpleUlamGenerator {
 
-    public long[][] generateMatrix(int size) {
+    public static long[][] generateMatrix(int size) {
         MatrixValidator.validateMatrixSize(size);
         long[][] matrix = new long[size][size];
         ulamSpiralCounterClockwise(matrix);
         return matrix;
     }
 
-    private void ulamSpiralCounterClockwise(long[][] matrix) {
+    private static void ulamSpiralCounterClockwise(long[][] matrix) {
         int n = matrix.length; // get the size of the matrix
         int row = n / 2; // start at the middle row
         int col = n / 2; // start at the middle column
@@ -47,7 +43,7 @@ public class SimpleUlamGenerator {
         }
     }
 
-    private boolean isOddSquare(int num) {
+    private static boolean isOddSquare(int num) {
         if (num % 2 == 0) {
             return false;
         }

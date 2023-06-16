@@ -1,16 +1,14 @@
 package utils;
 
-import lombok.experimental.UtilityClass;
 import utils.annotations.ExternalCode;
 
 /**
  * Prints long[][] matrix to console
  */
-@UtilityClass
 @ExternalCode
 public class ConsolePrinter {
 
-    public <T extends Number> void prettyPrintMatrixWithFrames(T[][] matrix) {
+    public static <T extends Number> void prettyPrintMatrixWithFrames(T[][] matrix) {
         checkSize(matrix.length);
 
         // Determine the width of each matrix element for formatting purposes
@@ -34,7 +32,7 @@ public class ConsolePrinter {
         iterateOverMatrix(matrix, maxElementWidth);
     }
 
-    public void printSimple(long[][] matrix) {
+    public static void printSimple(long[][] matrix) {
         checkSize(matrix.length);
         for (long[] row : matrix) {
             for (long point : row) {
@@ -44,13 +42,13 @@ public class ConsolePrinter {
         }
     }
 
-    private void checkSize(int size) {
+    private static void checkSize(int size) {
         if (size > 500) {
             throw new IllegalArgumentException("Matrix is too big to print");
         }
     }
 
-    private <T extends Number> void iterateOverMatrix(T[][] matrix, int maxElementWidth) {
+    private static <T extends Number> void iterateOverMatrix(T[][] matrix, int maxElementWidth) {
         for (int i = 0; i < matrix.length + 2; i++) {
             System.out.print("+");
             for (int j = 0; j < maxElementWidth; j++) {

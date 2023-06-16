@@ -1,11 +1,8 @@
 package experimental;
 
-import lombok.experimental.UtilityClass;
+public final class RingGenerator {
 
-@UtilityClass
-public class RingGenerator {
-
-    public long[] ringContent(int n) {
+    public static long[] ringContent(int n) {
         int capacity = RingFunctions.calculateRingCapacity(n);
         long[] result = new long[capacity];
         result[0] = RingFunctions.calculateRingMinValue(n);
