@@ -37,6 +37,6 @@ public class EB05_PrimeGapN_png {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath(String.format("prime_gap_%s", GAP), SIZE, ".png", EB05_PrimeGapN_png.class));
+        return new File(OutputPathProvider.prepareOutputPath(String.format("prime_gap_%s", GAP), SIZE, ".png", EB05_PrimeGapN_png.class));
     }
 }

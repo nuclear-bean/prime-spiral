@@ -80,7 +80,7 @@ public class ED01_RadiusBias {
 
     private static File getOutputFile() {
         String fileName = String.format("density_radius_%s_bias_%s_%s", RADIUS, PRIME_BIAS, PRIME_CHANNEL.name().toLowerCase());
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", ED01_RadiusBias.class);
+        String path = OutputPathProvider.prepareOutputPath(fileName, SIZE, ".png", ED01_RadiusBias.class);
         return new File(path);
     }
 

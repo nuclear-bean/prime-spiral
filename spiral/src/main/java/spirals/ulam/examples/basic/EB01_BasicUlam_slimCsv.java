@@ -38,7 +38,7 @@ public class EB01_BasicUlam_slimCsv {
     }
 
     private static File getOutputFile() {
-        String path = OutputPathProvider.getOutputPath("basic_ulam", SIZE, ".slimcsv", EB01_BasicUlam_slimCsv.class);
+        String path = OutputPathProvider.prepareOutputPath("basic_ulam", SIZE, ".slimcsv", EB01_BasicUlam_slimCsv.class);
         return new File(path);
     }
 }

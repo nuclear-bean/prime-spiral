@@ -39,7 +39,7 @@ public class EB02_TwinPrimes_png {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("twin_primes", SIZE, ".png", EB02_TwinPrimes_png.class));
+        return new File(OutputPathProvider.prepareOutputPath("twin_primes", SIZE, ".png", EB02_TwinPrimes_png.class));
     }
 
 }

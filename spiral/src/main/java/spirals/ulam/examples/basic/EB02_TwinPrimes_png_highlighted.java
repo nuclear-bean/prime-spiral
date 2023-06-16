@@ -36,6 +36,6 @@ public class EB02_TwinPrimes_png_highlighted {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("twin_primes_highlighted", SIZE, ".png", EB02_TwinPrimes_png_highlighted.class));
+        return new File(OutputPathProvider.prepareOutputPath("twin_primes_highlighted", SIZE, ".png", EB02_TwinPrimes_png_highlighted.class));
     }
 }

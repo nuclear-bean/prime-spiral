@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 
 import static translation.functions.Long2PixelData.COUSIN_PRIMES_BLACK_AND_WHITE;
-import static translation.functions.Long2PixelData.SEXY_PRIMES_BLACK_AND_WHITE;
 
 @Log4j2
 public class EB03_CousinPrimes_png {
@@ -37,7 +36,7 @@ public class EB03_CousinPrimes_png {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("cousin_primes", SIZE, ".png", EB03_CousinPrimes_png.class));
+        return new File(OutputPathProvider.prepareOutputPath("cousin_primes", SIZE, ".png", EB03_CousinPrimes_png.class));
     }
 
 }

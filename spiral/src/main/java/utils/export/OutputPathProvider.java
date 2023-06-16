@@ -6,7 +6,10 @@ import java.io.File;
 
 public final class OutputPathProvider {
 
-    public static String getOutputPath(@NonNull final String name, int size, @NonNull final String extension, @NonNull final Class<?> clazz) {
+    /**
+     * Resolves the output path for given parameters and ensures that the path exists and is writable.
+     */
+    public static String prepareOutputPath(@NonNull final String name, int size, @NonNull final String extension, @NonNull final Class<?> clazz) {
         validateExtension(extension);
         String classPrefix = resolveClassPrefix(clazz);
         String path = constructPath(classPrefix, name, size, extension);

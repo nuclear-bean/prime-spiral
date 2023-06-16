@@ -39,7 +39,7 @@ public class EB01_BasicUlam_png {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("basic_ulam", SIZE, ".png", EB01_BasicUlam_png.class));
+        return new File(OutputPathProvider.prepareOutputPath("basic_ulam", SIZE, ".png", EB01_BasicUlam_png.class));
     }
 
 }

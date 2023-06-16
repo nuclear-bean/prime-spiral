@@ -78,7 +78,7 @@ public class ED02_DiagonalConnectionsWithinRadiusWithCutoff {
 
     private static File getOutputFile() {
         String fileName = String.format("highlighted_diagonals_%s_bias_%s_cutoff_%s_%s", RADIUS, PRIME_BIAS, CUTOFF, PRIME_CHANNEL.name().toLowerCase());
-        String path = OutputPathProvider.getOutputPath(fileName, SIZE, ".png", ED02_DiagonalConnectionsWithinRadiusWithCutoff.class);
+        String path = OutputPathProvider.prepareOutputPath(fileName, SIZE, ".png", ED02_DiagonalConnectionsWithinRadiusWithCutoff.class);
         return new File(path);
     }
 

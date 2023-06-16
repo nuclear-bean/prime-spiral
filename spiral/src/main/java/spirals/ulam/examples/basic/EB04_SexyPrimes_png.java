@@ -36,7 +36,7 @@ public class EB04_SexyPrimes_png {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("sexy_primes", SIZE, ".png", EB04_SexyPrimes_png.class));
+        return new File(OutputPathProvider.prepareOutputPath("sexy_primes", SIZE, ".png", EB04_SexyPrimes_png.class));
     }
 
 }
