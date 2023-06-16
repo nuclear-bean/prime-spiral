@@ -16,13 +16,13 @@ class OutputPathProviderTest {
     @Test
     void testGetOutputPath_1() {
         String path = OutputPathProvider.getOutputPath("basic_black_and_white", 10_001, ".png", EB01_BasicUlam_png.class);
-        Assertions.assertEquals("./output/E01/10001_basic_black_and_white.png", path);
+        Assertions.assertEquals("./output/EB01/10001_basic_black_and_white.png", path);
     }
 
     @Test
     void testGetOutputPath_2() {
         String path = OutputPathProvider.getOutputPath("basic_black_and_white", 501, ".png", EB01_BasicUlam_csv.class);
-        Assertions.assertEquals("./output/E02/501_basic_black_and_white.png", path);
+        Assertions.assertEquals("./output/EB01/501_basic_black_and_white.png", path);
     }
 
     @Test

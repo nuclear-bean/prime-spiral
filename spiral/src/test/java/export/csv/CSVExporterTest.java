@@ -53,12 +53,12 @@ class CSVExporterTest {
 
     @Test
     void testInvalidPath() {
-        assertThrows(FileNotFoundException.class, () -> CSVExporter.generateCSV(input, new File("\\akdfnakj")));
+        assertThrows(FileNotFoundException.class, () -> CSVExporter.generateCSV(input, new File("/akdfnakj")));
     }
 
     @Test
     void testInvalidPathSlim() {
-        assertThrows(FileNotFoundException.class, () -> CSVExporter.generateSlimCSV(input, new File("\\akdfnakj")));
+        assertThrows(FileNotFoundException.class, () -> CSVExporter.generateSlimCSV(input, new File("/akdfnakj")));
     }
 
     private List<String> readCSV(File file) {
