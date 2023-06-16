@@ -82,6 +82,24 @@ class PrimeUtilsTest {
     }
 
     @Test
+    void testIsCousinPrime() {
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(3));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(7));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(11));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(13));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(17));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(19));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(23));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(877));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(907));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(499));
+        Assertions.assertTrue(PrimeUtils.isCousinPrime(613));
+        Assertions.assertFalse(PrimeUtils.isCousinPrime(2));
+        Assertions.assertFalse(PrimeUtils.isCousinPrime(31));
+        Assertions.assertFalse(PrimeUtils.isCousinPrime(149));
+    }
+
+    @Test
     void testIsSexyPrime() {
         Assertions.assertTrue(PrimeUtils.isSexyPrime(5));
         Assertions.assertTrue(PrimeUtils.isSexyPrime(7));
@@ -124,5 +142,11 @@ class PrimeUtilsTest {
         Assertions.assertFalse(PrimeUtils.isSexyPrime(52));
         Assertions.assertFalse(PrimeUtils.isSexyPrime(54));
         Assertions.assertFalse(PrimeUtils.isSexyPrime(56));
+    }
+
+    @Test
+    void testIsNeighbourPrimeOfGap() {
+        Assertions.assertTrue(PrimeUtils.isNeighbourPrimeOfGap(3, 2));
+        Assertions.assertTrue(PrimeUtils.isNeighbourPrimeOfGap(89, 12));
     }
 }

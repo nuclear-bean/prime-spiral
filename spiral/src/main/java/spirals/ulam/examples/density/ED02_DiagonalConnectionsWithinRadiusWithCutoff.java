@@ -21,7 +21,7 @@ import static export.image.RGBChannel.*;
 @Log4j2
 public class ED02_DiagonalConnectionsWithinRadiusWithCutoff {
 
-    private static final int SIZE = 1_001;
+    private static final int SIZE = 10_001;
     private static final int RADIUS = 10;
     private static final int PRIME_BIAS = 10;
     private static final int CUTOFF = 19;  // don't highlight points with value below this number

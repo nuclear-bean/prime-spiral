@@ -22,7 +22,9 @@ to an appropriate directory in `./output`
 ##### Basic
 - **EB01_BasicUlam** - generates simple Ulam's spiral of given size. Primes are black pixels, composites are white
 - **EB02_TwinPrimes** - marks only [twin primes](https://en.wikipedia.org/wiki/Twin_prime) or highlights them in red amongst all primes
-- **EB03_SexyPrimes** - marks only [sexy primes](https://en.wikipedia.org/wiki/Sexy_prime)
+- **EB03_CousinPrimes** - marks only [cousin primes](https://en.wikipedia.org/wiki/Cousin_prime)
+- **EB04_SexyPrimes** - marks only [sexy primes](https://en.wikipedia.org/wiki/Sexy_prime)
+- **EB05_PrimeGap** - marks neighbour primes with given gap distance
 
 ##### Density
 - **ED01_RadiusBias** - generates matrix of given size. Then each point is assigned a value equal to number of primes in a given radius. The brighter the pixel, 
@@ -33,3 +35,4 @@ Cutoff value can be set - points with density value below this threshold will no
 #### todo notes
 - matrix compression (ability to store huge matrices in a small file)
 - matrix caching - to speed up the generation process - pre-generated matrix to be read from file
+- generating large matrices is taking too much time

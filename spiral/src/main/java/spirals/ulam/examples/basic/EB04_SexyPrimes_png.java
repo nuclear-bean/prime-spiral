@@ -14,7 +14,7 @@ import java.io.IOException;
 import static translation.functions.Long2PixelData.SEXY_PRIMES_BLACK_AND_WHITE;
 
 @Log4j2
-public class EB03_SexyPrimes {
+public class EB04_SexyPrimes_png {
 
     private static final int SIZE = 1_001;
 
@@ -36,7 +36,7 @@ public class EB03_SexyPrimes {
     }
 
     private static File getOutputFile() {
-        return new File(OutputPathProvider.getOutputPath("sexy_primes", SIZE, ".png", EB03_SexyPrimes.class));
+        return new File(OutputPathProvider.getOutputPath("sexy_primes", SIZE, ".png", EB04_SexyPrimes_png.class));
     }
 
 }

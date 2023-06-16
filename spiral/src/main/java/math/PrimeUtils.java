@@ -2,18 +2,12 @@ package math;
 
 public class PrimeUtils {
 
+    private static final int TWIN_PRIME_GAP = 2;
+    private static final int COUSIN_PRIME_GAP = 4;
+    private static final int SEXY_PRIME_GAP = 6;
+
     public static boolean isPrime(long number) {
-        if (number <= 1) {
-            return false;
-        }
-
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-
-        return true;
+        return PrimeChecker.isPrime(number);
     }
 
     public static long[] firstNPrimes(long n) {
@@ -35,7 +29,11 @@ public class PrimeUtils {
      * Learn more: <a href="https://en.wikipedia.org/wiki/Twin_prime">here</a>
      */
     public static boolean isTwinPrime(long number) {
-        return isPrime(number) && (isPrime(number - 2) || isPrime(number + 2));
+        return isNeighbourPrimeOfGap(number, TWIN_PRIME_GAP);
+    }
+
+    public static boolean isCousinPrime(long number) {
+        return isNeighbourPrimeOfGap(number, COUSIN_PRIME_GAP);
     }
 
     /**
@@ -43,6 +41,10 @@ public class PrimeUtils {
      * Learn more: <a href="https://en.wikipedia.org/wiki/Sexy_prime">here</a>
      */
     public static boolean isSexyPrime(long number) {
-        return isPrime(number) && (isPrime(number - 6) || isPrime(number + 6));
+        return isNeighbourPrimeOfGap(number, SEXY_PRIME_GAP);
+    }
+
+    public static boolean isNeighbourPrimeOfGap(long number, int gap) {
+        return isPrime(number) && (isPrime(number - gap) || isPrime(number + gap));
     }
 }

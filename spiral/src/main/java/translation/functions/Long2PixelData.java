@@ -32,10 +32,33 @@ public interface Long2PixelData {
         };
     }
 
+    /**
+     * Cousin primes are mapped to black pixels. Everything else is mapped to white pixels.
+     */
+    static Long2PixelData COUSIN_PRIMES_BLACK_AND_WHITE() {
+        return (matrix, i, j) -> {
+            long value = matrix[i][j];
+            return isCousinPrime(value) ? BLACK : WHITE;
+        };
+    }
+
+    /**
+     * Sexy primes are mapped to black pixels. Everything else is mapped to white pixels.
+     */
     static Long2PixelData SEXY_PRIMES_BLACK_AND_WHITE() {
         return (matrix, i, j) -> {
             long value = matrix[i][j];
             return isSexyPrime(value) ? BLACK : WHITE;
+        };
+    }
+
+    /**
+     * Function that highlights primes that are neighbours of a given gap. Neighbour primes are mapped to black, isolated primes to black and composites to white.
+     */
+    static Long2PixelData PRIME_GAP_N(int gap) {
+        return (matrix, i, j) -> {
+            long value = matrix[i][j];
+            return isNeighbourPrimeOfGap(value, gap) ? BLACK : WHITE;
         };
     }
 
