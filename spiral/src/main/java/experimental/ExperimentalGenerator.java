@@ -1,15 +1,26 @@
 package experimental;
 
-import spirals.ulam.generators.SimpleUlamGenerator;
-import utils.ConsolePrinter;
+import lombok.extern.log4j.Log4j2;
 
+import java.time.Instant;
+
+@Log4j2
 public class ExperimentalGenerator {
 
     public static void main(String[] args) {
-        ConsolePrinter.printSimple(SimpleUlamGenerator.generateMatrix(7));
-        System.out.println("-");
-        long[][] matrix = generate(7);
-        ConsolePrinter.printSimple(matrix);
+        int size = 50_000;
+
+        log.info("Starting experimental generator");
+        Instant experimentalGeneratorStart = Instant.now();
+        long [][] matrix = ExperimentalGenerator.generate(size);
+        Instant experimentalGeneratorEnd = Instant.now();
+
+        long experimentalGeneratorDuration = experimentalGeneratorEnd.toEpochMilli() - experimentalGeneratorStart.toEpochMilli();
+
+        System.out.println("Experimental generator duration: " + experimentalGeneratorDuration + " ms for size: " + size);
+
+        long maxValue = matrix[0][0];
+        System.out.println("Max value: " + maxValue);
     }
 
     public static long[][] generate(int i) {

@@ -45,17 +45,17 @@ class ExperimentalGeneratorTest {
     @Test
     @Disabled("Manual benchmark")
     void benchmark() {
-        int size = 10_001;
+        int size = 5001;
         log.info("Benchmarking with matrix size: " + size);
 
         log.info("Starting simple generator");
         Instant simpleGeneratorStart = Instant.now();
-        spirals.ulam.generators.SimpleUlamGenerator.generateMatrix(size);
+        long [][] simpleMatrix = spirals.ulam.generators.SimpleUlamGenerator.generateMatrix(size);
         Instant simpleGeneratorEnd = Instant.now();
 
         log.info("Starting experimental generator");
         Instant experimentalGeneratorStart = Instant.now();
-        ExperimentalGenerator.generate(size);
+        long [][] experimentalMatrix = ExperimentalGenerator.generate(size);
         Instant experimentalGeneratorEnd = Instant.now();
 
         long simpleGeneratorDuration = simpleGeneratorEnd.toEpochMilli() - simpleGeneratorStart.toEpochMilli();
@@ -66,6 +66,7 @@ class ExperimentalGeneratorTest {
         System.out.println("Experimental generator completed faster by " + (simpleGeneratorDuration - experimentalGeneratorDuration) + " ms");
         System.out.println("Experimental generator is approximately " + simpleGeneratorDuration / experimentalGeneratorDuration + " times faster");
 
+        assertArrayEquals(simpleMatrix, experimentalMatrix);
     }
 
 }

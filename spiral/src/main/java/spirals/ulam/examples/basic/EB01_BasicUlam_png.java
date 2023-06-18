@@ -19,7 +19,7 @@ import static translation.functions.Long2PixelData.BASIC_BLACK_AND_WHITE;
 @Log4j2
 public class EB01_BasicUlam_png {
 
-    private static final int SIZE = 1_001;
+    private static final int SIZE = 20_001;
 
     public static void main(String[] args) throws IOException {
         ElapsedTimer.start();

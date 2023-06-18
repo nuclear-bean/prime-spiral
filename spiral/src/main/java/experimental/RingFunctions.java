@@ -20,4 +20,7 @@ public final class RingFunctions {
         val += 1;
         return val;
     }
+
+    // todo calculate ring max value
+    // todo and test against experimentalgenerator output
 }
