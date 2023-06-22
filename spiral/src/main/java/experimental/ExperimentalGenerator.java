@@ -1,7 +1,7 @@
 package experimental;
 
 import lombok.extern.log4j.Log4j2;
-import spirals.ulam.utils.SpokeValueCalculator;
+import spirals.ulam.calculators.SpokeValueCalculator;
 
 import java.time.Instant;
 
