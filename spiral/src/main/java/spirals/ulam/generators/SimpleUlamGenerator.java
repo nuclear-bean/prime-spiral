@@ -3,18 +3,25 @@ package spirals.ulam.generators;
 import utils.MatrixValidator;
 import utils.annotations.ExternalCode;
 
-// TODO: improve this
+/**
+ * Not my code (Chat-GPT generated). It works, not very fast though.
+ */
 @ExternalCode
-public final class SimpleUlamGenerator {
+public final class SimpleUlamGenerator implements UlamGenerator {
 
     public static long[][] generateMatrix(int size) {
+        return new SimpleUlamGenerator().generate(size);
+    }
+
+    @Override
+    public long[][] generate(int size) {
         MatrixValidator.validateMatrixSize(size);
         long[][] matrix = new long[size][size];
         ulamSpiralCounterClockwise(matrix);
         return matrix;
     }
 
-    private static void ulamSpiralCounterClockwise(long[][] matrix) {
+    private void ulamSpiralCounterClockwise(long[][] matrix) {
         int n = matrix.length; // get the size of the matrix
         int row = n / 2; // start at the middle row
         int col = n / 2; // start at the middle column
@@ -43,7 +50,7 @@ public final class SimpleUlamGenerator {
         }
     }
 
-    private static boolean isOddSquare(int num) {
+    private boolean isOddSquare(int num) {
         if (num % 2 == 0) {
             return false;
         }

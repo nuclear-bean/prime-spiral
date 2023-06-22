@@ -1,4 +1,4 @@
-package experimental;
+package spirals.ulam.generators;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Disabled;
@@ -9,11 +9,11 @@ import java.time.Instant;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Log4j2
-class ExperimentalGeneratorTest {
+class SpokeBasedGeneratorTest {
 
     @Test
     void compareWithSimpleUlamGenerator() {
-        long[][] matrix = ExperimentalGenerator.generate(151);
+        long[][] matrix = SpokeBasedGenerator.generateMatrix(151);
         long[][] simpleMatrix = spirals.ulam.generators.SimpleUlamGenerator.generateMatrix(151);
         assertArrayEquals(simpleMatrix, matrix);
     }
@@ -31,7 +31,7 @@ class ExperimentalGeneratorTest {
 
         log.info("Starting experimental generator");
         Instant experimentalGeneratorStart = Instant.now();
-        long [][] experimentalMatrix = ExperimentalGenerator.generate(size);
+        long [][] experimentalMatrix = SpokeBasedGenerator.generateMatrix(size);
         Instant experimentalGeneratorEnd = Instant.now();
 
         long simpleGeneratorDuration = simpleGeneratorEnd.toEpochMilli() - simpleGeneratorStart.toEpochMilli();

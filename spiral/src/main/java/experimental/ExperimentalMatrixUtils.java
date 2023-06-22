@@ -8,7 +8,7 @@ public class ExperimentalMatrixUtils {
     @Data
     @AllArgsConstructor
     public static class Coordinates {
-        int i; int j;
+        public int i; public int j;
     }
 
     public static Coordinates getCenterCoordinates(long[][] matrix) {

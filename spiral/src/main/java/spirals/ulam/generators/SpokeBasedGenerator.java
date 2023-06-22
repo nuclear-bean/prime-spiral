@@ -1,42 +1,37 @@
-package experimental;
+package spirals.ulam.generators;
 
-import lombok.extern.log4j.Log4j2;
 import spirals.ulam.calculators.SpokeValueCalculator;
 
-import java.time.Instant;
+/**
+ * Generates an Ulam spiral matrix using a spoke-based approach. Cells on SW and NW spokes are calculated using predefined formulas.
+ * Remaining cells are filled in by incrementing the value of the spoke by appropriate value.
+ * <br><br>
+ * Seems to follow time complexity of O(n).
+ * Faster than the {@link spirals.ulam.generators.SimpleUlamGenerator} approach for all matrix sizes.
+ *
+ *
+ * @see spirals.ulam.calculators.SpokeValueCalculator
+ * @author nuclear-bean
+ */
+public final class SpokeBasedGenerator implements UlamGenerator {
 
-@Log4j2
-public class ExperimentalGenerator {
-
-    public static void main(String[] args) {
-        int size = 50_000;
-
-        log.info("Starting experimental generator");
-        Instant experimentalGeneratorStart = Instant.now();
-        long [][] matrix = ExperimentalGenerator.generate(size);
-        Instant experimentalGeneratorEnd = Instant.now();
-
-        long experimentalGeneratorDuration = experimentalGeneratorEnd.toEpochMilli() - experimentalGeneratorStart.toEpochMilli();
-
-        System.out.println("Experimental generator duration: " + experimentalGeneratorDuration + " ms for size: " + size);
-
-        long maxValue = matrix[0][0];
-        System.out.println("Max value: " + maxValue);
+    public static long[][] generateMatrix(int size) {
+        return new SpokeBasedGenerator().generate(size);
     }
 
-    public static long[][] generate(int i) {
-        long [][] matrix = new long[i][i];
+    @Override
+    public long[][] generate(int size) {
+        long [][] matrix = new long[size][size];
+        fillCenter(matrix);
         fillTop(matrix);
         fillBottom(matrix);
         fillLeft(matrix);
         fillRight(matrix);
-        fillCenter(matrix);
         return matrix;
     }
 
     private static void fillCenter(long[][] matrix) {
-        ExperimentalMatrixUtils.Coordinates c = ExperimentalMatrixUtils.getCenterCoordinates(matrix);
-        matrix[c.i][c.j] = 1;
+        matrix[matrix.length /2][matrix.length /2] = 1;
     }
 
     private static void fillBottom(long[][] matrix) {
@@ -83,6 +78,5 @@ public class ExperimentalGenerator {
             }
         }
     }
-
 
 }
