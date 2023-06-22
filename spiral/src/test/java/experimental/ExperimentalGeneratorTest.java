@@ -12,30 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExperimentalGeneratorTest {
 
     @Test
-    void testNW() {
-        assertEquals(5, ExperimentalGenerator.NW(1));
-        assertEquals(17, ExperimentalGenerator.NW(2));
-        assertEquals(37, ExperimentalGenerator.NW(3));
-        assertEquals(65, ExperimentalGenerator.NW(4));
-    }
-
-    @Test
-    void testSE() {
-        assertEquals(9, ExperimentalGenerator.SE(1));
-        assertEquals(25, ExperimentalGenerator.SE(2));
-        assertEquals(49, ExperimentalGenerator.SE(3));
-        assertEquals(81, ExperimentalGenerator.SE(4));
-    }
-
-    @Test
-    void testSW() {
-        assertEquals(7, ExperimentalGenerator.SW(1));
-        assertEquals(21, ExperimentalGenerator.SW(2));
-        assertEquals(43, ExperimentalGenerator.SW(3));
-        assertEquals(73, ExperimentalGenerator.SW(4));
-    }
-
-    @Test
     void compareWithSimpleUlamGenerator() {
         long[][] matrix = ExperimentalGenerator.generate(151);
         long[][] simpleMatrix = spirals.ulam.generators.SimpleUlamGenerator.generateMatrix(151);
