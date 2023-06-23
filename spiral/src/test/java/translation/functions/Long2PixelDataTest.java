@@ -55,6 +55,31 @@ class Long2PixelDataTest {
         assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(37L), 0, 0));
     }
 
+    @Test
+    void testStatic_PRIME_GAP_N_2() {
+        Long2PixelData function = Long2PixelData.PRIME_GAP_N(2);
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(5L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(7L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(11L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(13L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(17L), 0, 0));
+        assertPixelDataEquals(PixelData.WHITE, function.calculatePixelValue(matrixOf(23L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(29L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(31L), 0, 0));
+        assertPixelDataEquals(PixelData.WHITE, function.calculatePixelValue(matrixOf(37L), 0, 0));
+    }
+
+    @Test
+    void testStatic_PRIME_GAP_N_4() {
+        Long2PixelData function = Long2PixelData.PRIME_GAP_N(4);
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(7L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(11L), 0, 0));
+        assertPixelDataEquals(PixelData.WHITE, function.calculatePixelValue(matrixOf(12L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(13L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(17L), 0, 0));
+        assertPixelDataEquals(PixelData.BLACK, function.calculatePixelValue(matrixOf(97L), 0, 0));
+    }
+
     long[][] matrixOf(long value) {
         long [][] matrix = new long[1][1];
         matrix[0][0] = value;
