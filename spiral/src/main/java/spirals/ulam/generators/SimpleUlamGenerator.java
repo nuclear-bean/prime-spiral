@@ -10,18 +10,23 @@ import utils.annotations.ExternalCode;
 public final class SimpleUlamGenerator implements UlamGenerator {
 
     public static long[][] generateMatrix(int size) {
-        return new SimpleUlamGenerator().generate(size);
+        return new SimpleUlamGenerator(size).generate();
+    }
+
+    private final long[][] matrix;
+
+    public SimpleUlamGenerator(int size) {
+        MatrixValidator.validateMatrixSize(size);
+        this.matrix = new long[size][size];
     }
 
     @Override
-    public long[][] generate(int size) {
-        MatrixValidator.validateMatrixSize(size);
-        long[][] matrix = new long[size][size];
-        ulamSpiralCounterClockwise(matrix);
+    public long[][] generate() {
+        ulamSpiralCounterClockwise();
         return matrix;
     }
 
-    private void ulamSpiralCounterClockwise(long[][] matrix) {
+    private void ulamSpiralCounterClockwise() {
         int n = matrix.length; // get the size of the matrix
         int row = n / 2; // start at the middle row
         int col = n / 2; // start at the middle column

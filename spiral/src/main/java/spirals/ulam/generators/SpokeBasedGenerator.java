@@ -1,6 +1,7 @@
 package spirals.ulam.generators;
 
 import spirals.ulam.calculators.SpokeValueCalculator;
+import utils.MatrixValidator;
 
 /**
  * Generates an Ulam spiral matrix using a spoke-based approach. Cells on SW and NW spokes are calculated using predefined formulas.
@@ -15,27 +16,34 @@ import spirals.ulam.calculators.SpokeValueCalculator;
  */
 public final class SpokeBasedGenerator implements UlamGenerator {
 
+    private final int halfSize;
+    private final long[][] matrix;
+
+    public SpokeBasedGenerator(int size) {
+        MatrixValidator.validateMatrixSize(size);
+        this.halfSize = size / 2;
+        this.matrix = new long[size][size];
+    }
+
     public static long[][] generateMatrix(int size) {
-        return new SpokeBasedGenerator().generate(size);
+        return new SpokeBasedGenerator(size).generate();
     }
 
     @Override
-    public long[][] generate(int size) {
-        long [][] matrix = new long[size][size];
-        fillCenter(matrix);
-        fillTop(matrix);
-        fillBottom(matrix);
-        fillLeft(matrix);
-        fillRight(matrix);
-        return matrix;
+    public long[][] generate() {
+        fillCenter();
+        fillTop();
+        fillBottom();
+        fillLeft();
+        fillRight();
+        return this.matrix;
     }
 
-    private static void fillCenter(long[][] matrix) {
-        matrix[matrix.length /2][matrix.length /2] = 1;
+    private void fillCenter() {
+        matrix[halfSize][halfSize] = 1;
     }
 
-    private static void fillBottom(long[][] matrix) {
-        int halfSize = matrix.length / 2;
+    private void fillBottom() {
         for (int i = matrix.length - 1; i > halfSize; i--) {
             long[] row = matrix[i];
             int startIndex = matrix.length - i - 1;
@@ -46,8 +54,7 @@ public final class SpokeBasedGenerator implements UlamGenerator {
         }
     }
 
-    private static void fillLeft(long[][] matrix) {
-        int halfSize = matrix.length / 2;
+    private void fillLeft() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < halfSize; j++) {
                 if (matrix[i][j] == 0) {
@@ -57,8 +64,7 @@ public final class SpokeBasedGenerator implements UlamGenerator {
         }
     }
 
-    private static void fillRight(long[][] matrix) {
-        int halfSize = matrix.length / 2;
+    private void fillRight() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = halfSize + 1; j < matrix.length; j++) {
                 if (matrix[i][j] == 0) {
@@ -68,8 +74,7 @@ public final class SpokeBasedGenerator implements UlamGenerator {
         }
     }
 
-    private static void fillTop(long[][] matrix) {
-        int halfSize = matrix.length / 2;
+    private void fillTop() {
         for (int i = 0; i < halfSize; i++) {
             long[] row = matrix[i];
             row[i] = SpokeValueCalculator.NW(halfSize - i);
