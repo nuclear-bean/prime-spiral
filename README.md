@@ -1,10 +1,14 @@
 # prime-spiral
 
+_'There is no apparent reason why one number is prime and another not. <br>
+On the contrary, upon looking at these numbers one has the feeling of being 
+in the presence of one of the inexplicable secrets of creation.'_
+
 ### Overview
 
 This is a tool for visualizing and exploring prime spirals. Ulam Spiral is currently the only supported variation.
 
-Read more about Ulam Spiral here: https://en.wikipedia.org/wiki/Ulam_spiral
+Read more about [Ulam Spiral](https://en.wikipedia.org/wiki/Ulam_spiral)
 
 ### Usage
 
