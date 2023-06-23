@@ -27,30 +27,29 @@ public final class SimpleUlamGenerator implements UlamGenerator {
     }
 
     private void ulamSpiralCounterClockwise() {
-        int n = matrix.length; // get the size of the matrix
-        int row = n / 2; // start at the middle row
-        int col = n / 2; // start at the middle column
+        int row = matrix.length / 2; // start at the middle row
+        int col = matrix.length / 2; // start at the middle column
         matrix[row][col] = 1; // put the number 1 in the middle of the matrix
-        int count = 2; // start counting from 2
-        int length = 1; // start with a segment of length 1
+        int currentNumber = 2; // start counting from 2
+        int segmentLength = 1; // start with a segment of length 1
         int direction = 0; // start going to the right
         boolean ringCompleted = false;
 
-        while (length < n || !ringCompleted) { // keep spiraling until the matrix is filled
-            for (int i = 0; i < length; i++) { // iterate over the current segment
-                if (ringCompleted && length >= n) break;
+        while (segmentLength < matrix.length || !ringCompleted) { // keep spiraling until the matrix is filled
+            for (int i = 0; i < segmentLength; i++) { // iterate over the current segment
+                if (ringCompleted && segmentLength >= matrix.length) break;
                 switch (direction) { // move in the current direction
                     case 0 -> col++;        // go right
                     case 1 -> row++;        // go down
                     case 2 -> col--;        // go left
                     case 3 -> row--;        // go up
                 }
-                matrix[row][col] = count++; // fill in the next number in the sequence
-                ringCompleted = isOddSquare(count - 1);
+                matrix[row][col] = currentNumber++; // fill in the next number in the sequence
+                ringCompleted = isOddSquare(currentNumber - 1);
             }
             direction = (direction + 3) % 4; // turn clockwise
             if (direction == 0 || direction == 2) { // increase the segment length every other turn
-                length++;
+                segmentLength++;
             }
         }
     }
